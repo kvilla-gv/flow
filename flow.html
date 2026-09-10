@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flow · Customer Experience Center · Knowledge Hub 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* base tomada del logo + capturas */
+  --ink:#12101C;--ink80:#3A3552;--ink50:#6E6890;--ink30:#A9A3C4;
+  --violet:#7750E1;--violet-d:#4E2CB0;--violet-l:#A98CF0;
+  --wash:#EAE3FD;--wash2:#F4F0FE;
+  --bg:#EFEDFB;--card:#FFFFFF;--line:#E6E1F7;
+  --shadow:0 2px 10px rgba(45,25,105,.05);
+  --shadow-l:0 10px 30px rgba(45,25,105,.09);
+  /* semánticos armonizados con la marca */
+  --green:#0F8A63;--greenl:#E0F5EE;
+  --amber:#8F5D06;--amberl:#FBEFD8;
+  --rose:#C22B57;--rosel:#FCE6EC;
+}
+html,body{height:100%}
+body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink80);font-size:14px;display:flex;flex-direction:column;height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- TOPBAR ---------- */
+.topbar{background:var(--card);padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;flex-shrink:0;z-index:100;border-bottom:1px solid var(--line)}
+.brandwrap{display:flex;align-items:center;gap:16px;min-width:0}
+.logo{height:27px;width:auto;display:block}
+.logo .lw{fill:var(--ink)}
+.logo .lm{fill:var(--violet)}
+.brand-sub{font-size:9.5px;font-weight:700;letter-spacing:.18em;color:var(--ink50);margin-top:5px}
+.vrule{width:1px;height:34px;background:var(--line)}
+.ctx-chip{font-size:11.5px;font-weight:600;color:var(--violet-d);background:var(--wash2);border:1px solid var(--wash);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.top-right{display:flex;align-items:center;gap:12px}
+.flash-bar{background:var(--rosel);color:var(--rose);padding:7px 14px;border-radius:999px;font-size:11.5px;font-weight:600}
+.cd-pill{display:flex;align-items:center;gap:10px;background:var(--ink);border-radius:999px;padding:6px 8px 6px 16px}
+.cd-t{color:#fff;font-size:10px;font-weight:600;line-height:1.25;letter-spacing:.02em}
+.cd-n{width:40px;height:40px;border-radius:50%;background:var(--violet);color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ---------- SEARCH ---------- */
+.search-bar{background:var(--card);padding:12px 22px 14px;display:flex;gap:12px;align-items:center;flex-shrink:0;border-bottom:1px solid var(--line)}
+.search-bar input{flex:1;padding:11px 18px;border:1.5px solid var(--line);border-radius:14px;font-size:13.5px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s,background .15s}
+.search-bar input::placeholder{color:var(--ink30)}
+.search-bar input:focus{border-color:var(--violet);background:#fff}
+.kbd{font-size:10.5px;font-weight:600;color:var(--ink50);background:var(--bg);border:1px solid var(--line);padding:5px 9px;border-radius:8px;white-space:nowrap}
+
+/* ---------- LAYOUT ---------- */
+.main{display:flex;flex:1;overflow:hidden}
+.sidebar{width:236px;flex-shrink:0;background:var(--card);overflow-y:auto;padding:16px 12px;border-right:1px solid var(--line)}
+.sb-section{padding:12px 10px 6px;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink30)}
+.sb-item{display:flex;align-items:center;gap:11px;padding:10px 12px;cursor:pointer;color:var(--ink80);font-size:13px;font-weight:600;border-radius:12px;transition:background .15s,color .15s;margin-bottom:2px}
+.sb-item:hover{background:var(--wash2);color:var(--ink)}
+.sb-item.active{background:var(--violet);color:#fff;box-shadow:0 6px 16px rgba(119,80,225,.28)}
+.sb-item .icon{font-size:15px;width:18px;text-align:center;opacity:.9}
+.bf-btn{margin:14px 6px 6px;background:var(--ink);color:#fff;padding:12px 8px 12px 16px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:background .15s}
+.bf-btn .arrow{width:26px;height:26px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.bf-btn:hover{background:#241F3A}
+.bf-btn.active{background:var(--violet)}
+.bf-btn.active .arrow{background:#fff;color:var(--violet)}
+
+/* ---------- CONTENT ---------- */
+.content{flex:1;overflow-y:auto;padding:24px 26px 40px}
+.panel{display:none}
+.panel.active{display:block}
+
+.page-title{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:5px}
+.page-sub{font-size:13.5px;color:var(--ink50);margin-bottom:22px;max-width:70ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+.card-h{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+
+/* ---------- PROPIEDAD ---------- */
+.prop-header{border-radius:22px;padding:26px;margin-bottom:18px;position:relative;overflow:hidden}
+.prop-name{font-size:30px;font-weight:800;color:var(--ink);letter-spacing:-.025em;margin-bottom:6px;line-height:1.05}
+.prop-type{font-size:11.5px;font-weight:700;color:var(--violet-d);margin-bottom:10px}
+.prop-desc{font-size:13.5px;color:var(--ink80);line-height:1.65;max-width:78ch}
+
+/* ---------- SUITES ---------- */
+.suite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px;margin-bottom:16px}
+.suite{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.suite-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.suite-meta{font-size:11.5px;color:var(--ink50);margin-bottom:9px}
+.suite-price{font-size:15px;font-weight:800;color:var(--violet-d)}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.tag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:999px}
+.tag-g{background:var(--greenl);color:var(--green)}
+.tag-b{background:var(--wash);color:var(--violet-d)}
+.tag-a{background:var(--amberl);color:var(--amber)}
+.tag-r{background:var(--rosel);color:var(--rose)}
+
+/* ---------- USP ---------- */
+.usp{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.6}
+.usp:last-child{border-bottom:none}
+.usp-icon{font-size:17px;flex-shrink:0;margin-top:1px}
+.usp-text{color:var(--ink80);flex:1;max-width:80ch}
+.usp-text strong{color:var(--ink);font-weight:700}
+
+/* ---------- SCRIPTS ---------- */
+.script-item{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.script-header{padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:11px;transition:background .15s}
+.script-header:hover{background:var(--wash2)}
+.script-trigger{font-size:13.5px;font-weight:600;color:var(--ink);flex:1;line-height:1.4}
+.script-body{padding:4px 16px 16px;display:none}
+.script-body.open{display:block}
+.script-say{background:var(--wash2);border-left:3px solid var(--violet);padding:14px 16px;font-size:13px;color:var(--ink);margin-top:10px;border-radius:0 12px 12px 0;line-height:1.7}
+.script-note{font-size:12px;color:var(--ink50);line-height:1.6;max-width:82ch}
+.chev{color:var(--ink30);font-size:11px;transition:transform .2s}
+.script-header.open .chev{transform:rotate(180deg);color:var(--violet)}
+
+/* ---------- PROMOS ---------- */
+.promo-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.promo-row:last-child{border-bottom:none}
+.promo-name{flex:1;font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+.promo-hotel{font-size:11.5px;color:var(--ink50);width:120px;flex-shrink:0}
+.promo-code{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 14px;background:var(--wash);color:var(--violet-d);border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .15s,color .15s;flex-shrink:0}
+.promo-code:hover,.promo-code.copied{background:var(--ink);color:#fff}
+
+/* ---------- PROTOCOLOS ---------- */
+.proto-steps{display:flex;flex-direction:column;gap:12px}
+.proto-step{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:25px;height:25px;border-radius:50%;background:var(--wash);color:var(--violet-d);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;color:var(--ink80);flex:1;line-height:1.6}
+.step-text strong{color:var(--ink)}
+.step-say{color:var(--violet-d);font-weight:600}
+.never{margin-top:14px;padding:12px 14px;background:var(--rosel);border-radius:14px;font-size:11.5px;color:var(--rose);line-height:1.6}
+
+/* ---------- KPI ---------- */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}
+.kpi-label{font-size:11px;font-weight:700;color:var(--ink50);margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3}
+.kpi-label::before{content:"";width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.kpi.g .kpi-label::before{background:var(--green)}
+.kpi.a .kpi-label::before{background:var(--amber)}
+.kpi.r .kpi-label::before{background:var(--rose)}
+.kpi.b .kpi-label::before{background:var(--violet)}
+.kpi-val{font-size:32px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.03em}
+.kpi-sub{font-size:11px;color:var(--ink50);margin-top:6px;line-height:1.4}
+
+/* ---------- TABS ---------- */
+.prop-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.ptab{padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--ink80);border:1px solid var(--line);background:var(--card);transition:all .15s}
+.ptab:hover{color:var(--ink);border-color:var(--violet-l)}
+.ptab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ptab-panel{display:none}
+.ptab-panel.active{display:block}
+
+/* ---------- REGLAS DE ORO ---------- */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.rule{padding:16px;border-radius:16px;border:1px solid var(--line)}
+.rule-k{font-size:11px;font-weight:800;margin-bottom:8px}
+.rule strong{display:block;color:var(--ink);font-size:14px;font-weight:700;margin-bottom:6px}
+.rule p{font-size:12px;color:var(--ink80);line-height:1.6}
+.rule.keep{background:var(--greenl);border-color:rgba(15,138,99,.18)}.rule.keep .rule-k{color:var(--green)}
+.rule.stop{background:var(--rosel);border-color:rgba(194,43,87,.18)}.rule.stop .rule-k{color:var(--rose)}
+.rule.chat{background:var(--wash2);border-color:var(--wash)}.rule.chat .rule-k{color:var(--violet-d)}
+
+/* ---------- BLACK FRIDAY ---------- */
+.bf-header{background:radial-gradient(120% 160% at 88% 0%,#5B34C9 0%,#2A1B52 45%,#12101C 100%);border-radius:22px;padding:28px;margin-bottom:18px}
+.bf-sub{font-size:11px;font-weight:700;color:var(--violet-l);margin-bottom:8px}
+.bf-title{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.15;max-width:24ch}
+.bf-cd{display:flex;gap:10px;margin-top:22px}
+.bcd-box{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 20px;text-align:center;min-width:88px}
+.bcd-n{font-size:30px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em}
+.bcd-l{font-size:10px;font-weight:600;color:rgba(255,255,255,.55);margin-top:6px}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.tier-box{border-radius:18px;padding:16px;border:1px solid var(--line);background:var(--card)}
+.tier-num{font-size:13px;font-weight:800;margin-bottom:2px}
+.tier-lbl{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.tier-names{font-size:11.5px;color:var(--ink50);line-height:1.7}
+.t1b{background:var(--greenl);border-color:rgba(15,138,99,.2)}.t1b .tier-num{color:var(--green)}
+.t2b{background:var(--wash2);border-color:var(--wash)}.t2b .tier-num{color:var(--violet-d)}
+.t3b{background:var(--amberl);border-color:rgba(143,93,6,.2)}.t3b .tier-num{color:var(--amber)}
+.t4b{background:var(--rosel);border-color:rgba(194,43,87,.2)}.t4b .tier-num{color:var(--rose)}
+.checklist-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.checklist-item:last-child{border-bottom:none}
+.check-box{width:20px;height:20px;border:2px solid var(--ink30);border-radius:7px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all .15s;background:none;padding:0}
+.check-box:hover{border-color:var(--violet)}
+.check-box.done{background:var(--violet);border-color:var(--violet);color:#fff}
+.check-text{flex:1;font-size:13px;color:var(--ink80);line-height:1.5}
+.check-text.done{text-decoration:line-through;color:var(--ink30)}
+.check-owner{font-size:11px;color:var(--ink50);white-space:nowrap}
+.urgency{font-size:10px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.u-red{background:var(--rosel);color:var(--rose)}
+.u-amber{background:var(--amberl);color:var(--amber)}
+.u-green{background:var(--greenl);color:var(--green)}
+
+.note-p{font-size:12.5px;color:var(--ink80);line-height:1.7;max-width:80ch}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1100px){.kpi-row{grid-template-columns:repeat(2,1fr)}.tier-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){
+  body{height:auto;overflow:auto}
+  .main{flex-direction:column;overflow:visible}
+  .topbar{height:auto;padding:14px 16px;flex-wrap:wrap}
+  .vrule,.ctx-chip{display:none}
+  .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:12px}
+  .sb-section{display:none}
+  .sb-item{white-space:nowrap;margin-bottom:0}
+  .bf-btn{margin:0;white-space:nowrap}
+  .content{overflow:visible;padding:18px 16px 40px}
+  .grid2,.rules,.tier-grid,.kpi-row{grid-template-columns:1fr}
+  .page-title{font-size:23px}.prop-name{font-size:24px}
+  .search-bar .kbd{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brandwrap">
+    <div>
+      <svg class="logo" viewBox="0 0 8515.39 1482.14" role="img" aria-label="Flow">
+        <g class="lw">
+          <path d="M2008.74,699.93v143.79l749.55-.12v247.31l-749.43.12v391.1h-278.05V452.49h1027.48v247.31l-749.55.12Z"/>
+          <path d="M3983.29,1234.82v247.31h-1027.48V452.01h278.05v782.68l749.43.12Z"/>
+          <path d="M5398.46,646.25c16.12,40.5,24.32,83.76,24.32,126.05v390.14c0,42.3-8.09,85.55-24.32,126.05-43.38,108.68-141.21,193.63-292.67,193.63v-.48h-669.81v.48c-151.4,0-249.29-84.95-292.67-193.63-16.18-40.5-24.32-83.76-24.32-126.05v-390.14c0-42.3,8.09-85.55,24.32-126.05,43.44-108.68,141.27-193.63,292.73-193.63v.48h669.81v-.48c151.4,0,249.29,84.95,292.67,193.63h-.06ZM5144.73,1162.44v-390.14h-.9c0-12.46-2.04-24.08-5.93-33.91-8.39-20.97-29.18-37.5-62.85-37.5v-.48h-608.34v.48c-33.61,0-54.4,16.42-62.85,37.5-3.89,9.83-5.87,21.45-5.87,33.91h-1.02v390.14h1.02c0,12.46,1.98,24.08,5.87,33.91,8.39,20.97,29.12,37.5,62.85,37.5v.48h608.34v-.48c33.67,0,54.46-16.42,62.85-37.5,3.95-9.83,5.93-21.45,5.93-33.91h.9Z"/>
+          <path d="M7084.48,1237.57l.24.24-85.67,117.67c-29.36,40.86-67.88,73.21-113.23,94.9-41.76,20.13-89.63,31.75-142.65,31.75v-.48l-278.05.48v-579.94l-207.17,335.38.24.24-85.73,117.67c-29.42,40.86-67.82,73.21-113.23,94.9-41.82,20.13-89.57,31.75-142.71,31.75v-.48l-278.05.48V452.13h278.05v781.72c15.52,0,27.44-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.36-.24,426.15-699.52h303.27v781.72c15.58,0,27.5-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.3-.24,425.91-699.52h303.27l-485.28,785.44Z"/>
+          <path d="M8085.92,1482.14c-284.04,0-515.01-231.08-515.01-515.01s230.96-515,515.01-515h0c162.89,0,317.88,78.4,414.63,209.66,22.54,30.47,15.97,73.41-14.48,95.95-30.47,22.43-73.4,16-95.84-14.53-71.09-96.36-184.83-153.88-304.32-153.88-208.39,0-377.92,169.44-377.92,377.8s169.52,377.83,377.92,377.83c120.21,0,234.47-58.1,305.48-155.49,22.38-30.64,65.23-37.38,95.76-15.11,30.64,22.29,37.38,65.23,15.08,95.87-96.75,132.67-252.41,211.91-416.32,211.91Z"/>
+          <path d="M8090.5,1280.55c-172.7,0-313.27-140.57-313.27-313.41s140.57-313.35,313.27-313.35c70.45,0,137.09,22.85,192.56,66.06,27.88,21.77,32.88,62.16,11.11,90.01-21.77,28.07-62.1,33.04-90.09,11.27-32.68-25.55-71.94-38.95-113.58-38.95-102.03,0-184.99,82.94-184.99,184.96s82.97,184.96,184.99,184.96c42.11,0,81.67-13.75,114.71-39.73,27.68-21.91,68.1-17.33,90.15,10.55,21.91,27.79,17.21,68.19-10.67,90.15-55.83,44.12-122.88,67.47-194.19,67.47Z"/>
+          <path d="M8515.39,966.97c0,47.21-40.47,85.56-90.45,85.56h-329.13c-49.98,0-90.46-38.35-90.46-85.56h0c0-47.22,40.48-85.34,90.46-85.34h329.13c49.98,0,90.45,38.12,90.45,85.34h0Z"/>
+        </g>
+        <path class="lm" d="M1424.25,455.44h-396.57l-.98-397.7c-.06-23.39-14.19-44.45-35.81-53.37-21.62-8.92-46.49-3.95-63.03,12.59l-210.75,210.82-32.13-.03V57.89c0-22.25-12.76-42.53-32.82-52.18-20.06-9.65-43.88-6.91-61.26,6.99-92.37,73.94-176.44,158.39-249.89,251.01-72.57,91.52-135.01,191.31-185.61,296.63-50.6,105.32-89.49,216.43-115.59,330.27C13.39,1005.83,0,1124.23,0,1242.56v181.69c0,31.96,25.92,57.89,57.89,57.89h1138.62c31.97,0,57.89-25.93,57.89-57.89v-87c0-87.32-24.27-172.73-70.17-247.02-27.02-43.71-61.49-81.67-100.67-114.09l366.56-183.29c19.62-9.82,32.01-29.87,32.01-51.79v-227.73c0-31.97-25.92-57.9-57.89-57.9Z"/>
+      </svg>
+      <div class="brand-sub">CUSTOMER EXPERIENCE CENTER</div>
+    </div>
+    <div class="vrule"></div>
+    <div class="ctx-chip">Velas Resorts</div>
+  </div>
+  <div class="top-right">
+    <div class="flash-bar">⚠ Piaf cerrado 12–15 Oct · Alternativas: Frida · Cocina de Autor</div>
+    <div class="cd-pill"><span class="cd-t">días para<br>Black Friday</span><span class="cd-n" id="cd-days">—</span></div>
+  </div>
+</header>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Buscar resort, promoción, script o protocolo — por ejemplo: OTA, sargazo, Michelin, pasarela" oninput="searchGlobal(this.value)">
+  <span class="kbd" id="searchHint">Ctrl + K</span>
+</div>
+
+<div class="main">
+  <nav class="sidebar">
+    <div class="sb-section">Principal</div>
+    <div class="sb-item active" onclick="nav(this,'home')" tabindex="0"><span class="icon">⌂</span>Dashboard</div>
+    <div class="sb-item" onclick="nav(this,'scripts')" tabindex="0"><span class="icon">💬</span>Scripts y playbook</div>
+    <div class="sb-item" onclick="nav(this,'protocolos')" tabindex="0"><span class="icon">🛡</span>Protocolos</div>
+    <div class="sb-section">Propiedades</div>
+    <div class="sb-item" onclick="nav(this,'rm')" tabindex="0"><span class="icon">🌊</span>Riviera Maya</div>
+    <div class="sb-item" onclick="nav(this,'rn')" tabindex="0"><span class="icon">⛵</span>Riviera Nayarit</div>
+    <div class="sb-item" onclick="nav(this,'lc')" tabindex="0"><span class="icon">🏔</span>Los Cabos</div>
+    <div class="sb-item" onclick="nav(this,'vv')" tabindex="0"><span class="icon">🏖</span>Velas Vallarta</div>
+    <div class="sb-item" onclick="nav(this,'bh')" tabindex="0"><span class="icon">💎</span>Boutique y Mar del Cabo</div>
+    <div class="bf-btn" id="bf-btn" onclick="navBF()" tabindex="0">Black Friday 2026<span class="arrow">→</span></div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HOME -->
+    <div class="panel active" id="panel-home">
+      <div class="page-title">Dashboard del contact center</div>
+      <div class="page-sub">Agosto 2026 · 28 agentes · 182 interacciones auditadas</div>
+      <div class="kpi-row">
+        <div class="kpi a"><div class="kpi-label">Puntaje global del equipo</div><div class="kpi-val">58</div><div class="kpi-sub">Meta Black Friday ≥ 75</div></div>
+        <div class="kpi b"><div class="kpi-label">Llamadas auditadas</div><div class="kpi-val">82</div><div class="kpi-sub">Transcripciones completas</div></div>
+        <div class="kpi b"><div class="kpi-label">Chats auditados</div><div class="kpi-val">100</div><div class="kpi-sub">4 grupos de 25</div></div>
+        <div class="kpi g"><div class="kpi-label">Top performers</div><div class="kpi-val">4</div><div class="kpi-sub">Daniel · Marvin · Héctor · Blanca</div></div>
+        <div class="kpi r"><div class="kpi-label">Fallas críticas</div><div class="kpi-val">5</div><div class="kpi-sub">Requieren intervención inmediata</div></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h">Promociones activas — toca el código para copiarlo</div>
+          <div class="promo-row"><span class="promo-name">Black Friday Early Access — 20% OFF + Kids Free</span><span class="promo-hotel">Todos</span><button class="promo-code" onclick="copyCode(this,'BFEARLY26')">BFEARLY26</button></div>
+          <div class="promo-row"><span class="promo-name">Wellness Getaway — 50 USD de crédito en spa</span><span class="promo-hotel">GV Los Cabos</span><button class="promo-code" onclick="copyCode(this,'WELLNESSLC')">WELLNESSLC</button></div>
+          <div class="promo-row"><span class="promo-name">Escapada romántica — cena privada incluida</span><span class="promo-hotel">Boutique y Casa</span><button class="promo-code" onclick="copyCode(this,'ROMANCE26')">ROMANCE26</button></div>
+          <div class="promo-row"><span class="promo-name">Kids Free — niños sin costo</span><span class="promo-hotel">RM y RN</span><button class="promo-code" onclick="copyCode(this,'KIDSFREE26')">KIDSFREE26</button></div>
+        </div>
+        <div class="card">
+          <div class="card-h">Playbook rápido — toca para expandir</div>
+          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">OTA</span><span class="script-trigger">"Encontré mejor precio en Booking/Expedia"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Protocolo de 3 pasos: empatía → price match → value-add. Nunca confrontar.</div><div class="script-say">"Entiendo perfectamente, muchos comparan primero. Déjeme verificar esa tarifa ahora mismo — además, al reservar directo recibe crédito de spa, traslado o upgrade. ¿Le hago la comparación ahora?"</div></div></div>
+          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">Pago</span><span class="script-trigger">"La página de pago no funciona"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Nunca decir "cuelgue y vuelva a llamar". El cliente se queda en línea siempre.</div><div class="script-say">"No se preocupe, le genero una liga alterna en este momento — menos de dos minutos. ¿Me permite mantenerle en línea?"</div></div></div>
+          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-a">Discovery</span><span class="script-trigger">"Solo dígame el precio"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Construir valor antes del precio. Siempre.</div><div class="script-say">"Con gusto. Para darle la tarifa más precisa y el mejor descuento según su perfil, ¿me permite dos preguntas rápidas? ¿Es su primera visita y viajan en familia o en pareja?"</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h">Tres reglas de oro para Black Friday</div>
+        <div class="rules">
+          <div class="rule keep"><div class="rule-k">Mantener</div><strong>Valor antes de precio</strong><p>Narrativa completa — Michelin, servicio, metros cuadrados — antes de mencionar cualquier cifra.</p></div>
+          <div class="rule stop"><div class="rule-k">Eliminar</div><strong>"Cuelgue y llame después"</strong><p>Jamás ante una falla de pago. El cliente ya decidió comprar: el agente resuelve en línea.</p></div>
+          <div class="rule chat"><div class="rule-k">En chat</div><strong>Una pregunta por mensaje</strong><p>Máximo tres líneas por burbuja. El cliente en móvil escanea, no lee bloques.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <div class="panel" id="panel-scripts">
+      <div class="page-title">Scripts y playbook</div>
+      <div class="page-sub">Todas las objeciones documentadas en la auditoría de 182 interacciones</div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">OTA</span><span class="script-trigger">"Encontré lo mismo en Expedia, Booking o Costco"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Nunca confrontar: "Is there a particular reason why you would rather book through Expedia?" (Cristian U., caso Bret Pyle — confrontación documentada). Protocolo correcto: empatía → price match → value-add.</div><div class="script-say">"Entiendo perfectamente, muchos de nuestros huéspedes comparan primero. Déjeme verificar esa tarifa en este momento — además, al reservar directo con nosotros recibe crédito de spa, traslado al 50% o upgrade de categoría. ¿Le hago la comparación ahora?"</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">OTA</span><span class="script-trigger">"En Costco sale más barato y con beneficios"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Costco incluye bebidas de barril. Nosotros incluimos premium, minibar y marcas top: no es lo mismo. Modelo a seguir: Marvin M. con Bruna Kuscsik (miembro Costco) — cerró sin confrontación usando urgencia de inventario.</div><div class="script-say">"Entiendo que Costco tiene una buena propuesta. Lo que incluimos es diferente: licores de marca premium, vinos de la carta, minibar resurtido diariamente. Además, solo queda una suite disponible para esas fechas — algo que Costco no puede ofrecerle porque no tiene acceso a este inventario."</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">Precio</span><span class="script-trigger">"Es muy caro para lo que ofrecen"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Convertir el precio por noche en precio por experiencia total incluida. El desglose visual ayuda.</div><div class="script-say">"Entiendo que la tarifa se ve importante. Déjeme mostrarle lo que incluye por persona: gastronomía Michelin los siete días, acceso ilimitado al spa, impuestos y propinas, traslados internos y servicio a la suite 24 horas. Cuando lo divide por todo eso, el costo por experiencia es realmente competitivo para un resort cinco diamantes."</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">Pago</span><span class="script-trigger">"La página de pago no carga" o error del sistema</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Nunca decir "mejor cuelgue y marque después" (Jonila, llamada auditada — reserva perdida). Tres niveles de protocolo obligatorio.</div><div class="script-say">Nivel 1: "No se preocupe, le genero una liga alterna en menos de dos minutos. ¿Me permite mantenerle en línea?"<br><br>Nivel 2: "Si prefiere, puedo tomar sus datos de tarjeta de forma segura por esta línea para procesar el cargo directamente."<br><br>Nivel 3: "Voy a transferirle con mi supervisor, quien podrá asistirle de inmediato — permanezca en línea, por favor."</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-a">Discovery</span><span class="script-trigger">"Solo dígame el precio"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Nadie rechaza un precio más ajustado a su perfil. Pedir 30 segundos para personalizar.</div><div class="script-say">"Con gusto. Para darle la tarifa más precisa y el mejor descuento disponible según su perfil, ¿me permite hacerle solo dos preguntas rápidas? ¿Es su primera visita con nosotros y viajan en familia o en pareja?"</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-a">Upsell</span><span class="script-trigger">Elevar de suite estándar a plunge pool o categoría superior</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Anclar en la diferencia de experiencia, no en el precio adicional. Urgencia de inventario si aplica.</div><div class="script-say">"Lo que tiene actualmente es excelente. Le cuento que por una diferencia mínima tiene acceso a una suite con alberca privada: desayuno en el agua, privacidad total, sin compartir nada. En esta temporada esa diferencia nunca ha sido tan pequeña."</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Chat</span><span class="script-trigger">Primer mensaje en chat — estándar correcto</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Máximo tres líneas y una pregunta al final. Nunca un bloque de catálogo en el primer mensaje (Erika G.M., chat Emma Córdoba — 180 palabras en el primer mensaje, la clienta no lo leyó).</div><div class="script-say">"¡Buenas tardes! Con gusto le ayudo con su reservación en [propiedad]. Para encontrar la mejor opción para usted, ¿me dice para qué fechas sería su visita y cuántas personas viajan?"</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Cierre</span><span class="script-trigger">Cierre asertivo — generación del link en caliente</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">El link se genera durante la llamada o el chat. No al terminar, no por correo después. Modelo: Monserrat M. (chat Briana Davis) — link generado, pago procesado y traslado confirmado en 40 minutos.</div><div class="script-say">"Perfecto. Le genero el link de reservación ahora mismo para que quede garantizada esta tarifa especial — tiene validez de 30 minutos. Le acabo de enviar el acceso directo a su correo. ¿Lo ve en pantalla?"</div></div></div>
+      <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Discovery</span><span class="script-trigger">Discovery de ocasión especial — estándar Karen M. y Marvin M.</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Segunda o tercera pregunta, siempre antes de cotizar. Documentado en Karen M. (chats Brody Summerall, Erin Wrist) y Marvin M. (chat Eric Fay). Genera rapport instantáneo.</div><div class="script-say">"¿Están celebrando alguna ocasión especial durante su visita? Cumpleaños, aniversario, luna de miel…" (Karen M.)<br><br>"¿Alguna celebración especial para esas fechas?" (Marvin M., antes de cotizar cualquier precio)</div></div></div>
+    </div>
+
+    <!-- PROTOCOLOS -->
+    <div class="panel" id="panel-protocolos">
+      <div class="page-title">Protocolos operativos</div>
+      <div class="page-sub">Siete protocolos que deben estar automáticos el 27 de noviembre de 2026</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h">🛡 Direct Booking Shield — protocolo OTA en 3 pasos</div>
+          <div class="proto-steps">
+            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Empatía, nunca confrontar.</strong> <span class="step-say">"Entiendo perfectamente, muchos comparan primero."</span></div></div>
+            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Price match.</strong> Verificar la tarifa en tiempo real. Si es igual o mejor, decirlo. Si es diferente, explicar por qué.</div></div>
+            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Value-add autorizado.</strong> Crédito de spa, traslado al 50% o upgrade. Cerrar en caliente. <span class="step-say">"¿Le hago la comparación ahora?"</span></div></div>
+          </div>
+          <div class="never"><strong>Nunca:</strong> "Is there a particular reason why you would rather book through Expedia?" — Confrontación documentada (Cristian U., caso Bret Pyle).</div>
+        </div>
+        <div class="card">
+          <div class="card-h">💳 Pasarela de pago caída — 3 niveles</div>
+          <div class="proto-steps">
+            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Liga alterna.</strong> <span class="step-say">"Le genero una liga alterna en dos minutos, ¿me permite mantenerle en línea?"</span></div></div>
+            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Tarjeta por línea.</strong> <span class="step-say">"Puedo tomar su tarjeta de forma segura por esta línea para procesar el cargo."</span></div></div>
+            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Escalación con supervisor.</strong> El cliente permanece en línea siempre. Nunca colgar primero.</div></div>
+          </div>
+          <div class="never"><strong>Nunca:</strong> "Mejor cuelgue y marque después si quiere meses sin intereses." — Reserva perdida documentada (Jonila).</div>
+        </div>
+        <div class="card">
+          <div class="card-h">🔄 Transferencia de chat entre agentes</div>
+          <div class="proto-steps">
+            <div class="proto-step"><div class="step-num">1</div><div class="step-text">Nombre del cliente, propiedad y fechas confirmadas.</div></div>
+            <div class="proto-step"><div class="step-num">2</div><div class="step-text">Categoría cotizada, precio acordado y descuento aplicado.</div></div>
+            <div class="proto-step"><div class="step-num">3</div><div class="step-text">Objeción activa y próximo paso acordado con el cliente.</div></div>
+            <div class="proto-step"><div class="step-num">4</div><div class="step-text"><span class="step-say">"Le transfiero con mi colega, ya le dejé todas las notas para que no repita nada."</span></div></div>
+          </div>
+          <div class="never"><strong>Caso documentado:</strong> Carolyn Cao — tres agentes, las mismas preguntas desde cero, la clienta repitió su perfil tres veces.</div>
+        </div>
+        <div class="card">
+          <div class="card-h">💬 Chat nativo — reglas de oro</div>
+          <div class="proto-steps">
+            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Máximo tres líneas</strong> por mensaje y una sola pregunta al final de cada burbuja.</div></div>
+            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Sin carruseles de catálogo.</strong> Responder solo lo que preguntaron.</div></div>
+            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Inactividad:</strong> un follow-up a los 8 minutos. A los 15 minutos, transferir con notas completas.</div></div>
+            <div class="proto-step"><div class="step-num">4</div><div class="step-text"><strong>Black Friday:</strong> máximo tres chats simultáneos. Calidad sobre volumen.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIVIERA MAYA -->
+    <div class="panel" id="panel-rm">
+      <div class="prop-header" style="background:linear-gradient(135deg,#E4DCFB 0%,#F7F4FE 100%)">
+        <div class="prop-type">Grand Velas · Cinco diamantes AAA · Riviera Maya</div>
+        <div class="prop-name">Grand Velas Riviera Maya</div>
+        <div class="prop-desc">Resort all-inclusive de ultra lujo en la Riviera Maya. Tres ambientes: Grand Class (adultos), Ambassador (océano, familiar) y Zen Grand (selva, familiar). Estrella Michelin con el chef Sidney Schutte, ocho restaurantes, dos Kids Clubs y un Teens Club.</div>
+      </div>
+      <div class="prop-tabs">
+        <button class="ptab active" onclick="propTab(this,'rm','suites')">Suites y precios</button>
+        <button class="ptab" onclick="propTab(this,'rm','usp')">Argumentos clave</button>
+        <button class="ptab" onclick="propTab(this,'rm','scripts')">Scripts de la propiedad</button>
+      </div>
+      <div class="ptab-panel active" id="rm-suites">
+        <div class="suite-grid">
+          <div class="suite"><div class="suite-name">Suite Ambassador Ocean View</div><div class="suite-meta">Vista al océano · 83 m² · Familiar</div><div class="suite-price">Desde 1,450 USD/noche</div><div class="tag-row"><span class="tag tag-b">Bestseller</span><span class="tag tag-g">Kids Free</span></div></div>
+          <div class="suite"><div class="suite-name">Suite Zen Grand</div><div class="suite-meta">Selva y manglar · 83 m² · Familiar</div><div class="suite-price">Desde 1,280 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias</span><span class="tag tag-a">Descuento BF</span></div></div>
+          <div class="suite"><div class="suite-name">Suite Grand Class Ocean Front</div><div class="suite-meta">Solo adultos · Vista al mar · Plunge pool en terraza</div><div class="suite-price">Desde 1,600 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span><span class="tag tag-b">Premium</span></div></div>
+          <div class="suite"><div class="suite-name">Suite familiar de 2 recámaras</div><div class="suite-meta">King + 2 queen · Zen o Ambassador</div><div class="suite-price">Desde 2,800 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias grandes</span></div></div>
+        </div>
+        <div class="card"><div class="card-h">Tarifas de referencia — incluyen todo incluido de lujo, impuestos y propinas</div><p class="note-p">Depósito de una noche, 100% reembolsable hasta 24–72 horas antes de la llegada. Balance al check-in. Traslado redondo estándar: 405 USD. Con descuento especial: 210 USD.</p></div>
+      </div>
+      <div class="ptab-panel" id="rm-usp">
+        <div class="card">
+          <div class="usp"><div class="usp-icon">⭐</div><div class="usp-text"><strong>Estrella Michelin</strong> — Restaurante Cocina de Autor con el chef Sidney Schutte. Menú de diez tiempos que cambia cada noche. Único en la Riviera Maya.</div></div>
+          <div class="usp"><div class="usp-icon">🏗</div><div class="usp-text"><strong>Arquitectura en U</strong> — Tres ambientes independientes. Explicar diferencias antes de cotizar: Zen (selva, tres minutos a la playa), Ambassador (pie de playa) y Grand Class (solo adultos).</div></div>
+          <div class="usp"><div class="usp-icon">👶</div><div class="usp-text"><strong>Baby concierge</strong> — Sin costo adicional: cuna, bañera especial, menú infantil gourmet y carriola. Argumento poderoso para familias con bebés.</div></div>
+          <div class="usp"><div class="usp-icon">💧</div><div class="usp-text"><strong>Cenote privado</strong> en las suites Zen Grand. Experiencia única en toda la Riviera Maya. Usarlo en el storytelling antes del precio con familias que buscan naturaleza.</div></div>
+          <div class="usp"><div class="usp-icon">🌿</div><div class="usp-text"><strong>Sargazo</strong> — Nunca negarlo. Enviar foto del día si está disponible: <em>"la condición varía día a día. Contamos con albercas privadas de agua cristalina y el equipo de playa trabaja activamente."</em></div></div>
+        </div>
+      </div>
+      <div class="ptab-panel" id="rm-scripts">
+        <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="script-trigger">¿El precio incluye todo?</span><span class="chev">▼</span></div><div class="script-body"><div class="script-say">"Todo incluido significa exactamente eso: gastronomía en los ocho restaurantes, incluyendo Cocina de Autor con estrella Michelin, barra libre premium, servicio a la suite 24 horas, Kids Club, impuestos y propinas. No hay sorpresas al hacer checkout."</div></div></div>
+        <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="script-trigger">¿Hay sargazo en esa zona?</span><span class="chev">▼</span></div><div class="script-body"><div class="script-say">"Le soy transparente: la condición del mar varía día a día. Lo que sí le puedo decir es que contamos con albercas privadas de agua cristalina y el equipo de playa trabaja activamente en el área de acceso. ¿Le gustaría que le enviara una foto de hoy?"</div></div></div>
+        <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="script-trigger">Diferencia entre los ambientes Zen y Ambassador</span><span class="chev">▼</span></div><div class="script-body"><div class="script-say">"Zen Grand está rodeado de la selva y los cenotes del hotel, ideal para quienes buscan tranquilidad y naturaleza, con transporte interno continuo a la playa. Ambassador está a pie de playa y todas las suites tienen vista al océano. Ambos incluyen acceso a la totalidad del resort."</div></div></div>
+      </div>
+    </div>
+
+    <!-- RIVIERA NAYARIT -->
+    <div class="panel" id="panel-rn">
+      <div class="prop-header" style="background:linear-gradient(135deg,#DCF2EA 0%,#F5FBF8 100%)">
+        <div class="prop-type">Grand Velas · Cinco diamantes AAA · Riviera Nayarit</div>
+        <div class="prop-name">Grand Velas Riviera Nayarit</div>
+        <div class="prop-desc">Resort all-inclusive de ultra lujo en Nuevo Vallarta, frente a la Bahía de Banderas. Cinco restaurantes de especialidad (Frida, Piaf, Sen Lin, Lucca y Azul), spa con 16 salas, Kids Club y Teens Club. Destino de bodas número uno en México.</div>
+      </div>
+      <div class="prop-tabs">
+        <button class="ptab active" onclick="propTab(this,'rn','suites')">Suites y precios</button>
+        <button class="ptab" onclick="propTab(this,'rn','usp')">Argumentos clave</button>
+        <button class="ptab" onclick="propTab(this,'rn','ops')">Operaciones</button>
+      </div>
+      <div class="ptab-panel active" id="rn-suites">
+        <div class="suite-grid">
+          <div class="suite"><div class="suite-name">Master Suite vista al mar</div><div class="suite-meta">Vista al mar · 83 m² · Renovada</div><div class="suite-price">Desde 1,380 USD/noche</div><div class="tag-row"><span class="tag tag-b">Bestseller</span></div></div>
+          <div class="suite"><div class="suite-name">Suite Ambassador Ocean View</div><div class="suite-meta">Familiar · Vista al mar · Terraza amplia</div><div class="suite-price">Desde 1,200 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias</span><span class="tag tag-g">Kids Free</span></div></div>
+          <div class="suite"><div class="suite-name">Master Parlor Pool View</div><div class="suite-meta">Vista a la alberca · Dos adultos</div><div class="suite-price">Desde 1,100 USD/noche</div><div class="tag-row"><span class="tag tag-a">Mejor precio</span></div></div>
+          <div class="suite"><div class="suite-name">Governor Suite</div><div class="suite-meta">Una recámara · Alta categoría</div><div class="suite-price">Desde 2,120 USD/noche</div><div class="tag-row"><span class="tag tag-b">Premium</span></div></div>
+        </div>
+        <div class="card"><div class="card-h">Nota operativa</div><p class="note-p">Depósito de una noche, 100% reembolsable hasta 3–7 días antes de la llegada. Traslado redondo: 340 USD. Con descuento: 170 USD.</p></div>
+      </div>
+      <div class="ptab-panel" id="rn-usp">
+        <div class="card">
+          <div class="usp"><div class="usp-icon">💒</div><div class="usp-text"><strong>Destino de bodas número uno en México.</strong> Si el cliente menciona una celebración, explorar paquetes nupciales.</div></div>
+          <div class="usp"><div class="usp-icon">🍽</div><div class="usp-text"><strong>Cinco restaurantes de especialidad:</strong> Frida (mexicana), Piaf (francesa), Sen Lin (asiática), Lucca (italiana) y Azul (internacional). <span style="color:var(--rose);font-weight:700">Piaf cerrado del 12 al 15 de octubre: ofrecer Frida o Cocina de Autor.</span></div></div>
+          <div class="usp"><div class="usp-icon">👥</div><div class="usp-text"><strong>Grupos grandes.</strong> Capacidad para más de diez habitaciones, con proceso especial junto a Revenue Management.</div></div>
+        </div>
+      </div>
+      <div class="ptab-panel" id="rn-ops">
+        <div class="card"><div class="card-h">⚠ Aviso operativo activo</div><p style="font-size:14px;color:var(--rose);font-weight:700;margin-bottom:10px">El restaurante Piaf está cerrado por mantenimiento preventivo del 12 al 15 de octubre.</p><p class="note-p">Alternativas: Frida (cocina gourmet mexicana) y Cocina de Autor (menú degustación, requiere reserva).</p></div>
+      </div>
+    </div>
+
+    <!-- LOS CABOS -->
+    <div class="panel" id="panel-lc">
+      <div class="prop-header" style="background:linear-gradient(135deg,#FBEEDA 0%,#FEFAF3 100%)">
+        <div class="prop-type">Grand Velas · Cinco diamantes AAA · Los Cabos</div>
+        <div class="prop-name">Grand Velas Los Cabos</div>
+        <div class="prop-desc">Resort all-inclusive de ultra lujo en el corredor de Los Cabos, frente al Mar de Cortés. SE Spa es referencia mundial. Siete restaurantes de especialidad, dos de ellos con estrella Michelin (Cocina de Autor con el chef Sidney Schutte y Loto Robata), dos de ellos solo para adultos.</div>
+      </div>
+      <div class="prop-tabs">
+        <button class="ptab active" onclick="propTab(this,'lc','suites')">Suites y precios</button>
+        <button class="ptab" onclick="propTab(this,'lc','usp')">Argumentos clave</button>
+      </div>
+      <div class="ptab-panel active" id="lc-suites">
+        <div class="suite-grid">
+          <div class="suite"><div class="suite-name">Suite Ambassador Ocean View</div><div class="suite-meta">Vista al Mar de Cortés · 80 m²</div><div class="suite-price">Desde 1,500 USD/noche</div><div class="tag-row"><span class="tag tag-b">Bestseller</span></div></div>
+          <div class="suite"><div class="suite-name">Suite Ambassador Pool</div><div class="suite-meta">Plunge pool · Vista al mar</div><div class="suite-price">Desde 1,800 USD/noche</div><div class="tag-row"><span class="tag tag-a">Upsell clave</span></div></div>
+          <div class="suite"><div class="suite-name">Suite Grand Class Corner</div><div class="suite-meta">Vista panorámica · La mejor vista del resort</div><div class="suite-price">Desde 2,272 USD/noche</div><div class="tag-row"><span class="tag tag-b">Top adultos</span></div></div>
+          <div class="suite"><div class="suite-name">Family Duplex Suite</div><div class="suite-meta">Dos pisos · Plunge pool · Familias</div><div class="suite-price">Desde 2,252 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias premium</span></div></div>
+        </div>
+      </div>
+      <div class="ptab-panel" id="lc-usp">
+        <div class="card">
+          <div class="usp"><div class="usp-icon">🧖</div><div class="usp-text"><strong>SE Spa</strong> — Referencia mundial que combina tradición mexicana con técnicas asiáticas. Diferenciador único frente a cualquier otro resort de lujo en México.</div></div>
+          <div class="usp"><div class="usp-icon">🌊</div><div class="usp-text"><strong>Mar de Cortés</strong> — "El acuario del mundo", según Jacques Cousteau. Paisaje de desierto y mar. Todas las suites ofrecen vista al mar desde su terraza privada.</div></div>
+          <div class="usp"><div class="usp-icon">⭐</div><div class="usp-text"><strong>Dos estrellas Michelin:</strong> Cocina de Autor (chef Sidney Schutte) y Loto Robata Grill, exclusivos para huéspedes adultos. Argumento de cierre para parejas.</div></div>
+          <div class="usp"><div class="usp-icon">🏨</div><div class="usp-text"><strong>Grand Velas Boutique</strong> es la propiedad hermana solo para adultos. Si el cliente busca máxima privacidad, cruzar la venta.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALLARTA -->
+    <div class="panel" id="panel-vv">
+      <div class="prop-header" style="background:linear-gradient(135deg,#DDE7FB 0%,#F6F9FE 100%)">
+        <div class="prop-type">Velas Vallarta · Cinco estrellas · Puerto Vallarta</div>
+        <div class="prop-name">Velas Vallarta</div>
+        <div class="prop-desc">Resort familiar all-inclusive en la Bahía de Banderas. El más accesible de la colección y punto de entrada ideal para nuevos clientes de la marca. Dos restaurantes (La Ribera y Andrea), Kids Club y la Marina Puerto Vallarta a cinco minutos.</div>
+      </div>
+      <div class="suite-grid">
+        <div class="suite"><div class="suite-name">Estudio de lujo</div><div class="suite-meta">Studio · Cocineta · Dos personas</div><div class="suite-price">Desde 580 USD/noche</div><div class="tag-row"><span class="tag tag-g">Punto de entrada</span></div></div>
+        <div class="suite"><div class="suite-name">Suite de una recámara</div><div class="suite-meta">King o dos individuales · Terraza · Vista a jardín o mar</div><div class="suite-price">Desde 750 USD/noche</div><div class="tag-row"><span class="tag tag-b">Recomendada</span></div></div>
+        <div class="suite"><div class="suite-name">Suite familiar de dos recámaras</div><div class="suite-meta">King + dos camas · Sala · Hasta seis personas</div><div class="suite-price">Desde 980 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias</span><span class="tag tag-b">Bestseller</span></div></div>
+      </div>
+      <div class="card"><div class="card-h">Argumento clave</div><div class="usp"><div class="usp-icon">🏗</div><div class="usp-text"><strong>Punto de entrada a la colección.</strong> Una vez que se enamoran de Velas, suben a Grand Velas en la siguiente visita. Ideal para clientes con presupuesto más ajustado o familias numerosas.</div></div></div>
+    </div>
+
+    <!-- BOUTIQUE -->
+    <div class="panel" id="panel-bh">
+      <div class="prop-header" style="background:linear-gradient(135deg,#F7DCEC 0%,#FDF5FA 100%)">
+        <div class="prop-type">Grand Velas Boutique · Solo adultos · Los Cabos</div>
+        <div class="prop-name">Boutique y Mar del Cabo</div>
+        <div class="prop-desc">Grand Velas Boutique: 80 suites solo para adultos, máxima privacidad, albercas plunge privadas y gastronomía Michelin compartida con GV Los Cabos (diez restaurantes). Mar del Cabo: boutique solo adultos desde 16 años, plan europeo (no es all-inclusive), restaurante Encanto y pet friendly.</div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h">Grand Velas Boutique</div>
+          <div class="suite" style="box-shadow:none"><div class="suite-name">Suite Sunrise King</div><div class="suite-meta">Jacuzzi en terraza · Vista panorámica</div><div class="suite-price">Desde 1,723 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span></div></div>
+          <div class="suite" style="margin-top:10px;box-shadow:none"><div class="suite-name">Grand Class King con plunge pool</div><div class="suite-meta">Alberca privada · Alta privacidad</div><div class="suite-price">Desde 2,680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span><span class="tag tag-a">Premium</span></div></div>
+          <div class="usp" style="margin-top:14px"><div class="usp-icon">🔑</div><div class="usp-text"><strong>80 suites</strong> — Experiencia íntima imposible en resorts grandes, con acceso completo a GV Los Cabos y sus diez restaurantes.</div></div>
+        </div>
+        <div class="card">
+          <div class="card-h">Mar del Cabo</div>
+          <div class="suite" style="box-shadow:none"><div class="suite-name">Suite estándar</div><div class="suite-meta">Vista al mar · Plan europeo</div><div class="suite-price">Desde 680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos 16+</span><span class="tag tag-b">Plan europeo</span></div></div>
+          <div class="usp" style="margin-top:14px"><div class="usp-icon">⚠</div><div class="usp-text"><strong>Plan europeo significa que no es all-inclusive.</strong> Aclararlo desde el inicio. Restaurante Encanto, con cocina de granja a la mesa. Pet friendly.</div></div>
+          <div class="usp"><div class="usp-icon">🐾</div><div class="usp-text"><strong>Pet friendly</strong> — Paquete Pawsh Spa Pet disponible. Diferenciador único en el portafolio.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLACK FRIDAY -->
+    <div class="panel" id="panel-bf">
+      <div class="bf-header">
+        <div class="bf-sub">Modo Black Friday activo</div>
+        <div class="bf-title">Black Friday y Thanksgiving 2026 — 27 de noviembre</div>
+        <div class="bf-cd">
+          <div class="bcd-box"><div class="bcd-n" id="bcd-days">—</div><div class="bcd-l">días</div></div>
+          <div class="bcd-box"><div class="bcd-n" id="bcd-hrs">—</div><div class="bcd-l">horas</div></div>
+          <div class="bcd-box"><div class="bcd-n" id="bcd-min">—</div><div class="bcd-l">minutos</div></div>
+        </div>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-box t1b"><div class="tier-num">Tier 1</div><div class="tier-lbl">Top performer</div><div class="tier-names">Daniel C. · Marvin M. · Héctor M. · Blanca V.<br>Llamadas complejas y objeciones OTA</div></div>
+        <div class="tier-box t2b"><div class="tier-num">Tier 2</div><div class="tier-lbl">Sólido</div><div class="tier-names">Karen · Victor · Effer · Irma · Alan · Ramón<br>Llamadas estándar y chat</div></div>
+        <div class="tier-box t3b"><div class="tier-num">Tier 3</div><div class="tier-lbl">En desarrollo</div><div class="tier-names">Lucía · Jonila · Luis · Cristian · Gastón<br>Solo chat, con supervisión</div></div>
+        <div class="tier-box t4b"><div class="tier-num">Tier 4</div><div class="tier-lbl">Intervención</div><div class="tier-names">Eladio N.<br>Supervisión uno a uno y back office</div></div>
+      </div>
+      <div class="card">
+        <div class="card-h">Checklist previo a Black Friday — liderazgo</div>
+        <div id="bfChecklist"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const bfItems=[
+  ['Descuentos exactos de Black Friday comunicados a todo el equipo','Revenue Mgmt','INMEDIATO'],
+  ['Umbral de inactividad de chat configurado a 15 minutos','IT','INMEDIATO'],
+  ['Protocolo de liga alterna ante error de pasarela distribuido','IT y supervisores','INMEDIATO'],
+  ['Value-add autorizado por categoría definido','Revenue Mgmt','SEM 2'],
+  ['Tours virtuales 3D en links cortos para chat','Marketing','SEM 4'],
+  ['Scorecard individual impreso para certificación','QA','SEM 11'],
+  ['Asignación de roles de Black Friday publicada en plataforma','Gerencia CC','SEM 10'],
+  ['Briefing de guerra: jueves 26 de noviembre, 60 minutos, todo el equipo','Gerencia CC','SEM 13'],
+];
+
+function renderBFChecklist(){
+  const c=document.getElementById('bfChecklist');
+  c.innerHTML=bfItems.map(([item,owner,urgency],i)=>{
+    const uc=urgency==='INMEDIATO'?'u-red':(urgency.includes('SEM')&&parseInt(urgency.split(' ')[1])<=4?'u-amber':'u-green');
+    return `<div class="checklist-item">
+      <button class="check-box" onclick="toggleCheck(this,${i})" id="cb${i}" aria-label="Marcar como listo"></button>
+      <div class="check-text" id="ct${i}">${item}</div>
+      <div class="check-owner">${owner}</div>
+      <div class="urgency ${uc}">${urgency}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCheck(el,i){
+  const done=!el.classList.contains('done');
+  el.classList.toggle('done',done);
+  el.textContent=done?'✓':'';
+  document.getElementById('ct'+i).classList.toggle('done',done);
+}
+
+function nav(el,id){
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('bf-btn').classList.remove('active');
+  document.querySelector('.content').scrollTop=0;
+}
+function navBF(){
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-bf').classList.add('active');
+  document.getElementById('bf-btn').classList.add('active');
+  document.querySelector('.content').scrollTop=0;
+}
+function toggleScript(header){
+  const body=header.nextElementSibling;
+  const open=body.classList.toggle('open');
+  header.classList.toggle('open',open);
+}
+function propTab(el,prop,tab){
+  const container=el.closest('.panel');
+  container.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  container.querySelectorAll('.ptab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(prop+'-'+tab).classList.add('active');
+}
+function copyCode(el,code){
+  navigator.clipboard.writeText(code).catch(()=>{});
+  const orig=el.textContent;
+  el.textContent='Copiado';el.classList.add('copied');
+  setTimeout(()=>{el.textContent=orig;el.classList.remove('copied');},1500);
+}
+function searchGlobal(q){
+  if(!q.trim())return;
+  const lq=q.toLowerCase();
+  const map={
+    'ota':['scripts'],'expedia':['scripts'],'booking':['scripts'],'costco':['scripts'],
+    'pago':['protocolos'],'pasarela':['protocolos'],
+    'chat':['protocolos'],'handover':['protocolos'],'transferencia':['protocolos'],
+    'rm':['rm'],'riviera maya':['rm'],'maya':['rm'],'sargazo':['rm'],'cenote':['rm'],
+    'nayarit':['rn'],'rn':['rn'],'piaf':['rn'],'boda':['rn'],
+    'cabos':['lc'],'cabo':['lc'],'michelin':['lc'],'spa':['lc'],
+    'vallarta':['vv'],'vv':['vv'],
+    'boutique':['bh'],'mar del cabo':['bh'],'pet':['bh'],
+    'black friday':['bf'],'bf':['bf'],'thanksgiving':['bf'],'tier':['bf'],
+    'promo':['home'],'codigo':['home'],'código':['home'],
+    'discovery':['scripts'],'cierre':['scripts'],'upsell':['scripts'],'precio':['scripts'],
+  };
+  for(const [k,panels] of Object.entries(map)){
+    if(lq.includes(k)){
+      const id=panels[0];
+      document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('bf-btn').classList.remove('active');
+      document.getElementById('panel-'+id).classList.add('active');
+      if(id==='bf')document.getElementById('bf-btn').classList.add('active');
+      document.getElementById('searchInput').value='';
+      return;
+    }
+  }
+}
+
+function updateCountdown(){
+  const bf=new Date('2026-11-27T00:00:00');
+  const diff=bf-new Date();
+  if(diff<=0)return;
+  const days=Math.floor(diff/86400000);
+  const hrs=Math.floor((diff%86400000)/3600000);
+  const min=Math.floor((diff%3600000)/60000);
+  ['cd-days','bcd-days'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=days});
+  const hEl=document.getElementById('bcd-hrs');if(hEl)hEl.textContent=hrs;
+  const mEl=document.getElementById('bcd-min');if(mEl)mEl.textContent=min;
+}
+
+renderBFChecklist();updateCountdown();setInterval(updateCountdown,60000);
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchInput').focus();}});
+document.querySelectorAll('.sb-item,.bf-btn').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}}));
+</script>
+</body>
+</html>
