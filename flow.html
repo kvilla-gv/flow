@@ -6,81 +6,188 @@
 <title>Flow · Customer Experience Center · Knowledge Hub 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* base tomada del logo + capturas */
   --ink:#12101C;--ink80:#3A3552;--ink50:#6E6890;--ink30:#A9A3C4;
   --violet:#7750E1;--violet-d:#4E2CB0;--violet-l:#A98CF0;
   --wash:#EAE3FD;--wash2:#F4F0FE;
-  --bg:#EFEDFB;--card:#FFFFFF;--line:#E6E1F7;
+  --bg:#F4F3FC;--card:#FFFFFF;--line:#E6E1F7;
   --shadow:0 2px 10px rgba(45,25,105,.05);
-  --shadow-l:0 10px 30px rgba(45,25,105,.09);
-  /* semánticos armonizados con la marca */
+  --shadow-l:0 10px 30px rgba(45,25,105,.08);
   --green:#0F8A63;--greenl:#E0F5EE;
   --amber:#8F5D06;--amberl:#FBEFD8;
   --rose:#C22B57;--rosel:#FCE6EC;
 }
 html,body{height:100%}
 body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink80);font-size:14px;display:flex;flex-direction:column;height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased}
-:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+button{font-family:inherit}
 
 /* ---------- TOPBAR ---------- */
-.topbar{background:var(--card);padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;flex-shrink:0;z-index:100;border-bottom:1px solid var(--line)}
-.brandwrap{display:flex;align-items:center;gap:16px;min-width:0}
-.logo{height:27px;width:auto;display:block}
+.topbar{background:var(--card);padding:0 24px;display:flex;align-items:center;gap:24px;height:74px;flex-shrink:0;z-index:100;border-bottom:1px solid var(--line)}
+.brandwrap{width:212px;flex-shrink:0}
+.logo{height:26px;width:auto;display:block}
 .logo .lw{fill:var(--ink)}
 .logo .lm{fill:var(--violet)}
-.brand-sub{font-size:9.5px;font-weight:700;letter-spacing:.18em;color:var(--ink50);margin-top:5px}
-.vrule{width:1px;height:34px;background:var(--line)}
-.ctx-chip{font-size:11.5px;font-weight:600;color:var(--violet-d);background:var(--wash2);border:1px solid var(--wash);padding:6px 12px;border-radius:999px;white-space:nowrap}
-.top-right{display:flex;align-items:center;gap:12px}
-.flash-bar{background:var(--rosel);color:var(--rose);padding:7px 14px;border-radius:999px;font-size:11.5px;font-weight:600}
-.cd-pill{display:flex;align-items:center;gap:10px;background:var(--ink);border-radius:999px;padding:6px 8px 6px 16px}
-.cd-t{color:#fff;font-size:10px;font-weight:600;line-height:1.25;letter-spacing:.02em}
-.cd-n{width:40px;height:40px;border-radius:50%;background:var(--violet);color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-
-/* ---------- SEARCH ---------- */
-.search-bar{background:var(--card);padding:12px 22px 14px;display:flex;gap:12px;align-items:center;flex-shrink:0;border-bottom:1px solid var(--line)}
-.search-bar input{flex:1;padding:11px 18px;border:1.5px solid var(--line);border-radius:14px;font-size:13.5px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s,background .15s}
-.search-bar input::placeholder{color:var(--ink30)}
-.search-bar input:focus{border-color:var(--violet);background:#fff}
-.kbd{font-size:10.5px;font-weight:600;color:var(--ink50);background:var(--bg);border:1px solid var(--line);padding:5px 9px;border-radius:8px;white-space:nowrap}
+.brand-sub{font-size:9px;font-weight:700;letter-spacing:.17em;color:var(--ink50);margin-top:5px}
+.top-search{flex:1;max-width:560px;position:relative}
+.top-search input{width:100%;padding:12px 18px 12px 44px;border:1.5px solid transparent;border-radius:999px;font-size:13.5px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s,background .15s}
+.top-search input::placeholder{color:var(--ink30)}
+.top-search input:focus{border-color:var(--violet);background:#fff}
+.top-search .sicon{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--ink30);font-size:14px;pointer-events:none}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.icon-btn{width:40px;height:40px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink80);position:relative;transition:all .15s}
+.icon-btn:hover{border-color:var(--violet-l);color:var(--violet-d)}
+.icon-btn .dot{position:absolute;top:7px;right:7px;min-width:15px;height:15px;padding:0 4px;border-radius:999px;background:var(--violet);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.lang{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;background:none;border:none;padding:6px 8px;border-radius:10px}
+.lang:hover{background:var(--wash2)}
+.notif-wrap{position:relative}
+.notif-pop{position:absolute;top:52px;right:0;width:330px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-l);padding:20px;z-index:200}
+.notif-pop[hidden]{display:none}
+.np-t{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:4px}
+.np-s{font-size:12px;color:var(--ink50);margin-bottom:14px}
+.np-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line);font-size:12px;color:var(--ink80);line-height:1.5}
+.np-item b{color:var(--ink);font-weight:700}
+.np-cta{width:100%;margin-top:16px;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:12px;font-size:12.5px;font-weight:700;cursor:pointer;transition:background .15s}
+.np-cta:hover{background:var(--violet)}
+.rail-title.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,100%{color:var(--ink)}25%,60%{color:var(--violet)}}
 
 /* ---------- LAYOUT ---------- */
 .main{display:flex;flex:1;overflow:hidden}
-.sidebar{width:236px;flex-shrink:0;background:var(--card);overflow-y:auto;padding:16px 12px;border-right:1px solid var(--line)}
-.sb-section{padding:12px 10px 6px;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink30)}
-.sb-item{display:flex;align-items:center;gap:11px;padding:10px 12px;cursor:pointer;color:var(--ink80);font-size:13px;font-weight:600;border-radius:12px;transition:background .15s,color .15s;margin-bottom:2px}
+.sidebar{width:236px;flex-shrink:0;background:var(--card);overflow-y:auto;padding:18px 14px;border-right:1px solid var(--line)}
+.sb-section{padding:14px 10px 6px;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink30)}
+.sb-item{display:flex;align-items:center;gap:11px;padding:11px 12px;cursor:pointer;color:var(--ink80);font-size:13px;font-weight:600;border-radius:14px;transition:background .15s,color .15s;margin-bottom:2px}
 .sb-item:hover{background:var(--wash2);color:var(--ink)}
 .sb-item.active{background:var(--violet);color:#fff;box-shadow:0 6px 16px rgba(119,80,225,.28)}
 .sb-item .icon{font-size:15px;width:18px;text-align:center;opacity:.9}
-.bf-btn{margin:14px 6px 6px;background:var(--ink);color:#fff;padding:12px 8px 12px 16px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:background .15s}
-.bf-btn .arrow{width:26px;height:26px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.sb-item .bubble{margin-left:auto;background:var(--rosel);color:var(--rose);font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:999px}
+.sb-item.active .bubble{background:rgba(255,255,255,.22);color:#fff}
+.bf-btn{margin:16px 6px 6px;background:var(--ink);color:#fff;padding:13px 10px 13px 16px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:background .15s}
+.bf-btn .arrow{min-width:28px;height:28px;padding:0 6px;border-radius:999px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
 .bf-btn:hover{background:#241F3A}
 .bf-btn.active{background:var(--violet)}
 .bf-btn.active .arrow{background:#fff;color:var(--violet)}
 
-/* ---------- CONTENT ---------- */
-.content{flex:1;overflow-y:auto;padding:24px 26px 40px}
+.content{flex:1;overflow-y:auto;padding:26px 28px 44px}
 .panel{display:none}
 .panel.active{display:block}
 
-.page-title{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:5px}
-.page-sub{font-size:13.5px;color:var(--ink50);margin-bottom:22px;max-width:70ch}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+/* ---------- DASHBOARD ---------- */
+.dash{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:22px;align-items:start}
+.dash-rail{position:sticky;top:0;max-height:calc(100vh - 118px);overflow-y:auto;padding-right:4px;scrollbar-width:thin}
+.dash-rail::-webkit-scrollbar{width:5px}
+.dash-rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+.greet{font-size:27px;font-weight:700;color:var(--ink);line-height:1.35;letter-spacing:-.015em;margin-bottom:26px;max-width:36ch}
+.greet .season{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.22em}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sec-title{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.015em}
+.nav-arrows{display:flex;gap:6px;margin-left:auto}
+.na{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink80);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.na:hover{background:var(--violet);border-color:var(--violet);color:#fff}
+.counter{font-size:11px;font-weight:700;color:var(--ink30);margin-left:auto;margin-right:2px}
+.dash-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:26px;align-items:start}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
 .card-h{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 
-/* ---------- PROPIEDAD ---------- */
-.prop-header{border-radius:22px;padding:26px;margin-bottom:18px;position:relative;overflow:hidden}
+/* protocolo carrusel */
+.proto-card{min-height:300px;display:flex;flex-direction:column}
+.proto-title{font-size:13px;font-weight:700;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.proto-steps{display:flex;flex-direction:column;gap:16px;flex:1}
+.proto-step{display:flex;gap:14px;align-items:flex-start}
+.step-num{font-size:30px;font-weight:800;color:var(--wash);line-height:.9;width:34px;flex-shrink:0;letter-spacing:-.04em}
+.step-text{font-size:12.5px;color:var(--ink80);line-height:1.6;flex:1}
+.step-text strong{color:var(--ink);font-weight:700}
+.step-say{color:var(--violet-d);font-weight:600}
+.proto-note{margin-top:16px;padding:12px 14px;background:var(--wash2);border-radius:14px;font-size:11.5px;color:var(--ink80);line-height:1.6}
+.proto-note strong{color:var(--rose)}
+
+/* tabla promos */
+.ptable{width:100%;border-collapse:collapse}
+.ptable th{font-size:11px;font-weight:600;color:var(--ink50);text-align:left;padding:0 10px 10px 0;border-bottom:1px solid var(--line)}
+.ptable td{font-size:12.5px;color:var(--ink80);padding:14px 10px 14px 0;border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.5}
+.ptable tr:last-child td{border-bottom:none}
+.ptable .seg{font-weight:700;color:var(--ink)}
+.prio{font-size:10px;font-weight:700;padding:4px 12px;border-radius:999px;display:inline-block}
+.prio.alta{background:var(--rosel);color:var(--rose)}
+.prio.media{background:var(--amberl);color:var(--amber)}
+.prio.baja{background:var(--wash);color:var(--violet-d)}
+.codechip{font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 11px;background:var(--wash);color:var(--violet-d);border:none;border-radius:999px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.codechip:hover,.codechip.copied{background:var(--ink);color:#fff}
+
+/* eventos */
+.ev-viewport{overflow:hidden}
+.ev-track{display:flex;gap:16px;transition:transform .35s ease}
+.ev-card{width:310px;flex-shrink:0;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.ev-img{height:168px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+.ev-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--ink);font-size:10px;font-weight:700;padding:5px 12px;border-radius:999px}
+.ev-body{padding:16px}
+.ev-name{font-size:16px;font-weight:700;color:var(--ink);padding-bottom:8px;border-bottom:2px solid var(--wash);display:inline-block;margin-bottom:12px}
+.ev-meta{display:flex;align-items:center;gap:14px;font-size:11.5px;color:var(--ink50);flex-wrap:wrap}
+.ev-meta span{display:flex;align-items:center;gap:5px}
+.ev-more{margin-top:14px;font-size:11.5px;font-weight:700;color:var(--ink80);background:var(--bg);border:none;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .15s}
+.ev-more:hover{background:var(--ink);color:#fff}
+
+/* tips */
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tip{border-radius:18px;padding:18px;border:1px solid var(--line);background:var(--card);min-height:150px}
+.tip-k{font-size:10.5px;font-weight:800;margin-bottom:9px}
+.tip strong{display:block;color:var(--ink);font-size:14.5px;font-weight:700;margin-bottom:7px;line-height:1.3}
+.tip p{font-size:12px;color:var(--ink80);line-height:1.6}
+.tip.keep{background:var(--greenl);border-color:rgba(15,138,99,.16)}.tip.keep .tip-k{color:var(--green)}
+.tip.stop{background:var(--rosel);border-color:rgba(194,43,87,.16)}.tip.stop .tip-k{color:var(--rose)}
+.tip.go{background:var(--wash2);border-color:var(--wash)}.tip.go .tip-k{color:var(--violet-d)}
+
+/* ---------- RAIL ---------- */
+.rail{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+.cal-head{display:flex;align-items:center;margin-bottom:16px}
+.cal-month{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.015em;text-transform:capitalize}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dow{font-size:10.5px;font-weight:600;color:var(--ink50);text-align:center;padding:6px 0 10px}
+.cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12.5px;font-weight:600;color:var(--ink80);border-radius:50%;cursor:default;position:relative}
+.cal-day.out{color:var(--ink30)}
+.cal-day.today{background:var(--ink);color:#fff}
+.cal-day.has{cursor:pointer}
+.cal-day .dots{display:flex;gap:2px;position:absolute;bottom:5px}
+.cal-day .d{width:4px;height:4px;border-radius:50%}
+.d.ev{background:var(--violet)}
+.d.al{background:var(--rose)}
+.cal-day.today .d{background:#fff}
+.cal-legend{display:flex;gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:10.5px;color:var(--ink50)}
+.cal-legend span{display:flex;align-items:center;gap:6px}
+.rail-title{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.015em;margin:26px 0 14px}
+.alert{border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;background:var(--card);box-shadow:var(--shadow);border-left:3px solid var(--violet)}
+.alert.comunicado{border-left-color:var(--rose)}
+.alert.promocion{border-left-color:var(--violet)}
+.alert.operacion{border-left-color:var(--amber)}
+.alert-k{font-size:10.5px;font-weight:600;color:var(--ink50);margin-bottom:6px}
+.alert-t{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:8px}
+.alert-b{font-size:12px;color:var(--ink80);line-height:1.6}
+.alert-b b{color:var(--ink);font-weight:800;letter-spacing:.03em}
+.alert-link{display:block;margin-top:10px;margin-left:auto;font-size:11.5px;font-weight:700;color:var(--violet-d);background:none;border:none;cursor:pointer;padding:0}
+.alert-link:hover{text-decoration:underline}
+
+/* ---------- AVISOS DENTRO DE PROPIEDAD ---------- */
+.prop-alerts{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.pa{display:flex;align-items:flex-start;gap:11px;padding:11px 15px;border-radius:14px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rose)}
+.pa.promocion{border-left-color:var(--violet)}
+.pa.operacion{border-left-color:var(--amber)}
+.pa-i{font-size:14px;line-height:1.3;flex-shrink:0}
+.pa-t{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.45}
+.pa-b{font-size:11.5px;color:var(--ink50);line-height:1.5;margin-top:3px}
+.pa-date{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--ink50);white-space:nowrap;padding-top:2px}
+
+/* ---------- PROPIEDADES ---------- */
+.page-title{font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:5px}
+.page-sub{font-size:13.5px;color:var(--ink50);margin-bottom:22px;max-width:70ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.prop-header{border-radius:22px;padding:26px;margin-bottom:16px}
 .prop-name{font-size:30px;font-weight:800;color:var(--ink);letter-spacing:-.025em;margin-bottom:6px;line-height:1.05}
 .prop-type{font-size:11.5px;font-weight:700;color:var(--violet-d);margin-bottom:10px}
 .prop-desc{font-size:13.5px;color:var(--ink80);line-height:1.65;max-width:78ch}
-
-/* ---------- SUITES ---------- */
 .suite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px;margin-bottom:16px}
 .suite{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
 .suite-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.3}
@@ -92,13 +199,33 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
 .tag-b{background:var(--wash);color:var(--violet-d)}
 .tag-a{background:var(--amberl);color:var(--amber)}
 .tag-r{background:var(--rosel);color:var(--rose)}
-
-/* ---------- USP ---------- */
 .usp{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.6}
 .usp:last-child{border-bottom:none}
 .usp-icon{font-size:17px;flex-shrink:0;margin-top:1px}
 .usp-text{color:var(--ink80);flex:1;max-width:80ch}
 .usp-text strong{color:var(--ink);font-weight:700}
+.prop-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.ptab{padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink80);border:1px solid var(--line);background:var(--card);transition:all .15s}
+.ptab:hover{color:var(--ink);border-color:var(--violet-l)}
+.ptab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ptab-panel{display:none}
+.ptab-panel.active{display:block}
+.note-p{font-size:12.5px;color:var(--ink80);line-height:1.7;max-width:80ch}
+
+/* ---------- EVENTO EN PROPIEDAD ---------- */
+.pe-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);margin-bottom:12px;scroll-margin-top:20px}
+.pe-card.hl{animation:hl 1.8s ease}
+@keyframes hl{0%,100%{box-shadow:var(--shadow)}20%,60%{box-shadow:0 0 0 3px var(--violet-l)}}
+.pe-head{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.pe-emoji{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.pe-name{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.015em}
+.pe-date{font-size:12px;color:var(--ink50);margin-top:3px}
+.pe-badge{margin-left:auto;font-size:10px;font-weight:700;padding:5px 12px;border-radius:999px;background:var(--wash);color:var(--violet-d)}
+.pe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pe-l{font-size:10.5px;font-weight:700;color:var(--ink50);margin-bottom:5px}
+.pe-v{font-size:13px;color:var(--ink);line-height:1.55;font-weight:600}
+.pe-v.vacio{color:var(--ink30);font-weight:500;font-style:italic}
+@media (max-width:980px){.pe-grid{grid-template-columns:1fr 1fr}}
 
 /* ---------- SCRIPTS ---------- */
 .script-item{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
@@ -111,53 +238,6 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
 .script-note{font-size:12px;color:var(--ink50);line-height:1.6;max-width:82ch}
 .chev{color:var(--ink30);font-size:11px;transition:transform .2s}
 .script-header.open .chev{transform:rotate(180deg);color:var(--violet)}
-
-/* ---------- PROMOS ---------- */
-.promo-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
-.promo-row:last-child{border-bottom:none}
-.promo-name{flex:1;font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
-.promo-hotel{font-size:11.5px;color:var(--ink50);width:120px;flex-shrink:0}
-.promo-code{font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 14px;background:var(--wash);color:var(--violet-d);border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .15s,color .15s;flex-shrink:0}
-.promo-code:hover,.promo-code.copied{background:var(--ink);color:#fff}
-
-/* ---------- PROTOCOLOS ---------- */
-.proto-steps{display:flex;flex-direction:column;gap:12px}
-.proto-step{display:flex;gap:12px;align-items:flex-start}
-.step-num{width:25px;height:25px;border-radius:50%;background:var(--wash);color:var(--violet-d);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.step-text{font-size:13px;color:var(--ink80);flex:1;line-height:1.6}
-.step-text strong{color:var(--ink)}
-.step-say{color:var(--violet-d);font-weight:600}
-.never{margin-top:14px;padding:12px 14px;background:var(--rosel);border-radius:14px;font-size:11.5px;color:var(--rose);line-height:1.6}
-
-/* ---------- KPI ---------- */
-.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}
-.kpi-label{font-size:11px;font-weight:700;color:var(--ink50);margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3}
-.kpi-label::before{content:"";width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.kpi.g .kpi-label::before{background:var(--green)}
-.kpi.a .kpi-label::before{background:var(--amber)}
-.kpi.r .kpi-label::before{background:var(--rose)}
-.kpi.b .kpi-label::before{background:var(--violet)}
-.kpi-val{font-size:32px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.03em}
-.kpi-sub{font-size:11px;color:var(--ink50);margin-top:6px;line-height:1.4}
-
-/* ---------- TABS ---------- */
-.prop-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
-.ptab{padding:9px 16px;border-radius:999px;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--ink80);border:1px solid var(--line);background:var(--card);transition:all .15s}
-.ptab:hover{color:var(--ink);border-color:var(--violet-l)}
-.ptab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-.ptab-panel{display:none}
-.ptab-panel.active{display:block}
-
-/* ---------- REGLAS DE ORO ---------- */
-.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
-.rule{padding:16px;border-radius:16px;border:1px solid var(--line)}
-.rule-k{font-size:11px;font-weight:800;margin-bottom:8px}
-.rule strong{display:block;color:var(--ink);font-size:14px;font-weight:700;margin-bottom:6px}
-.rule p{font-size:12px;color:var(--ink80);line-height:1.6}
-.rule.keep{background:var(--greenl);border-color:rgba(15,138,99,.18)}.rule.keep .rule-k{color:var(--green)}
-.rule.stop{background:var(--rosel);border-color:rgba(194,43,87,.18)}.rule.stop .rule-k{color:var(--rose)}
-.rule.chat{background:var(--wash2);border-color:var(--wash)}.rule.chat .rule-k{color:var(--violet-d)}
 
 /* ---------- BLACK FRIDAY ---------- */
 .bf-header{background:radial-gradient(120% 160% at 88% 0%,#5B34C9 0%,#2A1B52 45%,#12101C 100%);border-radius:22px;padding:28px;margin-bottom:18px}
@@ -189,23 +269,21 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
 .u-amber{background:var(--amberl);color:var(--amber)}
 .u-green{background:var(--greenl);color:var(--green)}
 
-.note-p{font-size:12.5px;color:var(--ink80);line-height:1.7;max-width:80ch}
-
 /* ---------- RESPONSIVE ---------- */
-@media (max-width:1100px){.kpi-row{grid-template-columns:repeat(2,1fr)}.tier-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:1280px){.dash{grid-template-columns:1fr}.dash-rail{position:static;max-height:none;overflow:visible}}
+@media (max-width:980px){.dash-2,.tips-grid,.grid2,.tier-grid{grid-template-columns:1fr}}
 @media (max-width:900px){
   body{height:auto;overflow:auto}
   .main{flex-direction:column;overflow:visible}
-  .topbar{height:auto;padding:14px 16px;flex-wrap:wrap}
-  .vrule,.ctx-chip{display:none}
+  .topbar{height:auto;padding:14px 16px;flex-wrap:wrap;gap:12px}
+  .brandwrap{width:auto}
+  .top-search{order:3;flex-basis:100%;max-width:none}
   .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:12px}
   .sb-section{display:none}
   .sb-item{white-space:nowrap;margin-bottom:0}
   .bf-btn{margin:0;white-space:nowrap}
   .content{overflow:visible;padding:18px 16px 40px}
-  .grid2,.rules,.tier-grid,.kpi-row{grid-template-columns:1fr}
-  .page-title{font-size:23px}.prop-name{font-size:24px}
-  .search-bar .kbd{display:none}
+  .greet{font-size:22px}.page-title{font-size:23px}.prop-name{font-size:24px}
 }
 </style>
 </head>
@@ -213,89 +291,132 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
 
 <header class="topbar">
   <div class="brandwrap">
-    <div>
-      <svg class="logo" viewBox="0 0 8515.39 1482.14" role="img" aria-label="Flow">
-        <g class="lw">
-          <path d="M2008.74,699.93v143.79l749.55-.12v247.31l-749.43.12v391.1h-278.05V452.49h1027.48v247.31l-749.55.12Z"/>
-          <path d="M3983.29,1234.82v247.31h-1027.48V452.01h278.05v782.68l749.43.12Z"/>
-          <path d="M5398.46,646.25c16.12,40.5,24.32,83.76,24.32,126.05v390.14c0,42.3-8.09,85.55-24.32,126.05-43.38,108.68-141.21,193.63-292.67,193.63v-.48h-669.81v.48c-151.4,0-249.29-84.95-292.67-193.63-16.18-40.5-24.32-83.76-24.32-126.05v-390.14c0-42.3,8.09-85.55,24.32-126.05,43.44-108.68,141.27-193.63,292.73-193.63v.48h669.81v-.48c151.4,0,249.29,84.95,292.67,193.63h-.06ZM5144.73,1162.44v-390.14h-.9c0-12.46-2.04-24.08-5.93-33.91-8.39-20.97-29.18-37.5-62.85-37.5v-.48h-608.34v.48c-33.61,0-54.4,16.42-62.85,37.5-3.89,9.83-5.87,21.45-5.87,33.91h-1.02v390.14h1.02c0,12.46,1.98,24.08,5.87,33.91,8.39,20.97,29.12,37.5,62.85,37.5v.48h608.34v-.48c33.67,0,54.46-16.42,62.85-37.5,3.95-9.83,5.93-21.45,5.93-33.91h.9Z"/>
-          <path d="M7084.48,1237.57l.24.24-85.67,117.67c-29.36,40.86-67.88,73.21-113.23,94.9-41.76,20.13-89.63,31.75-142.65,31.75v-.48l-278.05.48v-579.94l-207.17,335.38.24.24-85.73,117.67c-29.42,40.86-67.82,73.21-113.23,94.9-41.82,20.13-89.57,31.75-142.71,31.75v-.48l-278.05.48V452.13h278.05v781.72c15.52,0,27.44-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.36-.24,426.15-699.52h303.27v781.72c15.58,0,27.5-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.3-.24,425.91-699.52h303.27l-485.28,785.44Z"/>
-          <path d="M8085.92,1482.14c-284.04,0-515.01-231.08-515.01-515.01s230.96-515,515.01-515h0c162.89,0,317.88,78.4,414.63,209.66,22.54,30.47,15.97,73.41-14.48,95.95-30.47,22.43-73.4,16-95.84-14.53-71.09-96.36-184.83-153.88-304.32-153.88-208.39,0-377.92,169.44-377.92,377.8s169.52,377.83,377.92,377.83c120.21,0,234.47-58.1,305.48-155.49,22.38-30.64,65.23-37.38,95.76-15.11,30.64,22.29,37.38,65.23,15.08,95.87-96.75,132.67-252.41,211.91-416.32,211.91Z"/>
-          <path d="M8090.5,1280.55c-172.7,0-313.27-140.57-313.27-313.41s140.57-313.35,313.27-313.35c70.45,0,137.09,22.85,192.56,66.06,27.88,21.77,32.88,62.16,11.11,90.01-21.77,28.07-62.1,33.04-90.09,11.27-32.68-25.55-71.94-38.95-113.58-38.95-102.03,0-184.99,82.94-184.99,184.96s82.97,184.96,184.99,184.96c42.11,0,81.67-13.75,114.71-39.73,27.68-21.91,68.1-17.33,90.15,10.55,21.91,27.79,17.21,68.19-10.67,90.15-55.83,44.12-122.88,67.47-194.19,67.47Z"/>
-          <path d="M8515.39,966.97c0,47.21-40.47,85.56-90.45,85.56h-329.13c-49.98,0-90.46-38.35-90.46-85.56h0c0-47.22,40.48-85.34,90.46-85.34h329.13c49.98,0,90.45,38.12,90.45,85.34h0Z"/>
-        </g>
-        <path class="lm" d="M1424.25,455.44h-396.57l-.98-397.7c-.06-23.39-14.19-44.45-35.81-53.37-21.62-8.92-46.49-3.95-63.03,12.59l-210.75,210.82-32.13-.03V57.89c0-22.25-12.76-42.53-32.82-52.18-20.06-9.65-43.88-6.91-61.26,6.99-92.37,73.94-176.44,158.39-249.89,251.01-72.57,91.52-135.01,191.31-185.61,296.63-50.6,105.32-89.49,216.43-115.59,330.27C13.39,1005.83,0,1124.23,0,1242.56v181.69c0,31.96,25.92,57.89,57.89,57.89h1138.62c31.97,0,57.89-25.93,57.89-57.89v-87c0-87.32-24.27-172.73-70.17-247.02-27.02-43.71-61.49-81.67-100.67-114.09l366.56-183.29c19.62-9.82,32.01-29.87,32.01-51.79v-227.73c0-31.97-25.92-57.9-57.89-57.9Z"/>
-      </svg>
-      <div class="brand-sub">CUSTOMER EXPERIENCE CENTER</div>
-    </div>
-    <div class="vrule"></div>
-    <div class="ctx-chip">Velas Resorts</div>
+    <svg class="logo" viewBox="0 0 8515.39 1482.14" role="img" aria-label="Flow">
+      <g class="lw">
+        <path d="M2008.74,699.93v143.79l749.55-.12v247.31l-749.43.12v391.1h-278.05V452.49h1027.48v247.31l-749.55.12Z"/>
+        <path d="M3983.29,1234.82v247.31h-1027.48V452.01h278.05v782.68l749.43.12Z"/>
+        <path d="M5398.46,646.25c16.12,40.5,24.32,83.76,24.32,126.05v390.14c0,42.3-8.09,85.55-24.32,126.05-43.38,108.68-141.21,193.63-292.67,193.63v-.48h-669.81v.48c-151.4,0-249.29-84.95-292.67-193.63-16.18-40.5-24.32-83.76-24.32-126.05v-390.14c0-42.3,8.09-85.55,24.32-126.05,43.44-108.68,141.27-193.63,292.73-193.63v.48h669.81v-.48c151.4,0,249.29,84.95,292.67,193.63h-.06ZM5144.73,1162.44v-390.14h-.9c0-12.46-2.04-24.08-5.93-33.91-8.39-20.97-29.18-37.5-62.85-37.5v-.48h-608.34v.48c-33.61,0-54.4,16.42-62.85,37.5-3.89,9.83-5.87,21.45-5.87,33.91h-1.02v390.14h1.02c0,12.46,1.98,24.08,5.87,33.91,8.39,20.97,29.12,37.5,62.85,37.5v.48h608.34v-.48c33.67,0,54.46-16.42,62.85-37.5,3.95-9.83,5.93-21.45,5.93-33.91h.9Z"/>
+        <path d="M7084.48,1237.57l.24.24-85.67,117.67c-29.36,40.86-67.88,73.21-113.23,94.9-41.76,20.13-89.63,31.75-142.65,31.75v-.48l-278.05.48v-579.94l-207.17,335.38.24.24-85.73,117.67c-29.42,40.86-67.82,73.21-113.23,94.9-41.82,20.13-89.57,31.75-142.71,31.75v-.48l-278.05.48V452.13h278.05v781.72c15.52,0,27.44-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.36-.24,426.15-699.52h303.27v781.72c15.58,0,27.5-2.4,36.01-6.47,7.67-3.71,14.14-9.35,19.11-16.3l42.54-59.19-.3-.24,425.91-699.52h303.27l-485.28,785.44Z"/>
+        <path d="M8085.92,1482.14c-284.04,0-515.01-231.08-515.01-515.01s230.96-515,515.01-515h0c162.89,0,317.88,78.4,414.63,209.66,22.54,30.47,15.97,73.41-14.48,95.95-30.47,22.43-73.4,16-95.84-14.53-71.09-96.36-184.83-153.88-304.32-153.88-208.39,0-377.92,169.44-377.92,377.8s169.52,377.83,377.92,377.83c120.21,0,234.47-58.1,305.48-155.49,22.38-30.64,65.23-37.38,95.76-15.11,30.64,22.29,37.38,65.23,15.08,95.87-96.75,132.67-252.41,211.91-416.32,211.91Z"/>
+        <path d="M8090.5,1280.55c-172.7,0-313.27-140.57-313.27-313.41s140.57-313.35,313.27-313.35c70.45,0,137.09,22.85,192.56,66.06,27.88,21.77,32.88,62.16,11.11,90.01-21.77,28.07-62.1,33.04-90.09,11.27-32.68-25.55-71.94-38.95-113.58-38.95-102.03,0-184.99,82.94-184.99,184.96s82.97,184.96,184.99,184.96c42.11,0,81.67-13.75,114.71-39.73,27.68-21.91,68.1-17.33,90.15,10.55,21.91,27.79,17.21,68.19-10.67,90.15-55.83,44.12-122.88,67.47-194.19,67.47Z"/>
+        <path d="M8515.39,966.97c0,47.21-40.47,85.56-90.45,85.56h-329.13c-49.98,0-90.46-38.35-90.46-85.56h0c0-47.22,40.48-85.34,90.46-85.34h329.13c49.98,0,90.45,38.12,90.45,85.34h0Z"/>
+      </g>
+      <path class="lm" d="M1424.25,455.44h-396.57l-.98-397.7c-.06-23.39-14.19-44.45-35.81-53.37-21.62-8.92-46.49-3.95-63.03,12.59l-210.75,210.82-32.13-.03V57.89c0-22.25-12.76-42.53-32.82-52.18-20.06-9.65-43.88-6.91-61.26,6.99-92.37,73.94-176.44,158.39-249.89,251.01-72.57,91.52-135.01,191.31-185.61,296.63-50.6,105.32-89.49,216.43-115.59,330.27C13.39,1005.83,0,1124.23,0,1242.56v181.69c0,31.96,25.92,57.89,57.89,57.89h1138.62c31.97,0,57.89-25.93,57.89-57.89v-87c0-87.32-24.27-172.73-70.17-247.02-27.02-43.71-61.49-81.67-100.67-114.09l366.56-183.29c19.62-9.82,32.01-29.87,32.01-51.79v-227.73c0-31.97-25.92-57.9-57.89-57.9Z"/>
+    </svg>
+    <div class="brand-sub">CUSTOMER EXPERIENCE CENTER</div>
   </div>
+
+  <div class="top-search">
+    <span class="sicon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar resort, promoción, script o protocolo" oninput="searchGlobal(this.value)">
+  </div>
+
   <div class="top-right">
-    <div class="flash-bar">⚠ Piaf cerrado 12–15 Oct · Alternativas: Frida · Cocina de Autor</div>
-    <div class="cd-pill"><span class="cd-t">días para<br>Black Friday</span><span class="cd-n" id="cd-days">—</span></div>
+    <div class="notif-wrap">
+      <button class="icon-btn" onclick="toggleNotif(event)" title="Anuncios">🔔<span class="dot" id="alertCount">0</span></button>
+      <div class="notif-pop" id="notifPop" hidden>
+        <div class="np-t" id="npTitle">Tienes anuncios nuevos</div>
+        <div class="np-s">Comunicados y promociones vigentes para el equipo</div>
+        <div id="npList"></div>
+        <button class="np-cta" onclick="goAlerts()">Ir a ver</button>
+      </div>
+    </div>
+    <button class="lang">EN <span>🌐</span></button>
   </div>
 </header>
-
-<div class="search-bar">
-  <input type="text" id="searchInput" placeholder="Buscar resort, promoción, script o protocolo — por ejemplo: OTA, sargazo, Michelin, pasarela" oninput="searchGlobal(this.value)">
-  <span class="kbd" id="searchHint">Ctrl + K</span>
-</div>
 
 <div class="main">
   <nav class="sidebar">
     <div class="sb-section">Principal</div>
     <div class="sb-item active" onclick="nav(this,'home')" tabindex="0"><span class="icon">⌂</span>Dashboard</div>
     <div class="sb-item" onclick="nav(this,'scripts')" tabindex="0"><span class="icon">💬</span>Scripts y playbook</div>
-    <div class="sb-item" onclick="nav(this,'protocolos')" tabindex="0"><span class="icon">🛡</span>Protocolos</div>
     <div class="sb-section">Propiedades</div>
     <div class="sb-item" onclick="nav(this,'rm')" tabindex="0"><span class="icon">🌊</span>Riviera Maya</div>
     <div class="sb-item" onclick="nav(this,'rn')" tabindex="0"><span class="icon">⛵</span>Riviera Nayarit</div>
     <div class="sb-item" onclick="nav(this,'lc')" tabindex="0"><span class="icon">🏔</span>Los Cabos</div>
     <div class="sb-item" onclick="nav(this,'vv')" tabindex="0"><span class="icon">🏖</span>Velas Vallarta</div>
-    <div class="sb-item" onclick="nav(this,'bh')" tabindex="0"><span class="icon">💎</span>Boutique y Mar del Cabo</div>
-    <div class="bf-btn" id="bf-btn" onclick="navBF()" tabindex="0">Black Friday 2026<span class="arrow">→</span></div>
+    <div class="sb-item" onclick="nav(this,'bq')" tabindex="0"><span class="icon">💎</span>Boutique</div>
+    <div class="sb-item" onclick="nav(this,'mdc')" tabindex="0"><span class="icon">🐾</span>Mar del Cabo</div>
+    <div class="bf-btn" id="bf-btn" onclick="navBF()" tabindex="0">BLACK FRIDAY<span class="arrow" id="bf-days">—</span></div>
   </nav>
 
   <div class="content">
 
-    <!-- HOME -->
+    <!-- ============ DASHBOARD ============ -->
     <div class="panel active" id="panel-home">
-      <div class="page-title">Dashboard del contact center</div>
-      <div class="page-sub">Agosto 2026 · 28 agentes · 182 interacciones auditadas</div>
-      <div class="kpi-row">
-        <div class="kpi a"><div class="kpi-label">Puntaje global del equipo</div><div class="kpi-val">58</div><div class="kpi-sub">Meta Black Friday ≥ 75</div></div>
-        <div class="kpi b"><div class="kpi-label">Llamadas auditadas</div><div class="kpi-val">82</div><div class="kpi-sub">Transcripciones completas</div></div>
-        <div class="kpi b"><div class="kpi-label">Chats auditados</div><div class="kpi-val">100</div><div class="kpi-sub">4 grupos de 25</div></div>
-        <div class="kpi g"><div class="kpi-label">Top performers</div><div class="kpi-val">4</div><div class="kpi-sub">Daniel · Marvin · Héctor · Blanca</div></div>
-        <div class="kpi r"><div class="kpi-label">Fallas críticas</div><div class="kpi-val">5</div><div class="kpi-sub">Requieren intervención inmediata</div></div>
-      </div>
-      <div class="grid2">
-        <div class="card">
-          <div class="card-h">Promociones activas — toca el código para copiarlo</div>
-          <div class="promo-row"><span class="promo-name">Black Friday Early Access — 20% OFF + Kids Free</span><span class="promo-hotel">Todos</span><button class="promo-code" onclick="copyCode(this,'BFEARLY26')">BFEARLY26</button></div>
-          <div class="promo-row"><span class="promo-name">Wellness Getaway — 50 USD de crédito en spa</span><span class="promo-hotel">GV Los Cabos</span><button class="promo-code" onclick="copyCode(this,'WELLNESSLC')">WELLNESSLC</button></div>
-          <div class="promo-row"><span class="promo-name">Escapada romántica — cena privada incluida</span><span class="promo-hotel">Boutique y Casa</span><button class="promo-code" onclick="copyCode(this,'ROMANCE26')">ROMANCE26</button></div>
-          <div class="promo-row"><span class="promo-name">Kids Free — niños sin costo</span><span class="promo-hotel">RM y RN</span><button class="promo-code" onclick="copyCode(this,'KIDSFREE26')">KIDSFREE26</button></div>
+      <div class="dash">
+        <div>
+          <h1 class="greet">¡Bienvenidos! Arrancamos un nuevo día de <span class="season" id="season">otoño</span>.<br>Hagamos que cada estancia sea memorable.</h1>
+
+          <div class="dash-2">
+            <div>
+              <div class="sec-head">
+                <div class="sec-title">Protocolos operativos</div>
+                <span class="counter" id="protoCounter">1/4</span>
+                <div class="nav-arrows">
+                  <button class="na" onclick="moveProto(-1)" aria-label="Protocolo anterior">‹</button>
+                  <button class="na" onclick="moveProto(1)" aria-label="Protocolo siguiente">›</button>
+                </div>
+              </div>
+              <div class="card proto-card" id="protoCard"></div>
+            </div>
+
+            <div>
+              <div class="sec-head"><div class="sec-title">Promociones activas</div></div>
+              <div class="card">
+                <table class="ptable">
+                  <thead><tr><th>Segmento</th><th>Descripción</th><th>Propiedad</th><th>Código</th><th>Prioridad</th></tr></thead>
+                  <tbody id="promoBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec-head">
+            <div class="sec-title">Eventos</div>
+            <div class="nav-arrows">
+              <button class="na" onclick="moveEv(-1)" aria-label="Eventos anteriores">‹</button>
+              <button class="na" onclick="moveEv(1)" aria-label="Eventos siguientes">›</button>
+            </div>
+          </div>
+          <div class="card" style="padding:18px;margin-bottom:26px">
+            <div class="ev-viewport"><div class="ev-track" id="evTrack"></div></div>
+          </div>
+
+          <div class="sec-head">
+            <div class="sec-title" id="tipTitle">Tres tips de oro para un cierre exitoso</div>
+            <span class="counter" id="tipCounter">1/3</span>
+            <div class="nav-arrows">
+              <button class="na" onclick="moveTips(-1)" aria-label="Tips anteriores">‹</button>
+              <button class="na" onclick="moveTips(1)" aria-label="Tips siguientes">›</button>
+            </div>
+          </div>
+          <div class="tips-grid" id="tipsGrid"></div>
         </div>
-        <div class="card">
-          <div class="card-h">Playbook rápido — toca para expandir</div>
-          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">OTA</span><span class="script-trigger">"Encontré mejor precio en Booking/Expedia"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Protocolo de 3 pasos: empatía → price match → value-add. Nunca confrontar.</div><div class="script-say">"Entiendo perfectamente, muchos comparan primero. Déjeme verificar esa tarifa ahora mismo — además, al reservar directo recibe crédito de spa, traslado o upgrade. ¿Le hago la comparación ahora?"</div></div></div>
-          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-r">Pago</span><span class="script-trigger">"La página de pago no funciona"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Nunca decir "cuelgue y vuelva a llamar". El cliente se queda en línea siempre.</div><div class="script-say">"No se preocupe, le genero una liga alterna en este momento — menos de dos minutos. ¿Me permite mantenerle en línea?"</div></div></div>
-          <div class="script-item" style="box-shadow:none"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-a">Discovery</span><span class="script-trigger">"Solo dígame el precio"</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Construir valor antes del precio. Siempre.</div><div class="script-say">"Con gusto. Para darle la tarifa más precisa y el mejor descuento según su perfil, ¿me permite dos preguntas rápidas? ¿Es su primera visita y viajan en familia o en pareja?"</div></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-h">Tres reglas de oro para Black Friday</div>
-        <div class="rules">
-          <div class="rule keep"><div class="rule-k">Mantener</div><strong>Valor antes de precio</strong><p>Narrativa completa — Michelin, servicio, metros cuadrados — antes de mencionar cualquier cifra.</p></div>
-          <div class="rule stop"><div class="rule-k">Eliminar</div><strong>"Cuelgue y llame después"</strong><p>Jamás ante una falla de pago. El cliente ya decidió comprar: el agente resuelve en línea.</p></div>
-          <div class="rule chat"><div class="rule-k">En chat</div><strong>Una pregunta por mensaje</strong><p>Máximo tres líneas por burbuja. El cliente en móvil escanea, no lee bloques.</p></div>
-        </div>
+
+        <!-- RAIL -->
+        <aside class="dash-rail">
+          <div class="rail">
+            <div class="cal-head">
+              <div class="cal-month" id="calMonth">Octubre</div>
+              <div class="nav-arrows">
+                <button class="na" onclick="moveMonth(-1)" aria-label="Mes anterior">‹</button>
+                <button class="na" onclick="moveMonth(1)" aria-label="Mes siguiente">›</button>
+              </div>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-legend">
+              <span><i class="d ev" style="display:inline-block;width:7px;height:7px;border-radius:50%"></i> Eventos</span>
+              <span><i class="d al" style="display:inline-block;width:7px;height:7px;border-radius:50%"></i> Avisos y promociones</span>
+            </div>
+          </div>
+          <div class="rail-title" id="infoTitle">Información importante</div>
+          <div id="alertList"></div>
+        </aside>
       </div>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- ============ SCRIPTS ============ -->
     <div class="panel" id="panel-scripts">
       <div class="page-title">Scripts y playbook</div>
       <div class="page-sub">Todas las objeciones documentadas en la auditoría de 182 interacciones</div>
@@ -310,58 +431,14 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
       <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Discovery</span><span class="script-trigger">Discovery de ocasión especial — estándar Karen M. y Marvin M.</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Segunda o tercera pregunta, siempre antes de cotizar. Documentado en Karen M. (chats Brody Summerall, Erin Wrist) y Marvin M. (chat Eric Fay). Genera rapport instantáneo.</div><div class="script-say">"¿Están celebrando alguna ocasión especial durante su visita? Cumpleaños, aniversario, luna de miel…" (Karen M.)<br><br>"¿Alguna celebración especial para esas fechas?" (Marvin M., antes de cotizar cualquier precio)</div></div></div>
     </div>
 
-    <!-- PROTOCOLOS -->
-    <div class="panel" id="panel-protocolos">
-      <div class="page-title">Protocolos operativos</div>
-      <div class="page-sub">Siete protocolos que deben estar automáticos el 27 de noviembre de 2026</div>
-      <div class="grid2">
-        <div class="card">
-          <div class="card-h">🛡 Direct Booking Shield — protocolo OTA en 3 pasos</div>
-          <div class="proto-steps">
-            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Empatía, nunca confrontar.</strong> <span class="step-say">"Entiendo perfectamente, muchos comparan primero."</span></div></div>
-            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Price match.</strong> Verificar la tarifa en tiempo real. Si es igual o mejor, decirlo. Si es diferente, explicar por qué.</div></div>
-            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Value-add autorizado.</strong> Crédito de spa, traslado al 50% o upgrade. Cerrar en caliente. <span class="step-say">"¿Le hago la comparación ahora?"</span></div></div>
-          </div>
-          <div class="never"><strong>Nunca:</strong> "Is there a particular reason why you would rather book through Expedia?" — Confrontación documentada (Cristian U., caso Bret Pyle).</div>
-        </div>
-        <div class="card">
-          <div class="card-h">💳 Pasarela de pago caída — 3 niveles</div>
-          <div class="proto-steps">
-            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Liga alterna.</strong> <span class="step-say">"Le genero una liga alterna en dos minutos, ¿me permite mantenerle en línea?"</span></div></div>
-            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Tarjeta por línea.</strong> <span class="step-say">"Puedo tomar su tarjeta de forma segura por esta línea para procesar el cargo."</span></div></div>
-            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Escalación con supervisor.</strong> El cliente permanece en línea siempre. Nunca colgar primero.</div></div>
-          </div>
-          <div class="never"><strong>Nunca:</strong> "Mejor cuelgue y marque después si quiere meses sin intereses." — Reserva perdida documentada (Jonila).</div>
-        </div>
-        <div class="card">
-          <div class="card-h">🔄 Transferencia de chat entre agentes</div>
-          <div class="proto-steps">
-            <div class="proto-step"><div class="step-num">1</div><div class="step-text">Nombre del cliente, propiedad y fechas confirmadas.</div></div>
-            <div class="proto-step"><div class="step-num">2</div><div class="step-text">Categoría cotizada, precio acordado y descuento aplicado.</div></div>
-            <div class="proto-step"><div class="step-num">3</div><div class="step-text">Objeción activa y próximo paso acordado con el cliente.</div></div>
-            <div class="proto-step"><div class="step-num">4</div><div class="step-text"><span class="step-say">"Le transfiero con mi colega, ya le dejé todas las notas para que no repita nada."</span></div></div>
-          </div>
-          <div class="never"><strong>Caso documentado:</strong> Carolyn Cao — tres agentes, las mismas preguntas desde cero, la clienta repitió su perfil tres veces.</div>
-        </div>
-        <div class="card">
-          <div class="card-h">💬 Chat nativo — reglas de oro</div>
-          <div class="proto-steps">
-            <div class="proto-step"><div class="step-num">1</div><div class="step-text"><strong>Máximo tres líneas</strong> por mensaje y una sola pregunta al final de cada burbuja.</div></div>
-            <div class="proto-step"><div class="step-num">2</div><div class="step-text"><strong>Sin carruseles de catálogo.</strong> Responder solo lo que preguntaron.</div></div>
-            <div class="proto-step"><div class="step-num">3</div><div class="step-text"><strong>Inactividad:</strong> un follow-up a los 8 minutos. A los 15 minutos, transferir con notas completas.</div></div>
-            <div class="proto-step"><div class="step-num">4</div><div class="step-text"><strong>Black Friday:</strong> máximo tres chats simultáneos. Calidad sobre volumen.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIVIERA MAYA -->
+    <!-- ============ RIVIERA MAYA ============ -->
     <div class="panel" id="panel-rm">
       <div class="prop-header" style="background:linear-gradient(135deg,#E4DCFB 0%,#F7F4FE 100%)">
         <div class="prop-type">Grand Velas · Cinco diamantes AAA · Riviera Maya</div>
         <div class="prop-name">Grand Velas Riviera Maya</div>
         <div class="prop-desc">Resort all-inclusive de ultra lujo en la Riviera Maya. Tres ambientes: Grand Class (adultos), Ambassador (océano, familiar) y Zen Grand (selva, familiar). Estrella Michelin con el chef Sidney Schutte, ocho restaurantes, dos Kids Clubs y un Teens Club.</div>
       </div>
+      <div class="prop-alerts" data-prop="rm"></div>
       <div class="prop-tabs">
         <button class="ptab active" onclick="propTab(this,'rm','suites')">Suites y precios</button>
         <button class="ptab" onclick="propTab(this,'rm','usp')">Argumentos clave</button>
@@ -390,19 +467,20 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
         <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="script-trigger">¿Hay sargazo en esa zona?</span><span class="chev">▼</span></div><div class="script-body"><div class="script-say">"Le soy transparente: la condición del mar varía día a día. Lo que sí le puedo decir es que contamos con albercas privadas de agua cristalina y el equipo de playa trabaja activamente en el área de acceso. ¿Le gustaría que le enviara una foto de hoy?"</div></div></div>
         <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="script-trigger">Diferencia entre los ambientes Zen y Ambassador</span><span class="chev">▼</span></div><div class="script-body"><div class="script-say">"Zen Grand está rodeado de la selva y los cenotes del hotel, ideal para quienes buscan tranquilidad y naturaleza, con transporte interno continuo a la playa. Ambassador está a pie de playa y todas las suites tienen vista al océano. Ambos incluyen acceso a la totalidad del resort."</div></div></div>
       </div>
+      <div class="prop-events" data-prop="rm"></div>
     </div>
 
-    <!-- RIVIERA NAYARIT -->
+    <!-- ============ RIVIERA NAYARIT ============ -->
     <div class="panel" id="panel-rn">
       <div class="prop-header" style="background:linear-gradient(135deg,#DCF2EA 0%,#F5FBF8 100%)">
         <div class="prop-type">Grand Velas · Cinco diamantes AAA · Riviera Nayarit</div>
         <div class="prop-name">Grand Velas Riviera Nayarit</div>
         <div class="prop-desc">Resort all-inclusive de ultra lujo en Nuevo Vallarta, frente a la Bahía de Banderas. Cinco restaurantes de especialidad (Frida, Piaf, Sen Lin, Lucca y Azul), spa con 16 salas, Kids Club y Teens Club. Destino de bodas número uno en México.</div>
       </div>
+      <div class="prop-alerts" data-prop="rn"></div>
       <div class="prop-tabs">
         <button class="ptab active" onclick="propTab(this,'rn','suites')">Suites y precios</button>
         <button class="ptab" onclick="propTab(this,'rn','usp')">Argumentos clave</button>
-        <button class="ptab" onclick="propTab(this,'rn','ops')">Operaciones</button>
       </div>
       <div class="ptab-panel active" id="rn-suites">
         <div class="suite-grid">
@@ -416,22 +494,21 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
       <div class="ptab-panel" id="rn-usp">
         <div class="card">
           <div class="usp"><div class="usp-icon">💒</div><div class="usp-text"><strong>Destino de bodas número uno en México.</strong> Si el cliente menciona una celebración, explorar paquetes nupciales.</div></div>
-          <div class="usp"><div class="usp-icon">🍽</div><div class="usp-text"><strong>Cinco restaurantes de especialidad:</strong> Frida (mexicana), Piaf (francesa), Sen Lin (asiática), Lucca (italiana) y Azul (internacional). <span style="color:var(--rose);font-weight:700">Piaf cerrado del 12 al 15 de octubre: ofrecer Frida o Cocina de Autor.</span></div></div>
+          <div class="usp"><div class="usp-icon">🍽</div><div class="usp-text"><strong>Cinco restaurantes de especialidad:</strong> Frida (mexicana), Piaf (francesa), Sen Lin (asiática), Lucca (italiana) y Azul (internacional).</div></div>
           <div class="usp"><div class="usp-icon">👥</div><div class="usp-text"><strong>Grupos grandes.</strong> Capacidad para más de diez habitaciones, con proceso especial junto a Revenue Management.</div></div>
         </div>
       </div>
-      <div class="ptab-panel" id="rn-ops">
-        <div class="card"><div class="card-h">⚠ Aviso operativo activo</div><p style="font-size:14px;color:var(--rose);font-weight:700;margin-bottom:10px">El restaurante Piaf está cerrado por mantenimiento preventivo del 12 al 15 de octubre.</p><p class="note-p">Alternativas: Frida (cocina gourmet mexicana) y Cocina de Autor (menú degustación, requiere reserva).</p></div>
-      </div>
+      <div class="prop-events" data-prop="rn"></div>
     </div>
 
-    <!-- LOS CABOS -->
+    <!-- ============ LOS CABOS ============ -->
     <div class="panel" id="panel-lc">
       <div class="prop-header" style="background:linear-gradient(135deg,#FBEEDA 0%,#FEFAF3 100%)">
         <div class="prop-type">Grand Velas · Cinco diamantes AAA · Los Cabos</div>
         <div class="prop-name">Grand Velas Los Cabos</div>
-        <div class="prop-desc">Resort all-inclusive de ultra lujo en el corredor de Los Cabos, frente al Mar de Cortés. SE Spa es referencia mundial. Siete restaurantes de especialidad, dos de ellos con estrella Michelin (Cocina de Autor con el chef Sidney Schutte y Loto Robata), dos de ellos solo para adultos.</div>
+        <div class="prop-desc">Resort all-inclusive de ultra lujo en el corredor de Los Cabos, frente al Mar de Cortés. SE Spa es referencia mundial. Siete restaurantes de especialidad, dos de ellos con estrella Michelin (Cocina de Autor con el chef Sidney Schutte y Loto Robata), dos solo para adultos.</div>
       </div>
+      <div class="prop-alerts" data-prop="lc"></div>
       <div class="prop-tabs">
         <button class="ptab active" onclick="propTab(this,'lc','suites')">Suites y precios</button>
         <button class="ptab" onclick="propTab(this,'lc','usp')">Argumentos clave</button>
@@ -452,47 +529,67 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
           <div class="usp"><div class="usp-icon">🏨</div><div class="usp-text"><strong>Grand Velas Boutique</strong> es la propiedad hermana solo para adultos. Si el cliente busca máxima privacidad, cruzar la venta.</div></div>
         </div>
       </div>
+      <div class="prop-events" data-prop="lc"></div>
     </div>
 
-    <!-- VALLARTA -->
+    <!-- ============ VELAS VALLARTA ============ -->
     <div class="panel" id="panel-vv">
       <div class="prop-header" style="background:linear-gradient(135deg,#DDE7FB 0%,#F6F9FE 100%)">
         <div class="prop-type">Velas Vallarta · Cinco estrellas · Puerto Vallarta</div>
         <div class="prop-name">Velas Vallarta</div>
         <div class="prop-desc">Resort familiar all-inclusive en la Bahía de Banderas. El más accesible de la colección y punto de entrada ideal para nuevos clientes de la marca. Dos restaurantes (La Ribera y Andrea), Kids Club y la Marina Puerto Vallarta a cinco minutos.</div>
       </div>
+      <div class="prop-alerts" data-prop="vv"></div>
       <div class="suite-grid">
         <div class="suite"><div class="suite-name">Estudio de lujo</div><div class="suite-meta">Studio · Cocineta · Dos personas</div><div class="suite-price">Desde 580 USD/noche</div><div class="tag-row"><span class="tag tag-g">Punto de entrada</span></div></div>
         <div class="suite"><div class="suite-name">Suite de una recámara</div><div class="suite-meta">King o dos individuales · Terraza · Vista a jardín o mar</div><div class="suite-price">Desde 750 USD/noche</div><div class="tag-row"><span class="tag tag-b">Recomendada</span></div></div>
         <div class="suite"><div class="suite-name">Suite familiar de dos recámaras</div><div class="suite-meta">King + dos camas · Sala · Hasta seis personas</div><div class="suite-price">Desde 980 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias</span><span class="tag tag-b">Bestseller</span></div></div>
       </div>
       <div class="card"><div class="card-h">Argumento clave</div><div class="usp"><div class="usp-icon">🏗</div><div class="usp-text"><strong>Punto de entrada a la colección.</strong> Una vez que se enamoran de Velas, suben a Grand Velas en la siguiente visita. Ideal para clientes con presupuesto más ajustado o familias numerosas.</div></div></div>
+      <div class="prop-events" data-prop="vv"></div>
     </div>
 
-    <!-- BOUTIQUE -->
-    <div class="panel" id="panel-bh">
+    <!-- ============ BOUTIQUE ============ -->
+    <div class="panel" id="panel-bq">
       <div class="prop-header" style="background:linear-gradient(135deg,#F7DCEC 0%,#FDF5FA 100%)">
         <div class="prop-type">Grand Velas Boutique · Solo adultos · Los Cabos</div>
-        <div class="prop-name">Boutique y Mar del Cabo</div>
-        <div class="prop-desc">Grand Velas Boutique: 80 suites solo para adultos, máxima privacidad, albercas plunge privadas y gastronomía Michelin compartida con GV Los Cabos (diez restaurantes). Mar del Cabo: boutique solo adultos desde 16 años, plan europeo (no es all-inclusive), restaurante Encanto y pet friendly.</div>
+        <div class="prop-name">Grand Velas Boutique</div>
+        <div class="prop-desc">Ochenta suites solo para adultos, máxima privacidad y albercas plunge privadas. Comparte la gastronomía Michelin de Grand Velas Los Cabos, con acceso a diez restaurantes.</div>
       </div>
-      <div class="grid2">
-        <div class="card">
-          <div class="card-h">Grand Velas Boutique</div>
-          <div class="suite" style="box-shadow:none"><div class="suite-name">Suite Sunrise King</div><div class="suite-meta">Jacuzzi en terraza · Vista panorámica</div><div class="suite-price">Desde 1,723 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span></div></div>
-          <div class="suite" style="margin-top:10px;box-shadow:none"><div class="suite-name">Grand Class King con plunge pool</div><div class="suite-meta">Alberca privada · Alta privacidad</div><div class="suite-price">Desde 2,680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span><span class="tag tag-a">Premium</span></div></div>
-          <div class="usp" style="margin-top:14px"><div class="usp-icon">🔑</div><div class="usp-text"><strong>80 suites</strong> — Experiencia íntima imposible en resorts grandes, con acceso completo a GV Los Cabos y sus diez restaurantes.</div></div>
-        </div>
-        <div class="card">
-          <div class="card-h">Mar del Cabo</div>
-          <div class="suite" style="box-shadow:none"><div class="suite-name">Suite estándar</div><div class="suite-meta">Vista al mar · Plan europeo</div><div class="suite-price">Desde 680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos 16+</span><span class="tag tag-b">Plan europeo</span></div></div>
-          <div class="usp" style="margin-top:14px"><div class="usp-icon">⚠</div><div class="usp-text"><strong>Plan europeo significa que no es all-inclusive.</strong> Aclararlo desde el inicio. Restaurante Encanto, con cocina de granja a la mesa. Pet friendly.</div></div>
-          <div class="usp"><div class="usp-icon">🐾</div><div class="usp-text"><strong>Pet friendly</strong> — Paquete Pawsh Spa Pet disponible. Diferenciador único en el portafolio.</div></div>
-        </div>
+      <div class="prop-alerts" data-prop="bq"></div>
+      <div class="suite-grid">
+        <div class="suite"><div class="suite-name">Suite Sunrise King</div><div class="suite-meta">Jacuzzi en terraza · Vista panorámica</div><div class="suite-price">Desde 1,723 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span></div></div>
+        <div class="suite"><div class="suite-name">Grand Class King con plunge pool</div><div class="suite-meta">Alberca privada · Alta privacidad</div><div class="suite-price">Desde 2,680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos</span><span class="tag tag-a">Premium</span></div></div>
       </div>
+      <div class="card">
+        <div class="card-h">Argumentos clave</div>
+        <div class="usp"><div class="usp-icon">🔑</div><div class="usp-text"><strong>80 suites</strong> — Experiencia íntima imposible en resorts grandes, con acceso completo a GV Los Cabos y sus diez restaurantes.</div></div>
+        <div class="usp"><div class="usp-icon">🤫</div><div class="usp-text"><strong>Privacidad total.</strong> Si el huésped de Los Cabos busca un ambiente sin niños y más reservado, esta es la venta cruzada natural.</div></div>
+      </div>
+      <div class="prop-events" data-prop="bq"></div>
     </div>
 
-    <!-- BLACK FRIDAY -->
+    <!-- ============ MAR DEL CABO ============ -->
+    <div class="panel" id="panel-mdc">
+      <div class="prop-header" style="background:linear-gradient(135deg,#E7E3FB 0%,#F8F6FE 100%)">
+        <div class="prop-type">Mar del Cabo · Solo adultos 16+ · Los Cabos</div>
+        <div class="prop-name">Mar del Cabo</div>
+        <div class="prop-desc">Hotel boutique solo para adultos desde 16 años, con plan europeo. Restaurante Encanto, de cocina de granja a la mesa, y política pet friendly, única en el portafolio.</div>
+      </div>
+      <div class="prop-alerts" data-prop="mdc"></div>
+      <div class="suite-grid">
+        <div class="suite"><div class="suite-name">Suite estándar</div><div class="suite-meta">Vista al mar · Plan europeo</div><div class="suite-price">Desde 680 USD/noche</div><div class="tag-row"><span class="tag tag-r">Solo adultos 16+</span><span class="tag tag-b">Plan europeo</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-h">Argumentos clave</div>
+        <div class="usp"><div class="usp-icon">⚠</div><div class="usp-text"><strong>Plan europeo significa que no es all-inclusive.</strong> Aclararlo desde el primer contacto para evitar una mala experiencia en el check-in.</div></div>
+        <div class="usp"><div class="usp-icon">🐾</div><div class="usp-text"><strong>Pet friendly</strong> — Paquete Pawsh Spa Pet disponible. Diferenciador único en el portafolio.</div></div>
+        <div class="usp"><div class="usp-icon">🌿</div><div class="usp-text"><strong>Restaurante Encanto</strong> — Cocina de granja a la mesa, con producto local de Baja California Sur.</div></div>
+      </div>
+      <div class="prop-events" data-prop="mdc"></div>
+    </div>
+
+    <!-- ============ BLACK FRIDAY ============ -->
     <div class="panel" id="panel-bf">
       <div class="bf-header">
         <div class="bf-sub">Modo Black Friday activo</div>
@@ -519,6 +616,92 @@ body{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-ser
 </div>
 
 <script>
+/* ============ FUENTE ÚNICA DE DATOS ============ */
+const PROPS={rm:'Riviera Maya',rn:'Riviera Nayarit',lc:'Los Cabos',vv:'Velas Vallarta',bq:'Boutique',mdc:'Mar del Cabo'};
+const CODES={rm:'GVRM',rn:'GVRN',lc:'GVLC',vv:'VV',bq:'GVBC',mdc:'MDC'};
+const TODOS=['rm','rn','lc','vv','bq','mdc'];
+
+/* Avisos: el campo props decide en qué propiedades se replica el aviso */
+const alerts=[
+  {id:'a1',tipo:'Comunicado',clase:'comunicado',icon:'🚫',
+   titulo:'Cerrado Piaf en Grand Velas Riviera Nayarit del 18 al 20 de octubre',
+   corto:'Restaurante Piaf cerrado por mantenimiento',
+   texto:'Se sugieren alternativas como Frida o Cocina de Autor.',
+   props:['rn'],ini:'2026-10-18',fin:'2026-10-20'},
+  {id:'a2',tipo:'Promoción',clase:'promocion',icon:'🔥',
+   titulo:'Inicia Buen Fin para todas las propiedades el próximo 19 de octubre',
+   corto:'Arranca el registro de Buen Fin',
+   texto:'Comienza la etapa de registro. Ofrecer acompañamiento y brindar descuento extra al registrarse con el código <b>SALEV</b>.',
+   props:TODOS,ini:'2026-10-19',fin:'2026-11-18'},
+  {id:'a3',tipo:'Comunicado',clase:'operacion',icon:'🔨',
+   titulo:'Renovación del restaurante La Ribera en Velas Vallarta, del 15 al 30 de octubre',
+   corto:'La Ribera en remodelación',
+   texto:'Seguimos en remodelación. Ofrecer el restaurante Andrea y TAU Beach a los huéspedes de Velas Vallarta.',
+   props:['vv'],ini:'2026-10-15',fin:'2026-10-30'},
+];
+
+const eventos=[
+  {nombre:'Thanksgiving',prop:'rm',ini:'2026-10-15',fin:'2026-10-19',fecha:'Del 15 al 19 de oct.',estado:'Actualmente',emoji:'🦃',bg:'linear-gradient(135deg,#F3DFC2,#FBF1E2)',
+   sede:'',horario:'',incluye:'',costo:'',reserva:'',notas:''},
+  {nombre:'Mexology Fest',prop:'rn',ini:'2026-11-02',fin:'2026-11-03',fecha:'2 y 3 de noviembre',estado:'Próximamente',emoji:'🍸',bg:'linear-gradient(135deg,#2A1B52,#5B34C9)',
+   sede:'',horario:'',incluye:'',costo:'',reserva:'',notas:''},
+  {nombre:'Wellness Week',prop:'lc',ini:'2026-10-26',fin:'2026-10-30',fecha:'Del 26 al 30 de oct.',estado:'Próximamente',emoji:'🧘',bg:'linear-gradient(135deg,#DCF2EA,#F2FBF7)',
+   sede:'',horario:'',incluye:'',costo:'',reserva:'',notas:''},
+  {nombre:'Día de Muertos',prop:'rm',ini:'2026-11-01',fin:'2026-11-02',fecha:'1 y 2 de noviembre',estado:'Próximamente',emoji:'💀',bg:'linear-gradient(135deg,#E4DCFB,#F7F4FE)',
+   sede:'',horario:'',incluye:'',costo:'',reserva:'',notas:''},
+  {nombre:'Black Friday',prop:null,ini:'2026-11-27',fin:'2026-11-27',fecha:'27 de noviembre',estado:'Próximamente',emoji:'🛎',bg:'linear-gradient(135deg,#12101C,#4E2CB0)',
+   sede:'',horario:'',incluye:'',costo:'',reserva:'',notas:''},
+];
+
+const promos=[
+  {seg:'Wellness',desc:'50 USD de crédito en spa',prop:'GVLC',code:'WELLNESSLC',prio:'baja'},
+  {seg:'Hoteles',desc:'4 noches por la compra de 3',prop:'MDC',code:'STAY4PAY3',prio:'alta'},
+  {seg:'Hoteles',desc:'Cena privada incluida para parejas',prop:'GVBC · CV',code:'ROMANCE26',prio:'baja'},
+  {seg:'Black Friday',desc:'20% OFF + Kids Free en acceso anticipado',prop:'Todas',code:'BFEARLY26',prio:'alta'},
+  {seg:'Familias',desc:'Niños sin costo en temporada seleccionada',prop:'GVRM · GVRN',code:'KIDSFREE26',prio:'media'},
+];
+
+const protocolos=[
+  {titulo:'Direct Booking Shield — protocolo OTA en 3 pasos',
+   pasos:[['Empatía, nunca confrontar.','"Entiendo perfectamente, muchos comparan primero."'],
+          ['Price match.','Verificar la tarifa en tiempo real. Si es igual o mejor, decirlo. Si es diferente, explicar por qué.'],
+          ['Value-add autorizado.','Crédito de spa, traslado al 50% o upgrade. Cerrar en caliente.']],
+   nota:'<strong>NOTA:</strong> Nunca decir "Is there a particular reason why you would rather book through Expedia?". Confrontación documentada en el caso Bret Pyle.'},
+  {titulo:'Pasarela de pago caída — 3 niveles',
+   pasos:[['Liga alterna:','"Le genero una liga alterna en dos minutos, ¿me permite mantenerle en línea?"'],
+          ['Tarjeta por línea:','"Puedo tomar su tarjeta de forma segura por esta línea para procesar el cargo."'],
+          ['Escalación con supervisor:','El cliente permanece en línea siempre. Nunca colgar primero.']],
+   nota:'<strong>NOTA:</strong> Nunca decir "Mejor cuelgue y marque después si quiere meses sin intereses".'},
+  {titulo:'Transferencia de chat entre agentes',
+   pasos:[['Contexto del huésped:','nombre, propiedad y fechas confirmadas.'],
+          ['Estado de la venta:','categoría cotizada, precio acordado y descuento aplicado.'],
+          ['Cierre de la transferencia:','"Le transfiero con mi colega, ya le dejé todas las notas para que no repita nada."']],
+   nota:'<strong>NOTA:</strong> Caso Carolyn Cao — tres agentes, las mismas preguntas desde cero, la clienta repitió su perfil tres veces.'},
+  {titulo:'Chat nativo — reglas de operación',
+   pasos:[['Formato:','máximo tres líneas por mensaje y una sola pregunta al final de cada burbuja.'],
+          ['Inactividad:','un follow-up a los 8 minutos. A los 15 minutos, transferir con notas completas.'],
+          ['Carga en Black Friday:','máximo tres chats simultáneos. Calidad sobre volumen.']],
+   nota:'<strong>NOTA:</strong> Sin carruseles de catálogo. Responder solo lo que el huésped preguntó.'},
+];
+
+const tipGroups=[
+  {titulo:'Tres tips de oro para un cierre exitoso',items:[
+    {k:'Mantener',c:'keep',t:'Valor antes de precio',p:'Narrativa completa — Michelin, servicio, metros cuadrados — antes de mencionar cualquier cifra.'},
+    {k:'Eliminar',c:'stop',t:'"Cuelgue y llame después"',p:'Jamás ante una falla de pago. El huésped ya decidió comprar: el agente resuelve en línea.'},
+    {k:'En cierre',c:'go',t:'Link generado en caliente',p:'Durante la llamada o el chat, con vigencia de 30 minutos. Nunca por correo al terminar.'},
+  ]},
+  {titulo:'Tres tips de oro para Black Friday',items:[
+    {k:'Mantener',c:'keep',t:'Máximo tres chats simultáneos',p:'La tentación en pico de demanda es abrir seis. Calidad sobre volumen: se cierra más con tres.'},
+    {k:'Eliminar',c:'stop',t:'Prometer descuentos no autorizados',p:'Solo los porcentajes publicados por Revenue Management. Inventar cifras cuesta la reserva y la confianza.'},
+    {k:'En cierre',c:'go',t:'Urgencia real de inventario',p:'"Quedan dos suites para esas fechas" solo si es cierto. El dato verificado cierra; el genérico quema.'},
+  ]},
+  {titulo:'Tres tips de oro para el chat',items:[
+    {k:'Mantener',c:'keep',t:'Una pregunta por mensaje',p:'Máximo tres líneas por burbuja. El huésped en móvil escanea, no lee bloques.'},
+    {k:'Eliminar',c:'stop',t:'Carrusel de catálogo de entrada',p:'Responder solo lo que preguntaron. El bloque de 180 palabras no se lee.'},
+    {k:'En seguimiento',c:'go',t:'Follow-up a los 8 minutos',p:'A los 15 minutos, transferir con notas completas para que el huésped no repita su perfil.'},
+  ]},
+];
+
 const bfItems=[
   ['Descuentos exactos de Black Friday comunicados a todo el equipo','Revenue Mgmt','INMEDIATO'],
   ['Umbral de inactividad de chat configurado a 15 minutos','IT','INMEDIATO'],
@@ -530,102 +713,258 @@ const bfItems=[
   ['Briefing de guerra: jueves 26 de noviembre, 60 minutos, todo el equipo','Gerencia CC','SEM 13'],
 ];
 
-function renderBFChecklist(){
-  const c=document.getElementById('bfChecklist');
-  c.innerHTML=bfItems.map(([item,owner,urgency],i)=>{
-    const uc=urgency==='INMEDIATO'?'u-red':(urgency.includes('SEM')&&parseInt(urgency.split(' ')[1])<=4?'u-amber':'u-green');
-    return `<div class="checklist-item">
-      <button class="check-box" onclick="toggleCheck(this,${i})" id="cb${i}" aria-label="Marcar como listo"></button>
-      <div class="check-text" id="ct${i}">${item}</div>
-      <div class="check-owner">${owner}</div>
-      <div class="urgency ${uc}">${urgency}</div>
-    </div>`;
-  }).join('');
-}
+/* ============ SALUDO ============ */
+(function(){
+  const m=new Date().getMonth();
+  const s=m<2||m===11?'invierno':m<5?'primavera':m<8?'verano':'otoño';
+  document.getElementById('season').textContent=s;
+})();
 
-function toggleCheck(el,i){
-  const done=!el.classList.contains('done');
-  el.classList.toggle('done',done);
-  el.textContent=done?'✓':'';
-  document.getElementById('ct'+i).classList.toggle('done',done);
+/* ============ PROTOCOLOS (carrusel) ============ */
+let pi=0;
+function renderProto(){
+  const p=protocolos[pi];
+  document.getElementById('protoCard').innerHTML=
+    `<div class="proto-title">${p.titulo}</div><div class="proto-steps">`+
+    p.pasos.map((s,i)=>`<div class="proto-step"><div class="step-num">${i+1}</div>
+      <div class="step-text"><strong>${s[0]}</strong> ${s[1].startsWith('"')?`<span class="step-say">${s[1]}</span>`:s[1]}</div></div>`).join('')+
+    `</div><div class="proto-note">${p.nota}</div>`;
+  document.getElementById('protoCounter').textContent=(pi+1)+'/'+protocolos.length;
 }
+function moveProto(d){pi=(pi+d+protocolos.length)%protocolos.length;renderProto();}
 
-function nav(el,id){
-  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('panel-'+id).classList.add('active');
-  document.getElementById('bf-btn').classList.remove('active');
-  document.querySelector('.content').scrollTop=0;
-}
-function navBF(){
-  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-bf').classList.add('active');
-  document.getElementById('bf-btn').classList.add('active');
-  document.querySelector('.content').scrollTop=0;
-}
-function toggleScript(header){
-  const body=header.nextElementSibling;
-  const open=body.classList.toggle('open');
-  header.classList.toggle('open',open);
-}
-function propTab(el,prop,tab){
-  const container=el.closest('.panel');
-  container.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
-  container.querySelectorAll('.ptab-panel').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById(prop+'-'+tab).classList.add('active');
+/* ============ PROMOS ============ */
+function renderPromos(){
+  document.getElementById('promoBody').innerHTML=promos.map(p=>
+    `<tr><td class="seg">${p.seg}</td><td>${p.desc}</td><td>${p.prop}</td>
+     <td><button class="codechip" onclick="copyCode(this,'${p.code}')">${p.code}</button></td>
+     <td><span class="prio ${p.prio}">${p.prio[0].toUpperCase()+p.prio.slice(1)}</span></td></tr>`).join('');
 }
 function copyCode(el,code){
   navigator.clipboard.writeText(code).catch(()=>{});
-  const orig=el.textContent;
-  el.textContent='Copiado';el.classList.add('copied');
-  setTimeout(()=>{el.textContent=orig;el.classList.remove('copied');},1500);
+  const o=el.textContent;el.textContent='Copiado';el.classList.add('copied');
+  setTimeout(()=>{el.textContent=o;el.classList.remove('copied');},1400);
+}
+
+/* ============ EVENTOS ============ */
+let ei=0;
+function renderEventos(){
+  document.getElementById('evTrack').innerHTML=eventos.map((e,i)=>
+    `<div class="ev-card"><div class="ev-img" style="background:${e.bg}"><span class="ev-badge">${e.estado}</span>${e.emoji}</div>
+     <div class="ev-body"><div class="ev-name">${e.nombre}</div>
+     <div class="ev-meta"><span>🏨 ${e.prop?CODES[e.prop]:'Todas'}</span><span>📅 ${e.fecha}</span></div>
+     <button class="ev-more" ${e.prop?`onclick="goEvent(${i})"`:'onclick="navBF()"'}>Conoce más</button></div></div>`).join('');
+}
+function moveEv(d){
+  const max=Math.max(0,eventos.length-3);
+  ei=Math.min(max,Math.max(0,ei+d));
+  document.getElementById('evTrack').style.transform=`translateX(-${ei*326}px)`;
+}
+
+/* ============ TIPS ============ */
+let ti=0;
+function renderTips(){
+  const g=tipGroups[ti];
+  document.getElementById('tipTitle').textContent=g.titulo;
+  document.getElementById('tipsGrid').innerHTML=g.items.map(t=>
+    `<div class="tip ${t.c}"><div class="tip-k">${t.k}</div><strong>${t.t}</strong><p>${t.p}</p></div>`).join('');
+  document.getElementById('tipCounter').textContent=(ti+1)+'/'+tipGroups.length;
+}
+function moveTips(d){ti=(ti+d+tipGroups.length)%tipGroups.length;renderTips();}
+
+/* ============ AVISOS ============ */
+function fmtRange(a){
+  const M=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const i=new Date(a.ini+'T00:00:00'),f=new Date(a.fin+'T00:00:00');
+  return i.getMonth()===f.getMonth()?`${i.getDate()}–${f.getDate()} ${M[i.getMonth()]}`:`${i.getDate()} ${M[i.getMonth()]} – ${f.getDate()} ${M[f.getMonth()]}`;
+}
+function renderAlerts(){
+  document.getElementById('alertList').innerHTML=alerts.map(a=>{
+    const dest=a.props.length===TODOS.length?'Todas las propiedades':a.props.map(p=>PROPS[p]).join(' · ');
+    return `<div class="alert ${a.clase}"><div class="alert-k">${a.tipo} · ${dest}</div>
+      <div class="alert-t">${a.titulo}</div><div class="alert-b">${a.texto}</div>
+      ${a.props.length===1?`<button class="alert-link" onclick="goProp('${a.props[0]}')">Ver en ${PROPS[a.props[0]]}</button>`:''}</div>`;
+  }).join('');
+  document.getElementById('alertCount').textContent=alerts.length;
+}
+/* Campana de anuncios */
+function renderNotif(){
+  const n=alerts.length;
+  document.getElementById('npTitle').textContent=
+    n===1?'Tienes 1 anuncio nuevo en Información importante':`Tienes ${n} anuncios nuevos en Información importante`;
+  document.getElementById('npList').innerHTML=alerts.map(a=>
+    `<div class="np-item"><span>${a.icon}</span><span><b>${a.corto}</b> · ${fmtRange(a)}</span></div>`).join('');
+}
+function toggleNotif(e){
+  if(e)e.stopPropagation();
+  const p=document.getElementById('notifPop');
+  p.hidden=!p.hidden;
+}
+function goAlerts(){
+  document.getElementById('notifPop').hidden=true;
+  goPanelByKey('home');
+  const t=document.getElementById('infoTitle');
+  t.scrollIntoView({behavior:'smooth',block:'center'});
+  t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+}
+document.addEventListener('click',e=>{
+  const p=document.getElementById('notifPop');
+  if(p&&!p.hidden&&!e.target.closest('.notif-wrap'))p.hidden=true;
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('notifPop').hidden=true;});
+
+/* Ficha del evento dentro de la propiedad */
+const CAMPOS=[['sede','Sede'],['horario','Horario'],['incluye','Incluye'],['costo','Costo'],['reserva','Reserva'],['notas','Notas para el agente']];
+function renderPropEventos(){
+  document.querySelectorAll('.prop-events').forEach(box=>{
+    const key=box.dataset.prop;
+    const mios=eventos.map((e,i)=>({e,i})).filter(o=>o.e.prop===key);
+    if(!mios.length){box.innerHTML='';return;}
+    box.innerHTML=`<div class="sec-head" style="margin-top:22px"><div class="sec-title">Eventos en la propiedad</div></div>`+
+      mios.map(({e,i})=>`<div class="pe-card" id="ev-${i}">
+        <div class="pe-head">
+          <div class="pe-emoji" style="background:${e.bg}">${e.emoji}</div>
+          <div><div class="pe-name">${e.nombre}</div><div class="pe-date">${e.fecha}</div></div>
+          <span class="pe-badge">${e.estado}</span>
+        </div>
+        <div class="pe-grid">${CAMPOS.map(([k,l])=>
+          `<div class="pe-f"><div class="pe-l">${l}</div><div class="pe-v ${e[k]?'':'vacio'}">${e[k]||'Por completar'}</div></div>`).join('')}</div>
+      </div>`).join('');
+  });
+}
+function goEvent(i){
+  const e=eventos[i];
+  goProp(e.prop);
+  setTimeout(()=>{
+    const c=document.getElementById('ev-'+i);
+    if(!c)return;
+    c.scrollIntoView({behavior:'smooth',block:'center'});
+    c.classList.remove('hl');void c.offsetWidth;c.classList.add('hl');
+  },60);
+}
+
+/* Réplica automática del aviso dentro de cada propiedad */
+function renderPropAlerts(){
+  document.querySelectorAll('.prop-alerts').forEach(box=>{
+    const key=box.dataset.prop;
+    const mine=alerts.filter(a=>a.props.includes(key));
+    box.innerHTML=mine.map(a=>
+      `<div class="pa ${a.clase}"><div class="pa-i">${a.icon}</div>
+        <div><div class="pa-t">${a.corto}</div><div class="pa-b">${a.texto}</div></div>
+        <div class="pa-date">${fmtRange(a)}</div></div>`).join('');
+  });
+}
+
+/* ============ CALENDARIO ============ */
+let calRef=new Date(2026,9,1);
+function ymd(d){return d.toISOString().slice(0,10)}
+function marksFor(dateStr){
+  const t=new Date(dateStr+'T00:00:00');
+  const ev=eventos.some(e=>t>=new Date(e.ini+'T00:00:00')&&t<=new Date(e.fin+'T00:00:00'));
+  const al=alerts.some(a=>t>=new Date(a.ini+'T00:00:00')&&t<=new Date(a.fin+'T00:00:00'));
+  return {ev,al};
+}
+function renderCal(){
+  const MES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const y=calRef.getFullYear(),m=calRef.getMonth();
+  document.getElementById('calMonth').textContent=MES[m]+' '+y;
+  const first=new Date(y,m,1);
+  const start=(first.getDay()+6)%7; // lunes primero
+  const days=new Date(y,m+1,0).getDate();
+  const prevDays=new Date(y,m,0).getDate();
+  const hoy=new Date();const hoyStr=`${hoy.getFullYear()}-${String(hoy.getMonth()+1).padStart(2,'0')}-${String(hoy.getDate()).padStart(2,'0')}`;
+  let html=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  for(let i=start-1;i>=0;i--)html+=`<div class="cal-day out">${prevDays-i}</div>`;
+  for(let d=1;d<=days;d++){
+    const key=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const k=marksFor(key);
+    const dots=(k.ev||k.al)?`<div class="dots">${k.ev?'<i class="d ev"></i>':''}${k.al?'<i class="d al"></i>':''}</div>`:'';
+    html+=`<div class="cal-day ${key===hoyStr?'today':''}">${d}${dots}</div>`;
+  }
+  const rest=(7-((start+days)%7))%7;
+  for(let d=1;d<=rest;d++)html+=`<div class="cal-day out">${d}</div>`;
+  document.getElementById('calGrid').innerHTML=html;
+}
+function moveMonth(d){calRef=new Date(calRef.getFullYear(),calRef.getMonth()+d,1);renderCal();}
+
+/* ============ CHECKLIST BF ============ */
+function renderBFChecklist(){
+  document.getElementById('bfChecklist').innerHTML=bfItems.map(([item,owner,urg],i)=>{
+    const uc=urg==='INMEDIATO'?'u-red':(urg.includes('SEM')&&parseInt(urg.split(' ')[1])<=4?'u-amber':'u-green');
+    return `<div class="checklist-item">
+      <button class="check-box" onclick="toggleCheck(this,${i})" aria-label="Marcar como listo"></button>
+      <div class="check-text" id="ct${i}">${item}</div>
+      <div class="check-owner">${owner}</div><div class="urgency ${uc}">${urg}</div></div>`;
+  }).join('');
+}
+function toggleCheck(el,i){
+  const done=!el.classList.contains('done');
+  el.classList.toggle('done',done);el.textContent=done?'✓':'';
+  document.getElementById('ct'+i).classList.toggle('done',done);
+}
+
+/* ============ NAVEGACIÓN ============ */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelector('.content').scrollTop=0;
+}
+function nav(el,id){
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('bf-btn').classList.remove('active');
+  showPanel(id);
+}
+function navBF(){
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  document.getElementById('bf-btn').classList.add('active');
+  showPanel('bf');
+}
+function goProp(key){
+  const el=[...document.querySelectorAll('.sb-item')].find(i=>i.getAttribute('onclick').includes(`'${key}'`));
+  nav(el,key);
+}
+function toggleScript(h){const b=h.nextElementSibling;h.classList.toggle('open',b.classList.toggle('open'));}
+function propTab(el,prop,tab){
+  const c=el.closest('.panel');
+  c.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  c.querySelectorAll('.ptab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(prop+'-'+tab).classList.add('active');
 }
 function searchGlobal(q){
   if(!q.trim())return;
   const lq=q.toLowerCase();
-  const map={
-    'ota':['scripts'],'expedia':['scripts'],'booking':['scripts'],'costco':['scripts'],
-    'pago':['protocolos'],'pasarela':['protocolos'],
-    'chat':['protocolos'],'handover':['protocolos'],'transferencia':['protocolos'],
-    'rm':['rm'],'riviera maya':['rm'],'maya':['rm'],'sargazo':['rm'],'cenote':['rm'],
-    'nayarit':['rn'],'rn':['rn'],'piaf':['rn'],'boda':['rn'],
-    'cabos':['lc'],'cabo':['lc'],'michelin':['lc'],'spa':['lc'],
-    'vallarta':['vv'],'vv':['vv'],
-    'boutique':['bh'],'mar del cabo':['bh'],'pet':['bh'],
-    'black friday':['bf'],'bf':['bf'],'thanksgiving':['bf'],'tier':['bf'],
-    'promo':['home'],'codigo':['home'],'código':['home'],
-    'discovery':['scripts'],'cierre':['scripts'],'upsell':['scripts'],'precio':['scripts'],
-  };
-  for(const [k,panels] of Object.entries(map)){
+  const map={'ota':'scripts','expedia':'scripts','booking':'scripts','costco':'scripts','discovery':'scripts','cierre':'scripts','upsell':'scripts','precio':'scripts','pago':'scripts','pasarela':'home','protocolo':'home','chat':'home',
+    'maya':'rm','rm':'rm','sargazo':'rm','cenote':'rm','nayarit':'rn','rn':'rn','piaf':'rn','boda':'rn',
+    'cabos':'lc','michelin':'lc','spa':'lc','vallarta':'vv','vv':'vv','ribera':'vv',
+    'boutique':'bq','mar del cabo':'mdc','mdc':'mdc','pet':'mdc',
+    'black friday':'bf','bf':'bf','thanksgiving':'bf','tier':'bf','promo':'home','código':'home','evento':'home','buen fin':'home'};
+  for(const [k,id] of Object.entries(map)){
     if(lq.includes(k)){
-      const id=panels[0];
-      document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
-      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-      document.getElementById('bf-btn').classList.remove('active');
-      document.getElementById('panel-'+id).classList.add('active');
-      if(id==='bf')document.getElementById('bf-btn').classList.add('active');
-      document.getElementById('searchInput').value='';
-      return;
+      if(id==='bf')navBF();else goPanelByKey(id);
+      document.getElementById('searchInput').value='';return;
     }
   }
 }
-
-function updateCountdown(){
-  const bf=new Date('2026-11-27T00:00:00');
-  const diff=bf-new Date();
-  if(diff<=0)return;
-  const days=Math.floor(diff/86400000);
-  const hrs=Math.floor((diff%86400000)/3600000);
-  const min=Math.floor((diff%3600000)/60000);
-  ['cd-days','bcd-days'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=days});
-  const hEl=document.getElementById('bcd-hrs');if(hEl)hEl.textContent=hrs;
-  const mEl=document.getElementById('bcd-min');if(mEl)mEl.textContent=min;
+function goPanelByKey(id){
+  const el=[...document.querySelectorAll('.sb-item')].find(i=>i.getAttribute('onclick').includes(`'${id}'`));
+  nav(el,id);
 }
 
-renderBFChecklist();updateCountdown();setInterval(updateCountdown,60000);
+/* ============ CONTADOR BF ============ */
+function updateCountdown(){
+  const diff=new Date('2026-11-27T00:00:00')-new Date();
+  if(diff<=0)return;
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),mi=Math.floor((diff%3600000)/60000);
+  document.getElementById('bf-days').textContent=d+'d';
+  document.getElementById('bcd-days').textContent=d;
+  document.getElementById('bcd-hrs').textContent=h;
+  document.getElementById('bcd-min').textContent=mi;
+}
+
+renderProto();renderPromos();renderEventos();renderTips();renderAlerts();renderNotif();renderPropAlerts();renderPropEventos();renderCal();renderBFChecklist();updateCountdown();
+setInterval(updateCountdown,60000);
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchInput').focus();}});
 document.querySelectorAll('.sb-item,.bf-btn').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}}));
 </script>
