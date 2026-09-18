@@ -81,8 +81,21 @@ button{font-family:inherit}
 .dash-rail{position:sticky;top:0;max-height:calc(100vh - 118px);overflow-y:auto;padding-right:4px;scrollbar-width:thin}
 .dash-rail::-webkit-scrollbar{width:5px}
 .dash-rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
-.greet{font-size:27px;font-weight:700;color:var(--ink);line-height:1.35;letter-spacing:-.015em;margin-bottom:26px;max-width:36ch}
-.greet .season{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.22em}
+.hero-banner{position:relative;overflow:hidden;background:linear-gradient(120deg,#4E2CB0 0%,#7750E1 55%,#9575EC 100%);border-radius:24px;padding:32px 34px 28px;margin-bottom:26px;isolation:isolate}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.16;background:#fff;pointer-events:none;z-index:0}
+.hero-blob.b1{width:230px;height:230px;top:-90px;right:60px}
+.hero-blob.b2{width:140px;height:140px;bottom:-60px;right:220px;opacity:.12}
+.hero-blob.b3{width:90px;height:90px;top:20px;right:280px;opacity:.14}
+.hero-greet{position:relative;z-index:1;font-size:26px;font-weight:700;color:#fff;line-height:1.35;letter-spacing:-.015em;max-width:42ch}
+.hero-greet .season{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.22em;color:#F1EAFF}
+.hero-actions{position:relative;z-index:1;display:flex;gap:22px;margin-top:24px;flex-wrap:wrap}
+.hero-action{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:inherit;padding:0}
+.hero-action .circle{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);transition:all .15s}
+.hero-action.primary .circle{background:#fff;border-color:#fff;color:var(--violet-d)}
+.hero-action:hover .circle{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+.hero-action.primary:hover .circle{background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.hero-action-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.85)}
+@media (max-width:640px){.hero-banner{padding:24px 20px}.hero-greet{font-size:20px}.hero-actions{gap:16px}.hero-action .circle{width:44px;height:44px;font-size:17px}}
 .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .sec-title{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.015em}
 .nav-arrows{display:flex;gap:6px;margin-left:auto}
@@ -227,6 +240,151 @@ button{font-family:inherit}
 .pe-v.vacio{color:var(--ink30);font-weight:500;font-style:italic}
 @media (max-width:980px){.pe-grid{grid-template-columns:1fr 1fr}}
 
+/* ---------- DIRECTORIO ---------- */
+.dir-tools{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.dir-search{width:100%;max-width:420px;padding:11px 18px;border:1.5px solid var(--line);border-radius:999px;font-size:13px;font-family:inherit;background:var(--card);color:var(--ink);outline:none}
+.dir-search:focus{border-color:var(--violet)}
+.dir-legend{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--ink50)}
+.dir-legend span{display:flex;align-items:center;gap:6px}
+.lg{width:9px;height:9px;border-radius:3px;display:inline-block}
+.lg.tel{background:var(--ink30)}
+.lg.ext{background:var(--violet)}
+.lg.mail{background:var(--violet-l)}
+.dir-hint{margin-left:auto;color:var(--ink30)}
+.dir-group{margin-bottom:14px;padding:20px 22px}
+.dir-head{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:var(--ink);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.dir-item{display:flex;gap:18px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line)}
+.dir-item:last-child{border-bottom:none}
+.dir-main{flex:1;min-width:190px}
+.dir-name{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35}
+.dir-role{font-size:11.5px;color:var(--ink50);margin-top:3px;line-height:1.5}
+.dir-note{font-size:11.5px;color:var(--ink80);background:var(--wash2);border-radius:10px;padding:9px 12px;margin-top:9px;line-height:1.55;max-width:62ch}
+.dir-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:56%}
+.chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink80);font-size:11.5px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.chip i{font-style:normal;font-size:11px;opacity:.75}
+.chip:hover{border-color:var(--violet-l);color:var(--ink)}
+.chip.ext{background:var(--violet);border-color:var(--violet);color:#fff;font-weight:700}
+.chip.ext i{opacity:.85}
+.chip.mail{background:var(--wash2);border-color:var(--wash);color:var(--violet-d)}
+.chip.copied{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}
+.rule-box{display:flex;gap:12px;align-items:flex-start;background:var(--rosel);border:1px solid rgba(194,43,87,.18);border-radius:16px;padding:15px 17px;margin-bottom:16px;font-size:12.5px;color:var(--ink80);line-height:1.6}
+.rule-box strong{color:var(--ink)}
+.rule-box b{color:var(--rose)}
+.rule-box.small{margin:14px 0 6px;font-size:12px}
+.rule-i{font-size:15px;flex-shrink:0}
+.tpl{background:var(--wash2);border-left:3px solid var(--violet);border-radius:0 12px 12px 0;padding:14px 16px;font-family:'Plus Jakarta Sans',monospace;font-size:12.5px;color:var(--ink);line-height:1.8;white-space:pre-wrap;margin-top:10px}
+.tpl-copy{margin-top:10px;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:9px 18px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.tpl-copy:hover{background:var(--violet)}
+@media (max-width:900px){.dir-item{flex-direction:column;gap:10px}.dir-chips{justify-content:flex-start;max-width:none}}
+
+/* ---------- SUBNAVEGACIÓN DE PROPIEDAD ---------- */
+.prop-layout{display:grid;grid-template-columns:232px minmax(0,1fr);gap:20px;align-items:start}
+.prop-nav{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 12px;box-shadow:var(--shadow);position:sticky;top:0}
+.pn-label{font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--ink30);padding:4px 10px 10px}
+.pn-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:11px 12px;border:none;background:none;border-radius:13px;font-size:12.5px;font-weight:600;color:var(--ink80);cursor:pointer;font-family:inherit;transition:all .15s;margin-bottom:2px;line-height:1.3}
+.pn-item span{font-size:14px;width:18px;flex-shrink:0}
+.pn-item:hover{background:var(--wash2);color:var(--ink)}
+.pn-item.active{background:var(--violet);color:#fff}
+.scope{margin-left:auto;font-size:9.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--wash);color:var(--violet-d);white-space:nowrap}
+.scope.alt{background:var(--bg);color:var(--ink50)}
+.vig{display:inline-block;font-size:11px;font-weight:700;color:var(--amber);background:var(--amberl);padding:5px 12px;border-radius:999px}
+.kv{display:flex;flex-direction:column}
+.kv-row{display:flex;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
+.kv-row:last-child{border-bottom:none}
+.kv-k{width:210px;flex-shrink:0;font-size:12px;font-weight:700;color:var(--ink)}
+.kv-v{flex:1;font-size:12.5px;color:var(--ink80);line-height:1.6}
+.kv-v.alerta{color:var(--rose);font-weight:600}
+.req-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.req{font-size:11.5px;font-weight:700;color:var(--violet-d);background:var(--wash2);border:1px solid var(--wash);padding:7px 14px;border-radius:999px}
+@media (max-width:1100px){
+  .prop-layout{grid-template-columns:1fr}
+  .prop-nav{position:static;display:flex;gap:6px;overflow-x:auto;padding:10px}
+  .pn-label{display:none}
+  .pn-item{width:auto;white-space:nowrap;margin-bottom:0}
+  .kv-row{flex-direction:column;gap:4px}.kv-k{width:auto}
+}
+
+/* ---------- MATERIAL DE VENTA ---------- */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat-n{font-size:25px;font-weight:800;color:var(--violet-d);letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:11.5px;color:var(--ink50);margin-top:6px;font-weight:600}
+.hook-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+.hook{background:var(--wash2);border:1px solid var(--wash);border-radius:16px;padding:15px 17px}
+.hook-t{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.hook-p{font-size:12px;color:var(--ink80);line-height:1.6}
+ul.tick{list-style:none;margin:2px 0 0}
+ul.tick li{font-size:12.5px;color:var(--ink80);line-height:1.55;padding:7px 0 7px 22px;position:relative;border-bottom:1px solid var(--line)}
+ul.tick li:last-child{border-bottom:none}
+ul.tick li::before{content:"";position:absolute;left:6px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--violet-l)}
+.dtable{width:100%;border-collapse:collapse;min-width:640px}
+.dtable th{font-size:10.5px;font-weight:700;color:var(--ink50);text-align:left;padding:0 12px 10px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+.dtable td{font-size:12px;color:var(--ink80);padding:11px 12px 11px 0;border-bottom:1px solid var(--line);line-height:1.5;vertical-align:top}
+.dtable td.b{font-weight:700;color:var(--ink);white-space:nowrap}
+.dtable tr.band td{background:var(--wash2);color:var(--violet-d);font-size:10.5px;font-weight:800;padding:8px 12px;border-radius:8px}
+.pitch-line{font-size:12px;color:var(--violet-d);font-weight:600;line-height:1.55;background:var(--wash2);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.chip-row{display:flex;flex-wrap:wrap;gap:6px}
+.hchip{font-size:11.5px;font-weight:600;color:var(--ink80);background:var(--bg);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
+.kv-h{font-size:11px;color:var(--ink50);font-weight:600;margin-top:3px}
+.sub-h{font-size:11px;font-weight:700;color:var(--ink50);margin-bottom:4px}
+@media (max-width:1100px){.stat-grid{grid-template-columns:repeat(2,1fr)}.hook-grid{grid-template-columns:1fr}}
+
+.rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.rate{background:var(--wash2);border:1px solid var(--wash);border-radius:16px;padding:14px 16px}
+.rate-t{font-size:11.5px;font-weight:700;color:var(--ink50);margin-bottom:6px}
+.rate-n{font-size:21px;font-weight:800;color:var(--violet-d);letter-spacing:-.02em}
+.big-n{font-size:30px;font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1}
+.big-n span{display:block;font-size:11.5px;font-weight:600;color:var(--ink50);margin-top:7px;letter-spacing:0}
+.testi{border-left:3px solid var(--violet);background:var(--wash2);border-radius:0 14px 14px 0;padding:14px 16px;margin-bottom:10px}
+.testi-t{font-size:12.5px;color:var(--ink);line-height:1.7;font-style:italic}
+.testi-n{font-size:11.5px;font-weight:700;color:var(--violet-d);margin-top:8px}
+@media (max-width:1100px){.rate-grid{grid-template-columns:1fr}}
+
+.src{font-size:10px;font-weight:600;color:var(--amber);background:var(--amberl);padding:2px 8px;border-radius:999px;display:inline-block;margin-top:5px;white-space:nowrap}
+
+.tour-link{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--violet-d);background:var(--wash2);border:1px solid var(--wash);padding:5px 11px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:all .15s}
+.tour-link:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
+.tour-link.big{font-size:12px;padding:9px 16px;gap:7px}
+.media-card{display:flex;flex-direction:column}
+.media-card .tour-link.big{margin-top:auto;align-self:flex-start}
+
+.gal-select{font-size:12.5px;font-weight:600;color:var(--ink80);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:inherit;cursor:pointer;margin-right:6px}
+.gal-select:focus{border-color:var(--violet)}
+
+.gf-card{width:222px;flex-shrink:0;cursor:pointer}
+.gf-img{height:140px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;transition:filter .15s}
+.gf-card:hover .gf-img{filter:brightness(.94)}
+.gf-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.85);color:var(--ink50);font-size:9px;font-weight:700;padding:4px 10px;border-radius:999px}
+.gf-copy{position:absolute;bottom:10px;right:10px;background:rgba(18,16,28,.72);color:#fff;font-size:9.5px;font-weight:700;padding:5px 11px;border-radius:999px;opacity:0;transition:opacity .15s}
+.gf-card:hover .gf-copy{opacity:1}
+.gf-cat{font-size:12.5px;font-weight:700;color:var(--ink);margin-top:10px}
+.gf-prop{font-size:11px;color:var(--ink50);margin-top:2px}
+
+.gal-toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(18,16,28,.25);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:999;max-width:90vw;text-align:center}
+.gal-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.gal-prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gal-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.gal-card-hero{height:78px;display:flex;align-items:center;justify-content:center;font-size:26px}
+.gal-card-body{padding:14px 16px 16px}
+.gal-card-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.gal-link{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;font-weight:600;color:var(--ink80);text-decoration:none;padding:10px 0;border-top:1px solid var(--line)}
+.gal-card-body .gal-link:first-of-type{border-top:none}
+.gal-link:hover{color:var(--violet-d)}
+.gal-link.disabled{color:var(--ink30)}
+.gal-tag{font-size:9px;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.gal-tag.shared{background:var(--wash2);color:var(--violet-d)}
+.gal-tag.own{background:var(--greenl);color:var(--green)}
+.gal-tag.pend{background:var(--bg);color:var(--ink30)}
+
+.tour-goto{margin-top:8px;background:none;border:none;color:var(--ink50);font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;padding:0}
+.tour-goto:hover{color:var(--violet-d)}
+@media (max-width:1100px){.gal-prop-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.gal-prop-grid{grid-template-columns:1fr}}
+.tour-hero{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--wash2);border:1px solid var(--wash);border-radius:16px;padding:14px 18px;margin-bottom:16px}
+.tour-hero-t{font-size:13px;font-weight:700;color:var(--ink)}
+.tour-hero-p{font-size:11.5px;color:var(--ink50);margin-top:2px}
+
 /* ---------- SCRIPTS ---------- */
 .script-item{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
 .script-header{padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:11px;transition:background .15s}
@@ -283,7 +441,7 @@ button{font-family:inherit}
   .sb-item{white-space:nowrap;margin-bottom:0}
   .bf-btn{margin:0;white-space:nowrap}
   .content{overflow:visible;padding:18px 16px 40px}
-  .greet{font-size:22px}.page-title{font-size:23px}.prop-name{font-size:24px}
+  .hero-greet{font-size:19px}.page-title{font-size:23px}.prop-name{font-size:24px}
 }
 </style>
 </head>
@@ -330,6 +488,7 @@ button{font-family:inherit}
     <div class="sb-section">Principal</div>
     <div class="sb-item active" onclick="nav(this,'home')" tabindex="0"><span class="icon">⌂</span>Dashboard</div>
     <div class="sb-item" onclick="nav(this,'scripts')" tabindex="0"><span class="icon">💬</span>Scripts y playbook</div>
+    <div class="sb-item" onclick="nav(this,'galeria')" tabindex="0"><span class="icon">🖼</span>Galería</div>
     <div class="sb-section">Propiedades</div>
     <div class="sb-item" onclick="nav(this,'rm')" tabindex="0"><span class="icon">🌊</span>Riviera Maya</div>
     <div class="sb-item" onclick="nav(this,'rn')" tabindex="0"><span class="icon">⛵</span>Riviera Nayarit</div>
@@ -337,6 +496,7 @@ button{font-family:inherit}
     <div class="sb-item" onclick="nav(this,'vv')" tabindex="0"><span class="icon">🏖</span>Velas Vallarta</div>
     <div class="sb-item" onclick="nav(this,'bq')" tabindex="0"><span class="icon">💎</span>Boutique</div>
     <div class="sb-item" onclick="nav(this,'mdc')" tabindex="0"><span class="icon">🐾</span>Mar del Cabo</div>
+    <div class="sb-item" onclick="nav(this,'cv')" tabindex="0"><span class="icon">🥂</span>Casa Velas</div>
     <div class="bf-btn" id="bf-btn" onclick="navBF()" tabindex="0">BLACK FRIDAY<span class="arrow" id="bf-days">—</span></div>
   </nav>
 
@@ -346,7 +506,18 @@ button{font-family:inherit}
     <div class="panel active" id="panel-home">
       <div class="dash">
         <div>
-          <h1 class="greet">¡Bienvenidos! Arrancamos un nuevo día de <span class="season" id="season">otoño</span>.<br>Hagamos que cada estancia sea memorable.</h1>
+          <div class="hero-banner">
+            <span class="hero-blob b1"></span><span class="hero-blob b2"></span><span class="hero-blob b3"></span>
+            <h1 class="hero-greet">¡Bienvenidos! Arrancamos un nuevo día de <span class="season" id="season">otoño</span>.<br>Hagamos que cada estancia sea memorable.</h1>
+            <div class="hero-actions">
+              <button class="hero-action primary" onclick="document.getElementById('searchInput').focus()"><span class="circle">🔍</span><span class="hero-action-label">Buscar</span></button>
+              <button class="hero-action" onclick="document.getElementById('protoCard').scrollIntoView({behavior:'smooth',block:'center'})"><span class="circle">🛡</span><span class="hero-action-label">Protocolos</span></button>
+              <button class="hero-action" onclick="goPanelByKey('scripts')"><span class="circle">💬</span><span class="hero-action-label">Scripts</span></button>
+              <button class="hero-action" onclick="document.querySelector('.ptable').scrollIntoView({behavior:'smooth',block:'center'})"><span class="circle">🏷</span><span class="hero-action-label">Promos</span></button>
+              <button class="hero-action" onclick="goPanelByKey('galeria')"><span class="circle">🖼</span><span class="hero-action-label">Galería</span></button>
+              <button class="hero-action" onclick="navBF()"><span class="circle">🔥</span><span class="hero-action-label">Black Friday</span></button>
+            </div>
+          </div>
 
           <div class="dash-2">
             <div>
@@ -429,6 +600,27 @@ button{font-family:inherit}
       <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Chat</span><span class="script-trigger">Primer mensaje en chat — estándar correcto</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Máximo tres líneas y una pregunta al final. Nunca un bloque de catálogo en el primer mensaje (Erika G.M., chat Emma Córdoba — 180 palabras en el primer mensaje, la clienta no lo leyó).</div><div class="script-say">"¡Buenas tardes! Con gusto le ayudo con su reservación en [propiedad]. Para encontrar la mejor opción para usted, ¿me dice para qué fechas sería su visita y cuántas personas viajan?"</div></div></div>
       <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Cierre</span><span class="script-trigger">Cierre asertivo — generación del link en caliente</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">El link se genera durante la llamada o el chat. No al terminar, no por correo después. Modelo: Monserrat M. (chat Briana Davis) — link generado, pago procesado y traslado confirmado en 40 minutos.</div><div class="script-say">"Perfecto. Le genero el link de reservación ahora mismo para que quede garantizada esta tarifa especial — tiene validez de 30 minutos. Le acabo de enviar el acceso directo a su correo. ¿Lo ve en pantalla?"</div></div></div>
       <div class="script-item"><div class="script-header" onclick="toggleScript(this)"><span class="tag tag-g">Discovery</span><span class="script-trigger">Discovery de ocasión especial — estándar Karen M. y Marvin M.</span><span class="chev">▼</span></div><div class="script-body"><div class="script-note">Segunda o tercera pregunta, siempre antes de cotizar. Documentado en Karen M. (chats Brody Summerall, Erin Wrist) y Marvin M. (chat Eric Fay). Genera rapport instantáneo.</div><div class="script-say">"¿Están celebrando alguna ocasión especial durante su visita? Cumpleaños, aniversario, luna de miel…" (Karen M.)<br><br>"¿Alguna celebración especial para esas fechas?" (Marvin M., antes de cotizar cualquier precio)</div></div></div>
+    </div>
+
+    <!-- ============ GALERÍA (transversal) ============ -->
+    <div class="panel" id="panel-galeria">
+      <div class="page-title">Galería</div>
+      <div class="page-sub">Tour virtual 360° por propiedad y banco de fotos y video compartido. El mismo enlace que ves aquí es el que aparece dentro de cada propiedad.</div>
+
+      <div class="sec-head">
+        <div class="sec-title">Fotos destacadas</div>
+        <select id="galFilter" class="gal-select" onchange="renderGalFeatured()"></select>
+        <div class="nav-arrows">
+          <button class="na" onclick="moveGalFeatured(-1)" aria-label="Anteriores">‹</button>
+          <button class="na" onclick="moveGalFeatured(1)" aria-label="Siguientes">›</button>
+        </div>
+      </div>
+      <div class="card" style="padding:18px;margin-bottom:28px">
+        <div class="ev-viewport"><div class="ev-track" id="galFeaturedTrack"></div></div>
+      </div>
+
+      <div class="sec-head"><div class="sec-title">Acceso directo por propiedad</div></div>
+      <div class="gal-prop-grid" id="galPropGrid"></div>
     </div>
 
     <!-- ============ RIVIERA MAYA ============ -->
@@ -535,17 +727,38 @@ button{font-family:inherit}
     <!-- ============ VELAS VALLARTA ============ -->
     <div class="panel" id="panel-vv">
       <div class="prop-header" style="background:linear-gradient(135deg,#DDE7FB 0%,#F6F9FE 100%)">
-        <div class="prop-type">Velas Vallarta · Cinco estrellas · Puerto Vallarta</div>
+        <div class="prop-type">Velas Vallarta &#183; Todo Incluido &#183; Puerto Vallarta</div>
         <div class="prop-name">Velas Vallarta</div>
-        <div class="prop-desc">Resort familiar all-inclusive en la Bahía de Banderas. El más accesible de la colección y punto de entrada ideal para nuevos clientes de la marca. Dos restaurantes (La Ribera y Andrea), Kids Club y la Marina Puerto Vallarta a cinco minutos.</div>
+        <div class="prop-desc">El resort familiar Todo Incluido de mayor tradici&#243;n en Puerto Vallarta. M&#225;s de 4 hect&#225;reas en la zona de La Marina, frente a la Bah&#237;a de Banderas, con 345 suites decoradas con arte mexicano, jardines con pavorreales y estanques de peces koi.</div>
       </div>
       <div class="prop-alerts" data-prop="vv"></div>
-      <div class="suite-grid">
-        <div class="suite"><div class="suite-name">Estudio de lujo</div><div class="suite-meta">Studio · Cocineta · Dos personas</div><div class="suite-price">Desde 580 USD/noche</div><div class="tag-row"><span class="tag tag-g">Punto de entrada</span></div></div>
-        <div class="suite"><div class="suite-name">Suite de una recámara</div><div class="suite-meta">King o dos individuales · Terraza · Vista a jardín o mar</div><div class="suite-price">Desde 750 USD/noche</div><div class="tag-row"><span class="tag tag-b">Recomendada</span></div></div>
-        <div class="suite"><div class="suite-name">Suite familiar de dos recámaras</div><div class="suite-meta">King + dos camas · Sala · Hasta seis personas</div><div class="suite-price">Desde 980 USD/noche</div><div class="tag-row"><span class="tag tag-g">Familias</span><span class="tag tag-b">Bestseller</span></div></div>
+      <div class="prop-layout">
+      <nav class="prop-nav">
+        <div class="pn-label">Material de venta</div>
+        <button class="pn-item active" onclick="propNav(this,'vv','pitch')"><span>&#9889;</span>Pitch r&#225;pido</button>
+        <button class="pn-item" onclick="propNav(this,'vv','suites')"><span>&#128716;</span>Suites y ocupaci&#243;n</button>
+        <button class="pn-item" onclick="propNav(this,'vv','ai')"><span>&#127873;</span>Qu&#233; incluye</button>
+        <button class="pn-item" onclick="propNav(this,'vv','gastro')"><span>&#127869;</span>Gastronom&#237;a y bares</button>
+        <button class="pn-item" onclick="propNav(this,'vv','spa')"><span>&#129496;</span>Spa, fitness y golf</button>
+        <button class="pn-item" onclick="propNav(this,'vv','exp')"><span>&#127881;</span>Experiencias</button>
+        <button class="pn-item" onclick="propNav(this,'vv','bodas')"><span>&#128141;</span>Bodas</button>
+        <button class="pn-item" onclick="propNav(this,'vv','grupos')"><span>&#127963;</span>Grupos y convenciones</button>
+        <button class="pn-item" onclick="propNav(this,'vv','ubica')"><span>&#128205;</span>Ubicaci&#243;n y entorno</button>
+        <button class="pn-item" onclick="propNav(this,'vv','galeria')"><span>&#128444;</span>Galer&#237;a</button>
+      </nav>
+      <div class="prop-body">
+        <div class="ptab-panel active" id="vv-pitch"></div>
+        <div class="ptab-panel" id="vv-suites"></div>
+        <div class="ptab-panel" id="vv-ai"></div>
+        <div class="ptab-panel" id="vv-gastro"></div>
+        <div class="ptab-panel" id="vv-spa"></div>
+        <div class="ptab-panel" id="vv-exp"></div>
+        <div class="ptab-panel" id="vv-bodas"></div>
+        <div class="ptab-panel" id="vv-grupos"></div>
+        <div class="ptab-panel" id="vv-ubica"></div>
+        <div class="ptab-panel" id="vv-galeria"></div>
       </div>
-      <div class="card"><div class="card-h">Argumento clave</div><div class="usp"><div class="usp-icon">🏗</div><div class="usp-text"><strong>Punto de entrada a la colección.</strong> Una vez que se enamoran de Velas, suben a Grand Velas en la siguiente visita. Ideal para clientes con presupuesto más ajustado o familias numerosas.</div></div></div>
+      </div>
       <div class="prop-events" data-prop="vv"></div>
     </div>
 
@@ -589,6 +802,21 @@ button{font-family:inherit}
       <div class="prop-events" data-prop="mdc"></div>
     </div>
 
+    <!-- ============ CASA VELAS ============ -->
+    <div class="panel" id="panel-cv">
+      <div class="prop-header" style="background:linear-gradient(135deg,#F4E9DC 0%,#FCF8F2 100%)">
+        <div class="prop-type">Casa Velas · Solo adultos · Puerto Vallarta</div>
+        <div class="prop-name">Casa Velas</div>
+        <div class="prop-desc">Hotel boutique solo para adultos en Puerto Vallarta, parte de la colección de hoteles boutique de Velas Resorts junto con Grand Velas Boutique Los Cabos y Mar del Cabo.</div>
+      </div>
+      <div class="prop-alerts" data-prop="cv"></div>
+      <div class="card dir-group">
+        <div class="dir-head">📋 Contenido de venta pendiente</div>
+        <p class="note-p">Todavía no tenemos suites, gastronomía ni argumentos de venta de Casa Velas cargados en el hub. En cuanto llegue el material oficial (guía de producto o fact sheet), esta propiedad se completa con la misma estructura que Velas Vallarta.</p>
+      </div>
+      <div class="prop-events" data-prop="cv"></div>
+    </div>
+
     <!-- ============ BLACK FRIDAY ============ -->
     <div class="panel" id="panel-bf">
       <div class="bf-header">
@@ -617,9 +845,25 @@ button{font-family:inherit}
 
 <script>
 /* ============ FUENTE ÚNICA DE DATOS ============ */
-const PROPS={rm:'Riviera Maya',rn:'Riviera Nayarit',lc:'Los Cabos',vv:'Velas Vallarta',bq:'Boutique',mdc:'Mar del Cabo'};
-const CODES={rm:'GVRM',rn:'GVRN',lc:'GVLC',vv:'VV',bq:'GVBC',mdc:'MDC'};
-const TODOS=['rm','rn','lc','vv','bq','mdc'];
+const PROPS={rm:'Riviera Maya',rn:'Riviera Nayarit',lc:'Los Cabos',vv:'Velas Vallarta',bq:'Boutique',mdc:'Mar del Cabo',cv:'Casa Velas'};
+const CODES={rm:'GVRM',rn:'GVRN',lc:'GVLC',vv:'VV',bq:'GVBC',mdc:'MDC',cv:'CV'};
+const TODOS=['rm','rn','lc','vv','bq','mdc','cv'];
+
+/* Banco de fotos y video: una sola biblioteca compartida por las siete propiedades. */
+const MEDIA_BANK='https://multimedia.velasresorts.com/index.php?/';
+/* Tour virtual 360°: propio de cada propiedad. null = todavía no tenemos la URL. */
+const MEDIA_TOURS={rm:null,rn:null,lc:null,vv:'https://virtualtours.velasresorts.com/velas-vallarta',bq:null,mdc:null,cv:null};
+/* Mismos degradados que ya identifican a cada propiedad en su encabezado — una sola fuente. */
+const PROP_BG={
+  rm:'linear-gradient(135deg,#E4DCFB 0%,#F7F4FE 100%)',
+  rn:'linear-gradient(135deg,#DCF2EA 0%,#F5FBF8 100%)',
+  lc:'linear-gradient(135deg,#FBEEDA 0%,#FEFAF3 100%)',
+  vv:'linear-gradient(135deg,#DDE7FB 0%,#F6F9FE 100%)',
+  bq:'linear-gradient(135deg,#F7DCEC 0%,#FDF5FA 100%)',
+  mdc:'linear-gradient(135deg,#E7E3FB 0%,#F8F6FE 100%)',
+  cv:'linear-gradient(135deg,#F4E9DC 0%,#FCF8F2 100%)',
+};
+const PROP_ICON={rm:'🌊',rn:'⛵',lc:'🏔',vv:'🏖',bq:'💎',mdc:'🐾',cv:'🥂'};
 
 /* Avisos: el campo props decide en qué propiedades se replica el aviso */
 const alerts=[
@@ -722,6 +966,103 @@ const bfItems=[
 
 /* ============ PROTOCOLOS (carrusel) ============ */
 let pi=0;
+/* ============ GALERÍA · directorio transversal ============ */
+/* Categorías universales conocidas del banco compartido, sin inventar fotos ni títulos: */
+const GAL_CATS=[
+ {c:'Suites',i:'🛏'},
+ {c:'Alberca y jardines',i:'🌴'},
+ {c:'Restaurantes y bares',i:'🍽'},
+];
+/* Fotos reales por propiedad y categoría. Vacío hasta que llegue el material oficial:
+   agregar una entrada como GAL_PHOTOS['vv:0']='https://.../suite.jpg' basta para que
+   esa tarjeta pase de "pendiente" a copiar la imagen real al portapapeles. */
+const GAL_PHOTOS={};
+
+function toastGal(msg){
+  let t=document.getElementById('galToast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='galToast';
+    t.className='gal-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+async function copyGalPhoto(k,idx,catLabel,propLabel){
+  const url=GAL_PHOTOS[k+':'+idx];
+  if(!url){
+    toastGal(`"${catLabel}" de ${propLabel} todavía no tiene foto cargada`);
+    return;
+  }
+  try{
+    if(navigator.clipboard && window.ClipboardItem){
+      const item=new ClipboardItem({'image/png':fetch(url).then(r=>r.blob())});
+      await navigator.clipboard.write([item]);
+      toastGal('Foto copiada — pégala en el chat con el huésped');
+    }else{
+      window.open(url,'_blank');
+    }
+  }catch(e){
+    toastGal('No se pudo copiar la foto, se abre en una pestaña nueva');
+    window.open(url,'_blank');
+  }
+}
+
+let gfi=0;
+function renderGalFilterOptions(){
+  const sel=document.getElementById('galFilter');
+  sel.innerHTML='<option value="todas">Todas las propiedades</option>'+
+    TODOS.map(k=>`<option value="${k}">${PROPS[k]}</option>`).join('');
+}
+function galFeaturedData(){
+  const sel=document.getElementById('galFilter').value||'todas';
+  const props=sel==='todas'?TODOS:[sel];
+  const out=[];
+  props.forEach(k=>GAL_CATS.forEach((g,idx)=>out.push({k,g,idx})));
+  return out;
+}
+function renderGalFeatured(){
+  gfi=0;
+  const data=galFeaturedData();
+  document.getElementById('galFeaturedTrack').innerHTML=data.map(({k,g,idx})=>
+    `<div class="gf-card" onclick="copyGalPhoto('${k}',${idx},'${g.c.replace(/'/g,"\\'")}','${PROPS[k]}')" title="Clic para copiar la foto">
+      <div class="gf-img" style="background:${PROP_BG[k]}"><span class="gf-badge">Foto pendiente</span>${g.i}
+        <span class="gf-copy">📋 Copiar</span></div>
+      <div class="gf-cat">${g.c}</div><div class="gf-prop">${PROPS[k]}</div></div>`).join('');
+  document.getElementById('galFeaturedTrack').style.transform='translateX(0px)';
+}
+function moveGalFeatured(d){
+  const data=galFeaturedData();
+  const max=Math.max(0,data.length-4);
+  gfi=Math.min(max,Math.max(0,gfi+d));
+  document.getElementById('galFeaturedTrack').style.transform=`translateX(-${gfi*238}px)`;
+}
+function renderGalProps(){
+  document.getElementById('galPropGrid').innerHTML=TODOS.map(k=>{
+    const tour=MEDIA_TOURS[k];
+    return `<div class="gal-card">
+      <div class="gal-card-hero" style="background:${PROP_BG[k]}">${PROP_ICON[k]}</div>
+      <div class="gal-card-body">
+        <div class="gal-card-name">${PROPS[k]}</div>
+        <a class="gal-link" href="${MEDIA_BANK}" target="_blank" rel="noopener">
+          <span>🖼 Acceso a la galería</span><span class="gal-tag shared">Compartido</span></a>
+        ${tour
+          ? `<a class="gal-link" href="${tour}" target="_blank" rel="noopener"><span>🧭 Acceso a tour virtual</span><span class="gal-tag own">Propio</span></a>`
+          : `<div class="gal-link disabled"><span>🧭 Acceso a tour virtual</span><span class="gal-tag pend">Pendiente</span></div>`}
+        <button class="tour-goto" onclick="goProp('${k}')">Ir a la propiedad →</button>
+      </div></div>`;
+  }).join('');
+}
+function renderGaleriaGlobal(){
+  renderGalFilterOptions();
+  renderGalFeatured();
+  renderGalProps();
+}
+
 function renderProto(){
   const p=protocolos[pi];
   document.getElementById('protoCard').innerHTML=
@@ -887,6 +1228,577 @@ function renderCal(){
 }
 function moveMonth(d){calRef=new Date(calRef.getFullYear(),calRef.getMonth()+d,1);renderCal();}
 
+/* ============ ARCHIVO INTERNO · NO SE MUESTRA EN EL DEMO ============
+   Directorio, extensiones, grupos, transfer y fotografía.
+   Para reactivarlos: volver a agregar sus secciones al menú de la propiedad
+   y llamar renderVVDir(), renderVVGrupos() y renderContenidos().
+   ==================================================================== */
+
+/* ============ DIRECTORIO VELAS VALLARTA ============ */
+const M1='ejemplodemail@velasresort.com',M2='ejemplodemail2@velasresort.com',M3='ejemplodemail3@velasresort.com';
+const TEL='322 222 2222';
+
+const vvDir=[
+ {area:'Operación del hotel',icon:'🏨',items:[
+   {n:'Operadora',r:'Conmutador principal · primer punto de entrada',tel:TEL,ext:'505'},
+   {n:'Gerencia',r:'Nombre del encargado por confirmar',tel:TEL,ext:'505',mails:[M1]},
+   {n:'Recepción',r:'Huéspedes en casa, check-in y check-out',tel:TEL,ext:'505',mails:[M1]},
+   {n:'Concierge',r:'Solicitudes y servicios del huésped',tel:TEL,ext:'505',mails:[M1]},
+   {n:'Escritorio de tours',r:'Actividades y excursiones',ext:'505',mails:[M1,M2]},
+   {n:'Spa',r:'Reservas y tratamientos',tel:TEL,ext:'505',mails:[M1]},
+ ]},
+ {area:'Ingresos y administración',icon:'📊',
+  regla:'Cualquier asunto del área de ingresos de <b>Velas Vallarta y Casa Velas</b> debe enviarse a los dos correos al mismo tiempo, para que no haya inconvenientes por falta de información.',
+  reglaMails:[M1,M2],
+  items:[
+   {n:'Auditor de ingresos',r:'Velas Vallarta y Casa Velas · persona encargada por confirmar',tel:TEL+' (directo)',ext:'505',mails:[M1]},
+   {n:'Contraloría',r:'Depósitos · persona encargada por confirmar',ext:'505'},
+   {n:'Recursos Humanos',r:'Personal y vacantes',tel:TEL,ext:'505',mails:[M1],
+    nota:'Las oficinas de RH ubicadas en Velas atienden tanto a Velas Vallarta como a Casa Velas: mismo teléfono y mismo correo.'},
+ ]},
+ {area:'Socios, membresías y condominios',icon:'💳',items:[
+   {n:'Membresías',r:'Venta y seguimiento de socios',tel:TEL,ext:'505',mails:[M1]},
+   {n:'Contabilidad socios',r:'Estados de cuenta y aclaraciones',tel:TEL,ext:'505',mails:[M1]},
+   {n:'Cobranza socio',r:'Solo atención telefónica',tel:TEL},
+   {n:'Condominios',r:'Administración de condominios',tel:TEL,ext:'505'},
+ ]},
+];
+
+const vvGrupos=[
+ {n:'Cotización de grupos y bodas',r:'Primer contacto del departamento',tel:TEL,ext:'505',plantilla:0},
+ {n:'Cotización de grupos sociales',r:'Ventas Leisure · tres responsables, copiar siempre a los tres correos',tel:TEL,mails:[M1,M2,M3],
+  nota:'Responsables por confirmar: nombre, puesto y segmento de cada uno.'},
+ {n:'Grupos nacionales (MICE)',r:'Turismo de negocios · responsable por confirmar',tel:TEL,mails:[M1],
+  nota:'MICE es el acrónimo internacional del turismo de negocios: grupos que viajan por motivos profesionales y requieren logística especial, como salones, cenas grupales e itinerarios.'},
+ {n:'Grupos extranjeros',r:'Cotización en inglés',mails:[M1],plantilla:1},
+ {n:'Áreas y salones sin suites',r:'Persona encargada por confirmar',ext:'505',mails:[M1]},
+ {n:'Bodas',r:'Correo exclusivo de uso interno',mails:[M1],plantilla:2},
+];
+
+const vvPlantillas=[
+ {t:'Solicitud de grupo · español',s:'Cuando no hay nadie de grupos disponible',
+  txt:`Group name:
+Company name:
+Location (city and state):
+Address:
+Preferred property:
+Number of attendees:
+Number of suites:
+Meeting spaces:
+Group dates:
+Alternative dates:`},
+ {t:'Group request · inglés',s:'Grupos extranjeros',
+  txt:`First of all, I would like to thank you for considering Velas Resorts as an option for this important event!
+
+In order to provide you with a formal proposal, could you please complete the remaining information:
+
+Group name:
+Company name:
+Agency name:
+Location (city and state):
+Address:
+Preferred property:
+The number of attendees:
+The number of suites:
+Group dates & pattern:
+Year:
+Alternative dates:
+Dates flexible:
+Meeting spaces or outdoor events:
+
+We look forward to hearing from you at your earliest convenience.`},
+ {t:'Datos para cotizar una boda',s:'Ocho datos obligatorios antes de enviar al departamento',
+  txt:`1. Nombre de la pareja
+2. Fecha estimada de boda
+3. Número de invitados
+4. Teléfono
+5. Correo
+6. Lugar de residencia
+7. Hotel en donde está interesado realizar la boda
+8. Idioma en el que hablan, para enviar la información correcta`},
+];
+
+function chips(c){
+  let h='';
+  if(c.tel)h+=`<button class="chip tel" onclick="copyChip(this,'${c.tel.replace(/[^0-9]/g,'')}')"><i>📞</i>${c.tel}</button>`;
+  if(c.ext)h+=`<button class="chip ext" onclick="copyChip(this,'${c.ext}')"><i>#</i>Ext ${c.ext}</button>`;
+  if(c.mails)h+=c.mails.map(m=>`<button class="chip mail" onclick="copyChip(this,'${m}')"><i>✉</i>${m}</button>`).join('');
+  return `<div class="dir-chips">${h}</div>`;
+}
+function dirItem(c){
+  return `<div class="dir-item"><div class="dir-main"><div class="dir-name">${c.n}</div><div class="dir-role">${c.r}</div>
+    ${c.nota?`<div class="dir-note">${c.nota}</div>`:''}</div>${chips(c)}</div>`;
+}
+function renderVVDir(){
+  document.getElementById('vvDir').innerHTML=vvDir.map(g=>
+    `<div class="card dir-group"><div class="dir-head"><span>${g.icon}</span>${g.area}</div>
+      ${g.regla?`<div class="rule-box small"><div class="rule-i">⚠</div><div>${g.regla}
+        <div class="dir-chips" style="margin-top:8px">${g.reglaMails.map(m=>`<button class="chip mail" onclick="copyChip(this,'${m}')"><i>✉</i>${m}</button>`).join('')}</div></div></div>`:''}
+      ${g.items.map(dirItem).join('')}</div>`).join('');
+}
+function renderVVGrupos(){
+  document.getElementById('vvGrupos').innerHTML=
+    `<div class="card dir-group"><div class="dir-head"><span>👥</span>Contactos de grupos, eventos y bodas</div>
+     ${vvGrupos.map(dirItem).join('')}</div>`;
+  document.getElementById('vvPlantillas').innerHTML=vvPlantillas.map((t,i)=>
+    `<div class="script-item"><div class="script-header" onclick="toggleScript(this)">
+       <span class="tag tag-b">Plantilla</span><span class="script-trigger">${t.t}</span>
+       <span class="dir-role" style="margin-right:6px">${t.s}</span><span class="chev">▼</span></div>
+     <div class="script-body"><pre class="tpl" id="tpl${i}">${t.txt}</pre>
+       <button class="tpl-copy" onclick="copyTpl(this,${i})">Copiar plantilla</button></div></div>`).join('');
+}
+function copyChip(el,v){
+  navigator.clipboard.writeText(v).catch(()=>{});
+  const o=el.innerHTML;el.innerHTML='<i>✓</i>Copiado';el.classList.add('copied');
+  setTimeout(()=>{el.innerHTML=o;el.classList.remove('copied');},1300);
+}
+function copyTpl(btn,i){
+  navigator.clipboard.writeText(vvPlantillas[i].txt).catch(()=>{});
+  btn.textContent='Copiado';setTimeout(()=>btn.textContent='Copiar plantilla',1400);
+}
+function filterDir(q){
+  const lq=q.trim().toLowerCase();
+  document.querySelectorAll('#vvDir .dir-group').forEach(g=>{
+    let vis=0;
+    g.querySelectorAll('.dir-item').forEach(it=>{
+      const hit=!lq||it.textContent.toLowerCase().includes(lq);
+      it.style.display=hit?'':'none';if(hit)vis++;
+    });
+    g.style.display=vis?'':'none';
+  });
+}
+
+/* ============ CONTENIDOS COMPARTIDOS (generales + por propiedad) ============ */
+/* props define en qué propiedades aparece el bloque. TODOS = las seis. */
+const contenidos=[
+ {id:'transfer',pane:'transfer',titulo:'Transfer y transportación',props:TODOS,
+  general:{
+    titulo:'Protocolo de pre-arrival concierge',
+    intro:'Aplica a huéspedes que necesiten transportación y hayan reservado por página web, socios, OTAs o cualquier otro medio.',
+    pasos:[
+      'Pedir al huésped su correo electrónico para que el pre-arrival concierge pueda contactarlo.',
+      'Como ejecutivo, enviar un correo al concierge indicado para que dé seguimiento oportuno.',
+      'Antes de enviar, corroborar con el huésped los tres datos de la reserva.'],
+    check:['Hotel en donde reservó','Fecha de llegada','Nombre bajo el que está la reserva'],
+    alerta:'Confirmar estos tres datos evita un cargo por cambio o cancelación del viaje.'},
+  porProp:{vv:{
+    tarifas:[
+      ['Taxi regular en el aeropuerto','40 USD por una sola persona. A partir de dos personas, 20 USD por persona.'],
+      ['Infantes','Cuentan como pasajero para el cálculo de la tarifa.'],
+      ['Cobertura del servicio','Únicamente aeropuerto a hotel.'],
+      ['Regreso al aeropuerto','Se coordina ya estando en el hotel. Por lo regular se toma un taxi del sitio ubicado en la esquina del hotel.']],
+    sillas:{
+      llegada:'Empresa de transporte VIP: se pueden solicitar booster y car seat, hasta 2 unidades, sin costo adicional. Sujetos a disponibilidad al momento de la llegada. No existe la opción de pedir unidades extra, ni siquiera con costo adicional.',
+      salida:'No hay servicio de car seat del hotel al aeropuerto.'},
+    mail:'ejemplodemail@velasresort.com',
+    guion:'It is important you note that the transportation service is ONLY from the AIRPORT TO THE HOTEL. If you wish to schedule a shuttle to the airport, one day prior to your departure please approach the GUEST SERVICE desk located in the lobby.'}}},
+
+ {id:'foto',pane:'foto',titulo:'Servicios fotográficos',props:TODOS,
+  vigencia:'Vigente a partir del 15 de diciembre de 2025',
+  intro:'Los servicios de fotografía dentro de Velas Resorts se organizan en tres marcas, cada una con atención especializada y una identidad clara por segmento. Todas operan bajo la dirección operativa y creativa de Carolina Accordino, con los mismos estándares de servicio y coordinación.',
+  marcas:[
+   {n:'The Evera Collective',seg:'Familias, parejas e individuales',desc:'Experiencia natural, elegante y emocional.',destacada:true,
+    contactos:[
+     {n:'Responsable por confirmar',r:'Puesto por confirmar',mails:['ejemplodemail@velasresort.com']},
+     {n:'Responsable por confirmar',r:'Puesto y segmento por confirmar',mails:['ejemplodemail@velasresort.com']},
+     {n:'Seguimiento de reservas',r:'Bandeja de seguimiento',mails:['ejemplodemail@velasresort.com']},
+     {n:'Contacto telefónico',r:'Nombre y puesto por confirmar',tel:'322 222 2222'}],
+    condiciones:[
+     ['Sesión','45 minutos con fotógrafo profesional, ofrecida como experiencia de cortesía.'],
+     ['No incluye','Fotografías digitales.'],
+     ['Entrega','Selección curada de 80 a 120 imágenes para adquisición opcional, en alta resolución.'],
+     ['Precio','Desde 45 USD por imagen seleccionada.'],
+     ['Reservación','Mínimo dos días de anticipación.'],
+     ['Cancelación','Al menos 3 horas antes de la sesión programada.'],
+     ['Sujeto a','Disponibilidad y condiciones climáticas.']]},
+   {n:'Arela Weddings',seg:'Bodas',desc:'Especializada exclusivamente en bodas, con un enfoque editorial, sofisticado y cuidadosamente curado.'},
+   {n:'NOVA Corporate Photography',seg:'Corporativo, grupos y activaciones',desc:'Propuesta visual profesional, alineada a los estándares de marca de cada cliente.'}]},
+];
+
+function mailChips(c){
+  let h='';
+  if(c.tel)h+=`<button class="chip tel" onclick="copyChip(this,'${c.tel.replace(/[^0-9]/g,'')}')"><i>📞</i>${c.tel}</button>`;
+  if(c.mails)h+=c.mails.map(m=>`<button class="chip mail" onclick="copyChip(this,'${m}')"><i>✉</i>${m}</button>`).join('');
+  return `<div class="dir-chips">${h}</div>`;
+}
+const badgeGeneral='<span class="scope">Aplica a todas las propiedades</span>';
+
+function renderTransfer(prop){
+  const b=contenidos.find(c=>c.id==='transfer');const g=b.general;const e=b.porProp[prop];
+  let h=`<div class="card dir-group"><div class="dir-head"><span>📩</span>${g.titulo}${badgeGeneral}</div>
+    <p class="note-p" style="margin:12px 0 14px">${g.intro}</p>
+    <div class="proto-steps">${g.pasos.map((t,i)=>`<div class="proto-step"><div class="step-num">${i+1}</div><div class="step-text">${t}</div></div>`).join('')}</div>
+    <div class="req-list">${g.check.map(c=>`<span class="req">✓ ${c}</span>`).join('')}</div>
+    <div class="rule-box small" style="margin-top:14px"><div class="rule-i">⚠</div><div>${g.alerta}</div></div></div>`;
+  if(e){
+    h+=`<div class="card dir-group"><div class="dir-head"><span>🚖</span>Tarifas y cobertura en ${PROPS[prop]}</div>
+      <div class="kv">${e.tarifas.map(([k,v])=>`<div class="kv-row"><div class="kv-k">${k}</div><div class="kv-v">${v}</div></div>`).join('')}</div></div>
+    <div class="card dir-group"><div class="dir-head"><span>🧒</span>Booster y car seat</div>
+      <div class="kv"><div class="kv-row"><div class="kv-k">Llegada · aeropuerto a hotel</div><div class="kv-v">${e.sillas.llegada}</div></div>
+      <div class="kv-row"><div class="kv-k">Salida · hotel a aeropuerto</div><div class="kv-v alerta">${e.sillas.salida}</div></div></div>
+      <div class="dir-item" style="border-top:1px solid var(--line);margin-top:6px">
+        <div class="dir-main"><div class="dir-name">Contacto de transportación</div><div class="dir-role">Enviar aquí la solicitud del huésped</div></div>
+        ${mailChips({mails:[e.mail]})}</div></div>
+    <div class="card dir-group"><div class="dir-head"><span>💬</span>Guion para el huésped · inglés</div>
+      <pre class="tpl" style="margin-top:4px">${e.guion}</pre>
+      <button class="tpl-copy" onclick="copyTxt(this,${JSON.stringify(e.guion)})">Copiar guion</button></div>`;
+  }
+  return h;
+}
+
+function renderFoto(){
+  const b=contenidos.find(c=>c.id==='foto');
+  let h=`<div class="card dir-group"><div class="dir-head"><span>📸</span>Estructura de marcas${badgeGeneral}</div>
+    <div class="vig">${b.vigencia}</div><p class="note-p" style="margin-top:10px">${b.intro}</p></div>`;
+  b.marcas.forEach(m=>{
+    h+=`<div class="card dir-group"><div class="dir-head"><span>${m.destacada?'⭐':'▪'}</span>${m.n}<span class="scope alt">${m.seg}</span></div>
+      <p class="note-p" style="margin:10px 0">${m.desc}</p>`;
+    if(m.contactos)h+=m.contactos.map(c=>
+      `<div class="dir-item"><div class="dir-main"><div class="dir-name">${c.n}</div><div class="dir-role">${c.r}</div></div>${mailChips(c)}</div>`).join('');
+    if(m.condiciones)h+=`<div class="kv" style="margin-top:12px">${m.condiciones.map(([k,v])=>
+      `<div class="kv-row"><div class="kv-k">${k}</div><div class="kv-v">${v}</div></div>`).join('')}</div>`;
+    h+=`</div>`;
+  });
+  return h;
+}
+function copyTxt(btn,t){
+  navigator.clipboard.writeText(t).catch(()=>{});
+  const o=btn.textContent;btn.textContent='Copiado';setTimeout(()=>btn.textContent=o,1400);
+}
+function renderContenidos(){
+  const t=document.getElementById('vv-transfer');if(t)t.innerHTML=renderTransfer('vv');
+  const f=document.getElementById('vv-foto');if(f)f.innerHTML=renderFoto();
+}
+function propNav(el,prop,pane){
+  const c=el.closest('.panel');
+  c.querySelectorAll('.pn-item').forEach(i=>i.classList.remove('active'));
+  c.querySelectorAll('.ptab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(prop+'-'+pane).classList.add('active');
+  document.querySelector('.content').scrollTop=0;
+}
+
+/* ============ VELAS VALLARTA · MATERIAL DE VENTA ============ */
+/* Fuente: Guía de Producto VV.04.2026 y Fact Sheet VV.06.2026 */
+
+const vvStats=[
+ ['345','suites'],['4+','hectáreas'],['5 min','al aeropuerto'],['15 min','al centro y malecón'],
+ ['3','restaurantes, uno de temporada'],['3','bares'],['700','pax en convenciones'],
+];
+
+const vvGanchos=[
+ {t:'Espigón sobre el mar',p:'Masajes y ceremonias en un muelle privado entre el mar y la playa. Es la imagen que vende sola: pídela como argumento visual antes del precio.'},
+ {t:'Cinco minutos del aeropuerto',p:'Menos traslado, más vacaciones. Para familias con niños y estancias cortas, este dato vale más que un descuento.'},
+ {t:'De 36 a 509 m²',p:'La escala de suites más amplia del portafolio: entra un viajero solo en Estudio y cabe un grupo de 8 adultos en Presidencial.'},
+ {t:'Familias numerosas sin dividirse',p:'Tres recámaras para hasta 7 adultos, o Lock-Off que se integra y se separa según convenga. Pocos resorts resuelven esto en una sola reserva.'},
+ {t:'Cuatro campos de golf cerca',p:'Marina Vallarta a 5 minutos y Vista Vallarta a 10, ambos con tarifa preferencial. Gancho fuerte para el viajero de golf.'},
+ {t:'Tradición y regreso',p:'Es el resort familiar Todo Incluido de mayor tradición en Puerto Vallarta: muchos huéspedes vienen de niños y regresan con sus hijos.'},
+];
+
+const vvAclarar=[
+ 'El restaurante de temporada (el pop-up gastronómico de la guía es el mismo lugar) solo abre en ciertas temporadas: confirmar disponibilidad antes de ofrecerlo.',
+ 'Golf, spa, niñera, tours, lavandería, atención médica y agencia de viajes tienen costo adicional.',
+ 'Inventario real en categorías especiales: 4 Master, 6 Frente al Mar y 1 Presidencial. Úsalo como urgencia verdadera, nunca inventada.',
+ 'Andrea pide reservación solo para cena; La Ribera no la requiere.',
+ 'De noche el código en Andrea y el pop-up es casual-elegante: sin sandalias de playa, camisetas ni shorts.',
+];
+
+const vvSuites=[
+ {cat:'Estándar',items:[
+  {n:'Estudio de Lujo',inv:'92',ocu:'Hasta 3 adultos, o 2 adultos y 2 menores',m2:'36 m²',cama:'1 King o 2 individuales',
+   dif:['Sofá cama matrimonial','Desayunador','Baño completo con regadera'],
+   pitch:'Ideal para familias pequeñas, parejas o viajeros solos. Es el punto de entrada a la marca.'},
+  {n:'Suite de una Recámara',inv:'66',ocu:'Hasta 3 adultos, o 2 adultos y 2 menores',m2:'80 m²',cama:'1 King o 2 individuales',
+   dif:['Terraza privada amueblada','Sala con sofá cama matrimonial y pantalla de 43"','Comedor para 2 personas','Baño completo con regadera o tina','Vista al mar'],
+   pitch:'Vista al mar y a los jardines desde terraza privada. El salto de valor más barato del hotel.'},
+  {n:'Suite de Lujo de una Recámara',inv:'91',ocu:'Hasta 3 adultos, o 2 adultos y 2 menores',m2:'91 m²',cama:'1 King',
+   dif:['Terraza privada con área de estar','Sala en L con pantalla de 43"','Comedor para 4 personas','Baño completo con tina','Vista al mar'],
+   pitch:'Recámara conectada a sala de estar y comedor para 4. Upsell natural desde la de una recámara.'}]},
+ {cat:'Familiar',items:[
+  {n:'Suite Lock-Off de 2 Recámaras',inv:'Bajo petición',ocu:'Hasta 4 adultos, 2 menores (4 a 15 años) y 1 infante (0 a 3 años)',m2:'127 m²',cama:'2 camas King',
+   dif:['Terraza privada con área de estar y mesa para 4','Sala en L','Comedor para 4 personas','Dos baños con regadera','Vista al mar'],
+   pitch:'Se integra o se separa según la necesidad: familias que viajan con abuelos o dos parejas de amigos.'},
+  {n:'Suite Familiar de dos Recámaras',inv:'65',ocu:'Hasta 5 adultos, o 4 adultos y 2 menores',m2:'98 m²',cama:'1 King y 2 matrimoniales',
+   dif:['Terraza privada con área de estar','Sala en L con pantalla de 43"','Barra con bancos','Dos baños, uno con tina y otro con regadera','Vista al mar'],
+   pitch:'La primera recámara tiene terraza con vista al mar; la segunda, dos camas matrimoniales para los niños.'},
+  {n:'Suite Familiar de tres Recámaras',inv:'20',ocu:'Hasta 7 adultos, o 6 adultos y 2 menores',m2:'129 m²',cama:'1 King, 1 Queen y 2 individuales',
+   dif:['Terraza privada con mesa para 4 y vista al mar','Sala en L con pantalla de 43"','Comedor para 6 personas','Dos baños, uno con tina y otro con regadera','Vista al mar'],
+   pitch:'Cada miembro con su propio espacio. Solo 20 unidades: la más pedida en Navidad y Semana Santa.'}]},
+ {cat:'Especial',items:[
+  {n:'Suite Master',inv:'4',ocu:'Hasta 7 adultos, o 6 adultos y 2 menores',m2:'179 m²',cama:'2 King y 2 individuales',
+   dif:['Terraza privada con piscina','Sala en L con pantalla de 43"','Comedor para 6 personas','Tres baños completos, uno con tina y dos con regadera','Vista al mar'],
+   pitch:'Piscina en la terraza privada. Solo 4 unidades en todo el resort.'},
+  {n:'Suite Frente al Mar',inv:'6',ocu:'Hasta 7 adultos, o 6 adultos y 2 menores',m2:'250 m²',cama:'2 King y 2 individuales',
+   dif:['Terraza de 180° frente al mar','Sala en L con pantalla de 43"','Comedor para 6 personas','Dos baños, uno con tina y otro con regadera','Vista frontal al mar'],
+   pitch:'Terraza de 180 grados que abarca recámara principal, sala y comedor. Para el que compra la vista.'},
+  {n:'Suite Presidencial',inv:'1',ocu:'Hasta 8 adultos y 2 menores',m2:'509 m²',cama:'King en recámara principal e individuales en las adicionales',
+   dif:['Cuatro recámaras','Terraza privada con piscina y camastros','Tres salas y pantalla de 50"','Comedor para 8 personas','Tres baños con regadera, uno con tina, y medio baño','Vista al mar'],
+   pitch:'La más amplia del resort, con arcos estilo hacienda enmarcando el Pacífico. Única en inventario.'}]},
+];
+
+const vvAmenSuite=['Servicio a suite las 24 horas','Servicio de cortesía nocturna','Minibar surtido diariamente con botanas y bebidas','Amenidades de baño europeas','Almohadas y edredones de pluma de ganso','Pantalla de alta definición con cable digital','Teléfono con línea directa','Wi-Fi','Caja de seguridad con espacio para laptop','Clima individual y control de humedad','Llave de suite electrónica','Plancha y tabla de planchar','Secadora de cabello'];
+
+const vvIncluye=['Suites decoradas al estilo contemporáneo mexicano','Restaurantes Andrea y La Ribera, a la carta o buffet, con noches temáticas','Restaurante de temporada para cenas','Alhambra Lobby Bar y Aqua Bar con bebidas premium ilimitadas','Servicio a suite las 24 horas','Minibar en suite surtido diariamente','Servicio de Concierge','Kids\u2019 Club de 4 a 12 años con programa de actividades','Shows nocturnos para toda la familia','Dos piscinas, camino de agua, cascada y piscina para niños','AMET Spa: acceso a instalaciones','Canchas de tenis, básquetbol y pickleball','Programa de actividades por temporada','Gimnasio','Tarifas preferenciales en golf','Clases de cocina, noche de casino, fiesta mexicana y experiencia Kawitu','Wi-Fi, cajero automático y estacionamiento','Impuestos y propinas'];
+
+const vvExtra=['Servicio de niñera','Agencia de viajes','Tours y transportación','Rondas de golf','Tratamientos de AMET Spa y salón de belleza','Masaje en pareja y cenas románticas','Lavandería y tintorería','Atención médica','Boutique y minisúper','Centro de Negocios'];
+
+const vvRest=[
+ {n:'Andrea',tipo:'Cocina internacional',cap:'120 personas',
+  hor:['Desayuno 7:30 a.m. – 12:00 p.m.','Comida 12:30 – 5:30 p.m.','Cena 6:30 – 10:30 p.m.'],
+  desc:'Buffet y a la carta con noches temáticas: pescados y mariscos frescos, platillos franceses, italianos, asiáticos y mexicanos, con extensa carta de vinos. Terraza cálida o interior con aire acondicionado.',
+  dress:'Casual de día, sin traje de baño y con camisa obligatoria. Casual-elegante de noche.',
+  reserva:'Reservación solo para cena, a través de Guest Service.'},
+ {n:'La Ribera',tipo:'Mariscos y cortes finos, frente al mar',cap:'250 personas',
+  hor:['Desayuno 7:30 a.m. – 12:00 p.m.','Comida 12:30 – 5:30 p.m.','Cena 6:30 – 10:30 p.m.'],
+  desc:'Buffet y a la carta con noches temáticas: cortes finos, pescados y mariscos frescos, hamburguesas gourmet, ensaladas, ceviches y platillos mexicanos, con la brisa de la playa.',
+  dress:'Casual de día: shorts y playera o camisa; traje de baño con pareo o salida de baño. No se permite entrar en traje de baño mojado.',
+  reserva:'No requiere reservación.'},
+ {n:'Restaurante de temporada',tipo:'Sabores mexicanos · también llamado pop-up gastronómico',cap:'Por temporada',
+  hor:['Cena 6:30 – 10:30 p.m.'],
+  desc:'Pescado ahumado, empanadas de queso y postres típicos, con melodías de la región en vivo o mariachi.',
+  dress:'Casual-elegante.',
+  reserva:'Informes y reservaciones con Guest Service. Abre solo por temporada: confirmar antes de ofrecerlo.'},
+];
+
+const vvBares=[
+ {n:'Alhambra Lobby Bar',h:'7:30 a.m. – 10:30 p.m.',d:'Copa de vino, cocteles y snacks con música, entretenimiento nocturno y noches temáticas. Código casual, sin reservación.'},
+ {n:'Aqua Bar',h:'11:00 a.m. – 7:00 p.m.',d:'Swim-up bar en el área de la piscina, con vistas a la Bahía de Banderas y snacks como hamburguesas y hot dogs.'},
+ {n:'Crepería',h:'1:00 – 7:00 p.m.',d:'En el área del lobby, crepas dulces y saladas hechas al momento y personalizables.'},
+];
+
+const vvSpa={
+ horario:'Lunes a sábado de 9:00 a.m. a 7:00 p.m. · Domingos de 9:00 a.m. a 5:00 p.m.',
+ inst:['3 cabinas interiores y 3 exteriores','Cabinas en el espigón frente a la playa','Salón de belleza, de 9:00 a.m. a 7:00 p.m.'],
+ menu:['Masajes','Faciales','Envolventes corporales','Tratamientos especiales'],
+ gym:'Caminadoras, elípticas, bicicletas fijas, pesas libres, mancuernas, equipo de yoga y bandas de resistencia. Agua, toallas y asesoría básica de rutinas. Pantallas con internet y bluetooth. Abierto de lunes a domingo, de 7:00 a.m. a 7:00 p.m.',
+ golf:[['Marina Vallarta','Diseño de Joe Finger · 18 hoyos','A 5 minutos'],['Vista Vallarta','Jack Nicklaus y Tom Weiskopf · 18 hoyos','A 10 minutos'],['El Tigre','Campo cercano del destino','En la zona'],['Flamingos','Campo cercano del destino','En la zona']],
+};
+
+const vvExp=[
+ {t:'Entretenimiento',i:'🎭',l:['Fiesta mexicana','Experiencia Kawitu','Shows de día y nocturnos','Cenas temáticas','Noche de casino','Karaoke']},
+ {t:'Deportes y aventura',i:'🎾',l:['Tenis','Básquetbol','Voleibol','Pickleball','Clases de yoga frente al mar','Aquaeróbics','Golf (con costo)']},
+ {t:'Familias',i:'👨‍👩‍👧',l:['Kids\u2019 Club de 4 a 12 años','Juegos de mesa','Talleres de manualidades','Búsqueda del tesoro','Clases de cocina']},
+ {t:'Parejas',i:'💞',l:['Masaje en pareja (con costo)','Cenas románticas (con costo)','Experiencias románticas','Atardeceres en el espigón']},
+];
+
+const vvBodasTarifas=[
+ ['2026 · mayo a diciembre','Desde 215 USD'],
+ ['2027 · enero a abril','Desde 255 USD'],
+ ['2027 · mayo a diciembre','Desde 224 USD'],
+];
+const vvBodasPrecios=[
+ {t:'Evento privado',n:'108 USD',u:'por persona',d:'Experiencia de 5 horas y media que incluye ceremonia, cóctel y recepción, con servicio de planificación personalizado. Impuestos y cargos por servicio incluidos.'},
+ {t:'Esenciales para el gran día',n:'13,707 USD',u:'desde, para 50 personas',d:'Audiovisual con sonido e iluminación profesional, fotografía profesional de 5 horas, 1 ramo y 1 boutonniere, y cuota de montaje del día (ceremonia, cóctel y recepción). No incluye la estancia.'},
+];
+/* Locaciones: [nombre, tipo, capacidad, horario límite, fuente, nota]
+   Fuente oficial: Guía de Producto VV.04.2026. Las tres locaciones que la guía no
+   lista se toman del material de bodas y quedan marcadas como tal. */
+const vvBodasEsc=[
+ ['Playa','Exterior','800','Hasta 11:00 p.m.','guia','El esplendor del Pacífico y los atardeceres como marco. La sede para bodas grandes.'],
+ ['Centro de Convenciones Grand Alejandra','Interior','600','Hasta 1:00 a.m.','guia','Salón versátil y plan B por clima. Único espacio con licencia más allá de las 11.'],
+ ['Terraza de la piscina','Exterior','200','Hasta 11:00 p.m.','guia','Vista al mar para bailar toda la noche.'],
+ ['Jardín La Ribera','Exterior','150','Hasta 11:00 p.m.','guia','Al aire libre, justo frente al mar, con vistas a la Bahía de Banderas.'],
+ ['Espigón','Exterior','90','Hasta 11:00 p.m.','guia','Muelle entre el mar y la playa: caminar al altar sobre el agua. Ceremonias pequeñas.'],
+ ['Playa del espigón','Exterior','450','Por confirmar','bodas','Arena junto al muelle. Alternativa de gran capacidad.'],
+ ['Grand Foyer','Interior','220','Por confirmar','bodas','Espacio interior de paso, ideal para cóctel.'],
+ ['Jardín Torre C','Exterior','120','Por confirmar','bodas','Jardín tropical para ceremonias medianas.'],
+];
+const vvBodasIncluye=['Coctel de bienvenida de una hora','Ascenso de categoría de suite para la pareja','Wedding Planner certificada','1 suite de cortesía por cada 15 suites pagadas por noche','Atención personalizada del equipo de reservas'];
+const vvBodasCasa=['Planos y diagramas del espacio para eventos','Fuegos artificiales (puede requerir permiso)','Plan de respaldo por clima inclemente','Referencias de proveedores','Pastel de bodas con pastelero en casa'];
+const vvBodasPasos=[
+ ['Propuesta personalizada','La pareja cuenta sus imprescindibles y se arma una propuesta a la medida.'],
+ ['Confirmación de fecha y bloqueo de suites','Con el contrato firmado y el pago inicial, la boda queda asegurada.'],
+ ['Enlace de reserva para invitados','Liga exclusiva donde cada invitado reserva y paga su estancia con tarifa y disponibilidad preferenciales.'],
+ ['Conoce a tu Wedding Planner','Un experto toma cada detalle, del menú a la decoración.'],
+ ['Disfruta el proceso','Con los detalles bajo control, la pareja solo vive el momento.'],
+];
+const vvBodasPoliticas=[
+ {t:'Planes de pago',i:'💳',l:['Depósito inicial de 100 USD por persona para asegurar la reservación del grupo','El resto se paga en cuotas','Opciones de pago flexibles','Liga personalizada: cada invitado reserva y paga su estancia']},
+ {t:'Políticas flexibles',i:'📄',l:['El bloqueo de suites se ajusta dentro del plazo permitido','El saldo final se liquida hasta 30 días antes del evento','Plan B por clima: espacio interior de respaldo']},
+ {t:'Cancelación flexible',i:'🔄',l:['Cambio de fechas u ocupación (sencilla, doble o triple) sin penalización hasta 31 días antes de la llegada','Estancia mínima de 3 noches']},
+];
+const vvBodasTesti=[
+ {n:'Danielle y Richard',t:'Celebré mi boda aquí sin siquiera haber visto el lugar antes, y superaron todas mis expectativas. Tuve 75 invitados hospedados en el resort y todos coincidieron en que fue el mejor lugar para una boda que han visto en mucho tiempo.'},
+ {n:'Ashley y Noah',t:'El equipo se aseguró de cumplir con todas nuestras necesidades. Obtuvimos exactamente lo que queríamos, y dentro de nuestro presupuesto. Todos los proveedores y servicios fueron tal como se prometió.'},
+];
+const vvBodasAclarar=[
+ 'Las locaciones están sujetas a cargo extra: no prometer una sede sin confirmar su costo.',
+ 'La tarifa de Esenciales no incluye la estancia y varía según proveedores y decoración elegida.',
+ 'Las tarifas son estacionales y pueden cambiar sin previo aviso: confirmar antes de enviarlas por escrito.',
+ 'La estancia mínima es de 3 noches y las políticas cambian según la fecha y el número de suites bloqueadas.',
+ 'Capacidad sujeta al tipo de montaje solicitado.',
+];
+
+const vvSalones=[
+ ['Grand Alejandra','650','33.5','19.5','4.5','700','450','1,250','600'],
+ ['Fernanda','220','19.5','11.5','4.5','200','120','300','180'],
+ ['Andrea','220','19.5','11.5','4.5','200','120','300','180'],
+ ['Alejandra','220','19.5','11.5','4.5','200','120','300','180'],
+ ['Alejandra I','70.5','11','6.5','4.5','60','30','90','50'],
+ ['Alejandra II','70.5','11','6.5','4.5','60','30','90','50'],
+ ['Alejandra III','70.5','11','6.5','4.9','60','30','90','50'],
+];
+const vvGruposTipos=['Convenciones y conferencias','Reuniones de negocios','Banquetes de gala','Recepciones con cena','Cocteles','Graduaciones','Fiestas mexicanas en la playa','Eventos en jardines'];
+const vvGruposArg=[
+ {t:'650 m² divisibles',p:'El Centro de Convenciones se separa en salones independientes, así que el mismo espacio sirve para una plenaria de 700 y para tres sesiones simultáneas de 60.'},
+ {t:'Licencia hasta la 1:00 a.m.',p:'Grand Alejandra es el único espacio que opera más allá de las 11:00 p.m. Dato decisivo cuando el grupo quiere fiesta larga.'},
+ {t:'Todo en la misma sede',p:'Hospedaje, sesiones, coffee breaks y cena de clausura sin traslados: el grupo no se dispersa y el costo logístico baja.'},
+ {t:'Coordinadores propios',p:'El hotel asigna coordinación para armar el programa completo, con gastronomía creativa y equipo audiovisual.'},
+];
+
+const vvUbica={
+ dir:'Paseo de la Marina Norte #585, Marina Vallarta, Puerto Vallarta, Jalisco, México, 48335.',
+ texto:'Zona exclusiva de La Marina: a 5 minutos del Aeropuerto Internacional y del campo Marina Vallarta, y a 15 minutos del centro histórico y el malecón. Kilómetros de costa rodeados por la Sierra Madre.',
+ bloques:[
+  {t:'Golf de clase mundial',i:'⛳',l:['Marina Vallarta','Vista Vallarta','El Tigre','Flamingos']},
+  {t:'Experiencias y naturaleza',i:'🚤',l:['Tours de Vallarta Adventures','Barco a Yelapa, Caletas, Islas Marietas y Majahuitas','Pueblos huicholes en la montaña','Tour en barco pirata','Canopy','Flyboard','Paracaidismo','Pesca deportiva']},
+  {t:'Pueblos mágicos y playas',i:'🏝',l:['San Sebastián','Bucerías','Sayulita','San Pancho','Mismaloya','Yelapa']},
+  {t:'Centro histórico',i:'⛪',l:['Parroquia de Nuestra Señora de Guadalupe','Malecón con esculturas y arte urbano','Anfiteatro de Los Arcos','Galerías, tiendas y restaurantes']},
+ ],
+};
+
+/* ---- renderizadores ---- */
+function li(arr){return `<ul class="tick">${arr.map(x=>`<li>${x}</li>`).join('')}</ul>`;}
+
+function renderVVPitch(){
+  document.getElementById('vv-pitch').innerHTML=
+   `<div class="stat-grid">${vvStats.map(([n,l])=>`<div class="stat"><div class="stat-n">${n}</div><div class="stat-l">${l}</div></div>`).join('')}</div>
+    <div class="card dir-group"><div class="dir-head"><span>🎯</span>Ganchos de venta</div>
+      <div class="hook-grid">${vvGanchos.map(g=>`<div class="hook"><div class="hook-t">${g.t}</div><div class="hook-p">${g.p}</div></div>`).join('')}</div></div>
+    <div class="card dir-group"><div class="dir-head"><span>⚠</span>Aclarar siempre antes de cerrar</div>
+      ${li(vvAclarar)}</div>`;
+}
+
+function renderVVSuites(){
+  let h=`<div class="card dir-group" style="overflow-x:auto"><div class="dir-head"><span>📊</span>Comparativa de categorías</div>
+    <table class="dtable"><thead><tr><th>Suite</th><th>Inventario</th><th>Máxima ocupación</th><th>Tamaño</th><th>Camas</th></tr></thead><tbody>`;
+  vvSuites.forEach(g=>{
+    h+=`<tr class="band"><td colspan="5">${g.cat}</td></tr>`;
+    g.items.forEach(x=>{h+=`<tr><td class="b">${x.n}</td><td>${x.inv}</td><td>${x.ocu}</td><td class="b">${x.m2}</td><td>${x.cama}</td></tr>`;});
+  });
+  h+=`</tbody></table></div>`;
+  vvSuites.forEach(g=>{
+    h+=`<div class="sec-head" style="margin-top:20px"><div class="sec-title">Categoría ${g.cat}</div></div><div class="suite-grid">`;
+    h+=g.items.map(x=>`<div class="suite"><div class="suite-name">${x.n}</div>
+      <div class="suite-meta">${x.m2} · ${x.cama}</div>
+      <div class="tag-row" style="margin:0 0 10px"><span class="tag tag-b">${x.ocu}</span><span class="tag ${x.inv==='1'||x.inv==='4'||x.inv==='6'?'tag-r':'tag-g'}">Inventario ${x.inv}</span></div>
+      <div class="pitch-line">${x.pitch}</div>${li(x.dif)}</div>`).join('');
+    h+=`</div>`;
+  });
+  h+=`<div class="rule-box small"><div class="rule-i">📘</div><div>Inventario según la <strong>Guía de Producto VV.04.2026</strong>, fuente oficial para este hub. Otros materiales circulan con un desglose distinto: usar siempre estas cifras.</div></div>`;
+  h+=`<div class="card dir-group"><div class="dir-head"><span>🛏</span>Amenidades en todas las suites</div>${li(vvAmenSuite)}</div>`;
+  document.getElementById('vv-suites').innerHTML=h;
+}
+
+function renderVVAi(){
+  document.getElementById('vv-ai').innerHTML=
+   `<div class="grid2">
+      <div class="card dir-group"><div class="dir-head"><span>✅</span>Incluido en la tarifa</div>${li(vvIncluye)}</div>
+      <div class="card dir-group"><div class="dir-head"><span>💲</span>Con cargo adicional</div>${li(vvExtra)}
+        <div class="rule-box small" style="margin-top:14px"><div class="rule-i">⚠</div><div>Mencionar estos cargos <b>antes</b> de cerrar evita la queja en el check-out y protege la reseña.</div></div></div>
+    </div>`;
+}
+
+function renderVVGastro(){
+  let h=vvRest.map(r=>`<div class="card dir-group"><div class="dir-head"><span>🍽</span>${r.n}<span class="scope alt">${r.tipo}</span></div>
+    <div class="chip-row">${r.hor.map(x=>`<span class="hchip">${x}</span>`).join('')}</div>
+    <p class="note-p" style="margin:12px 0">${r.desc}</p>
+    <div class="kv"><div class="kv-row"><div class="kv-k">Capacidad</div><div class="kv-v">${r.cap}</div></div>
+      <div class="kv-row"><div class="kv-k">Código de vestimenta</div><div class="kv-v">${r.dress}</div></div>
+      <div class="kv-row"><div class="kv-k">Reservación</div><div class="kv-v">${r.reserva}</div></div></div></div>`).join('');
+  h+=`<div class="card dir-group"><div class="dir-head"><span>🍹</span>Bares</div>
+    <div class="kv">${vvBares.map(b=>`<div class="kv-row"><div class="kv-k">${b.n}<div class="kv-h">${b.h}</div></div><div class="kv-v">${b.d}</div></div>`).join('')}</div></div>`;
+  document.getElementById('vv-gastro').innerHTML=h;
+}
+
+function renderVVSpa(){
+  document.getElementById('vv-spa').innerHTML=
+   `<div class="card dir-group"><div class="dir-head"><span>🧖</span>AMET Spa</div>
+      <div class="chip-row"><span class="hchip">${vvSpa.horario}</span></div>
+      <div class="grid2" style="margin-top:14px">
+        <div><div class="sub-h">Instalaciones</div>${li(vvSpa.inst)}</div>
+        <div><div class="sub-h">Menú de tratamientos</div>${li(vvSpa.menu)}</div>
+      </div>
+      <div class="rule-box small" style="margin-top:14px"><div class="rule-i">💡</div><div>Las cabinas del espigón, sobre el mar, son el diferenciador visual del hotel: descríbelas antes de hablar de precio.</div></div></div>
+    <div class="card dir-group"><div class="dir-head"><span>🏋</span>Gimnasio</div><p class="note-p">${vvSpa.gym}</p></div>
+    <div class="card dir-group"><div class="dir-head"><span>⛳</span>Golf con tarifa preferencial</div>
+      <div class="kv">${vvSpa.golf.map(([n,d,t])=>`<div class="kv-row"><div class="kv-k">${n}</div><div class="kv-v">${d}<div class="kv-h">${t}</div></div></div>`).join('')}</div></div>`;
+}
+
+function renderVVExp(){
+  document.getElementById('vv-exp').innerHTML=
+   `<div class="grid2">${vvExp.map(g=>`<div class="card dir-group"><div class="dir-head"><span>${g.i}</span>${g.t}</div>${li(g.l)}</div>`).join('')}</div>
+    <div class="card dir-group"><div class="dir-head"><span>📅</span>Programa por temporada</div>
+      <p class="note-p">Actividades para todas las edades en primavera, Semana Santa, Pascua, verano, Navidad y Año Nuevo. Si el huésped viaja en esas fechas, es un argumento de valor: el resort programa entretenimiento adicional sin costo.</p></div>`;
+}
+
+function renderVVBodas(){
+  document.getElementById('vv-bodas').innerHTML=
+   `<div class="card dir-group"><div class="dir-head"><span>💲</span>Tarifas de hospedaje para boda<span class="scope alt">Por persona, por noche, ocupación doble</span></div>
+      <div class="rate-grid">${vvBodasTarifas.map(([t,n])=>`<div class="rate"><div class="rate-t">${t}</div><div class="rate-n">${n}</div></div>`).join('')}</div>
+      <p class="note-p" style="margin-top:12px">Impuestos y cargos por servicio incluidos. Las tarifas son estacionales y pueden ajustarse sin previo aviso.</p></div>
+
+    <div class="grid2">${vvBodasPrecios.map(x=>`<div class="card dir-group"><div class="dir-head"><span>🎉</span>${x.t}</div>
+      <div class="big-n">${x.n}<span>${x.u}</span></div><p class="note-p" style="margin-top:10px">${x.d}</p></div>`).join('')}</div>
+
+    <div class="card dir-group" style="overflow-x:auto"><div class="dir-head"><span>📍</span>Locaciones para boda</div>
+      <table class="dtable"><thead><tr><th>Locación</th><th>Tipo</th><th>Capacidad</th><th>Horario límite</th><th>Cuándo ofrecerla</th></tr></thead>
+      <tbody>${vvBodasEsc.map(([n,ti,ca,ho,fu,d])=>`<tr><td class="b">${n}${fu==='bodas'?'<div class="src">Material de bodas</div>':''}</td><td><span class="tag ${ti==='Interior'?'tag-b':'tag-g'}">${ti}</span></td><td class="b">${ca} pax</td><td>${ho}</td><td>${d}</td></tr>`).join('')}</tbody></table>
+      <p class="note-p" style="margin-top:12px">Dos locaciones interiores y seis exteriores, sujetas a cargo extra. Las capacidades provienen de la Guía de Producto; las tres sedes marcadas solo aparecen en el material de bodas. La capacidad final depende del tipo de montaje solicitado.</p></div>
+
+    <div class="grid2">
+      <div class="card dir-group"><div class="dir-head"><span>✅</span>Incluido en la boda</div>${li(vvBodasIncluye)}</div>
+      <div class="card dir-group"><div class="dir-head"><span>🏠</span>Servicios de boda en casa</div>${li(vvBodasCasa)}</div>
+    </div>
+
+    <div class="card dir-group"><div class="dir-head"><span>🗺</span>El proceso, en cinco pasos</div>
+      <div class="proto-steps">${vvBodasPasos.map(([t,d],i)=>`<div class="proto-step"><div class="step-num">${i+1}</div><div class="step-text"><strong>${t}.</strong> ${d}</div></div>`).join('')}</div></div>
+
+    <div class="grid2">${vvBodasPoliticas.map(g=>`<div class="card dir-group"><div class="dir-head"><span>${g.i}</span>${g.t}</div>${li(g.l)}</div>`).join('')}</div>
+
+    <div class="card dir-group"><div class="dir-head"><span>💬</span>Prueba social</div>
+      ${vvBodasTesti.map(t=>`<div class="testi"><div class="testi-t">“${t.t}”</div><div class="testi-n">${t.n}</div></div>`).join('')}
+      <p class="note-p" style="margin-top:10px">Ambos testimonios están publicados en Tripadvisor: sirven para responder la objeción de "no conozco el lugar".</p></div>
+
+    <div class="card dir-group"><div class="dir-head"><span>⚠</span>Aclarar siempre antes de cotizar</div>${li(vvBodasAclarar)}</div>`;
+}
+
+function renderVVGrupos2(){
+  document.getElementById('vv-grupos').innerHTML=
+   `<div class="card dir-group"><div class="dir-head"><span>🏛</span>Capacidad por montaje</div>
+      <div style="overflow-x:auto"><table class="dtable"><thead><tr><th>Salón</th><th>Área m²</th><th>Largo</th><th>Ancho</th><th>Alto</th><th>Auditorio</th><th>Escuela</th><th>Coctel</th><th>Banquete</th></tr></thead>
+      <tbody>${vvSalones.map(r=>`<tr>${r.map((c,i)=>`<td class="${i===0?'b':''}">${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>
+    <div class="card dir-group"><div class="dir-head"><span>🎯</span>Argumentos para grupos</div>
+      <div class="hook-grid">${vvGruposArg.map(g=>`<div class="hook"><div class="hook-t">${g.t}</div><div class="hook-p">${g.p}</div></div>`).join('')}</div></div>
+    <div class="card dir-group"><div class="dir-head"><span>📋</span>Tipos de evento que opera la sede</div>${li(vvGruposTipos)}</div>`;
+}
+
+function renderVVUbica(){
+  document.getElementById('vv-ubica').innerHTML=
+   `<div class="card dir-group"><div class="dir-head"><span>📍</span>Ubicación</div>
+      <p class="note-p">${vvUbica.texto}</p>
+      <div class="kv" style="margin-top:12px"><div class="kv-row"><div class="kv-k">Dirección</div><div class="kv-v">${vvUbica.dir}</div></div></div></div>
+    <div class="grid2">${vvUbica.bloques.map(b=>`<div class="card dir-group"><div class="dir-head"><span>${b.i}</span>${b.t}</div>${li(b.l)}</div>`).join('')}</div>`;
+}
+
+const vvMedios=[
+ {t:'Tour virtual 360°',i:'🧭',url:MEDIA_TOURS.vv,d:'Recorrido inmersivo de la propiedad: suites, restaurantes, alberca y áreas comunes. Compártelo en chat mientras describes el resort, antes de cotizar.'},
+ {t:'Banco de fotos y video',i:'🖼',url:MEDIA_BANK,d:'Biblioteca oficial de imágenes en alta resolución para enviar al huésped por chat o correo. Incluye carpetas por categoría: suites, restaurantes, alberca y jardines, spa, y bodas y eventos.'},
+];
+function renderVVGaleria(){
+  document.getElementById('vv-galeria').innerHTML=
+   `<div class="grid2">${vvMedios.map(m=>`<div class="card dir-group media-card">
+      <div class="dir-head"><span>${m.i}</span>${m.t}</div>
+      <p class="note-p" style="margin:10px 0 14px">${m.d}</p>
+      <a class="tour-link big" href="${m.url}" target="_blank" rel="noopener">${m.i} Abrir</a></div>`).join('')}</div>
+    <div class="rule-box small"><div class="rule-i">💡</div><div>Usa el tour virtual para cerrar una venta describiendo un espacio en vivo. Usa el banco de fotos cuando el huésped te pida imágenes para reenviar o mostrar a su familia.</div></div>`;
+}
+
+function renderVV(){
+  renderVVPitch();renderVVSuites();renderVVAi();renderVVGastro();
+  renderVVSpa();renderVVExp();renderVVBodas();renderVVGrupos2();renderVVUbica();renderVVGaleria();
+}
+
 /* ============ CHECKLIST BF ============ */
 function renderBFChecklist(){
   document.getElementById('bfChecklist').innerHTML=bfItems.map(([item,owner,urg],i)=>{
@@ -939,6 +1851,7 @@ function searchGlobal(q){
     'maya':'rm','rm':'rm','sargazo':'rm','cenote':'rm','nayarit':'rn','rn':'rn','piaf':'rn','boda':'rn',
     'cabos':'lc','michelin':'lc','spa':'lc','vallarta':'vv','vv':'vv','ribera':'vv',
     'boutique':'bq','mar del cabo':'mdc','mdc':'mdc','pet':'mdc',
+    'casa velas':'cv','cv':'cv',
     'black friday':'bf','bf':'bf','thanksgiving':'bf','tier':'bf','promo':'home','código':'home','evento':'home','buen fin':'home'};
   for(const [k,id] of Object.entries(map)){
     if(lq.includes(k)){
@@ -963,7 +1876,7 @@ function updateCountdown(){
   document.getElementById('bcd-min').textContent=mi;
 }
 
-renderProto();renderPromos();renderEventos();renderTips();renderAlerts();renderNotif();renderPropAlerts();renderPropEventos();renderCal();renderBFChecklist();updateCountdown();
+renderProto();renderPromos();renderEventos();renderTips();renderAlerts();renderNotif();renderPropAlerts();renderPropEventos();renderVV();renderGaleriaGlobal();renderCal();renderBFChecklist();updateCountdown();
 setInterval(updateCountdown,60000);
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();document.getElementById('searchInput').focus();}});
 document.querySelectorAll('.sb-item,.bf-btn').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}}));
